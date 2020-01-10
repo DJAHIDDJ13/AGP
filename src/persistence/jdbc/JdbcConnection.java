@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 class JdbcConnection {
 	private static String host = "localhost";
-	private static String base = "bankjdbc";
+	private static String base = "travelAgency";
 	private static String user = "root";
 	private static String password = "";
 	private static String url = "jdbc:mysql://" + host + "/" + base;
