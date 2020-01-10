@@ -1,5 +1,5 @@
-# Name of the project
-Put here the discription of the project.
+# Intelligent Travel Agency
+It is an intelligent mini-system for automatically constructing holiday offers for a travel destination.
 
 ## Installation
 
