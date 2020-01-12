@@ -6,7 +6,10 @@ public class Node implements Comparator<Node>{
     public int node; 
     public float cost; 
   
-    public Node() { } 
+    public Node() {
+    	
+    } 
+    
     public Node(int node, float cost) 
     { 
         this.node = node; 

@@ -6,11 +6,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
 
-import AGPException.NullRoutesException;
-import AGPException.NullStationsException;
 import business.transport.Route;
 import business.transport.Station;
 import business.transport.Transport;
+import exception.NullRoutesException;
+import exception.NullStationsException;
 
 public class PathFinding {
 	private Transport transport;
