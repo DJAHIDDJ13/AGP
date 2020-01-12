@@ -13,6 +13,7 @@ import exception.NullRoutesException;
 import exception.NullStationsException;
 
 public class PathFinding {
+
 	private Transport transport;
 
 	Graph transport_graph;
@@ -29,7 +30,7 @@ public class PathFinding {
 		initRoutes();
 
 		this.transport_graph = buildGraph();
-}
+	}
 
 	private void initRoutes()  {
 		
