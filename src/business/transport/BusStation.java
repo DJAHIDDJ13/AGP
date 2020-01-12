@@ -1,6 +1,6 @@
 package business.transport;
 
-import business.island.Place;
+//import business.island.Place;
 
 public class BusStation extends Station{
 	
@@ -8,8 +8,8 @@ public class BusStation extends Station{
 		super();
 	}
 	
-	public BusStation(int id, Place place) {
-		super(id, place);
+	public BusStation(int id, float lat, float lng) {
+		super(id, lat, lng);
 	}
 	
 	@Override

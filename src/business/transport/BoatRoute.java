@@ -1,6 +1,9 @@
 package business.transport;
 
-import java.util.HashMap;
+import java.util.List;
+
+import business.transport.Route;
+import business.transport.Station;
 
 public class BoatRoute extends Route{
 	
@@ -12,12 +15,12 @@ public class BoatRoute extends Route{
 		super(ticketPrice, routeLength);
 	}
 	
-	public BoatRoute(float ticketPrice, float routeLength, HashMap<Integer, Station> stations) {
-		super(ticketPrice, routeLength, stations);
+	public BoatRoute(float ticketPrice, float routeLength, List<Station> route) {
+		super(ticketPrice, routeLength, route);
 	}
 	
-	public BoatRoute(float ticketPrice, HashMap<Integer, Station> stations) {
-		super(ticketPrice, stations);
+	public BoatRoute(float ticketPrice, List<Station> route) {
+		super(ticketPrice, route);
 	}
 	
 	@Override

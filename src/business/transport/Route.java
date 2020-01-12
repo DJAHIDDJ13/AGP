@@ -1,13 +1,14 @@
 package business.transport;
 
-import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Route {
 
 	private float ticketPrice;
 	private float routeLength;
 	
-	private HashMap<Integer, Station> stations;
+	private List<Station> route;
 	
 	public Route() {
 		
@@ -16,19 +17,19 @@ public abstract class Route {
 	public Route(float ticketPrice, float routeLength) {
 		this.ticketPrice = ticketPrice;
 		this.routeLength = routeLength;
-		this.stations = new HashMap<Integer, Station>();
+		this.route = new ArrayList<Station>();
 	}
 	
-	public Route(float ticketPrice, float routeLength, HashMap<Integer, Station> stations) {
+	public Route(float ticketPrice, float routeLength, List<Station> route) {
 		this.ticketPrice = ticketPrice;
 		this.routeLength = routeLength;
-		this.stations = stations;
+		this.route = route;
 	}
 	
-	public Route(float ticketPrice, HashMap<Integer, Station> stations) {
+	public Route(float ticketPrice, List<Station> route) {
 		this.ticketPrice = ticketPrice;
-		this.routeLength = computeLength(stations);
-		this.stations = stations;
+		this.routeLength = computeLength(route);
+		this.route = route;
 	}
 	
 	public float getTicketPrice() {
@@ -47,16 +48,16 @@ public abstract class Route {
 		this.routeLength = routeLength;
 	}
 
-	public HashMap<Integer, Station> getStations() {
-		return stations;
+	public List<Station> getStations() {
+		return route;
 	}
 
-	public void setStations(HashMap<Integer, Station> stations) {
-		this.stations = stations;
+	public void setStations(List<Station> route) {
+		this.route = route;
 	}
 
-	private float computeLength(HashMap<Integer, Station> stations2) {
-		// TODO compute the lenght between all station of this route
+	private float computeLength(List<Station> route) {
+		// TODO compute the length between all station of this route
 		return 0;
 	}
 	

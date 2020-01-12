@@ -25,6 +25,7 @@ class JdbcConnection {
 				System.err.println("Connection failed : " + e.getMessage());
 			}
 		}
+
 		return connection;
 	}
 }

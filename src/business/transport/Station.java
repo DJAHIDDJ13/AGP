@@ -1,20 +1,21 @@
 package business.transport;
 
-import business.island.Place;
+//import business.island.Place;
 
 public abstract class Station {
 
 	private int id;
+	private float latitude;
+	private float longitude;
 	
-	private Place place;
-
 	public Station() {
 		
 	}
 	
-	public Station(int id, Place place) {
+	public Station(int id, float lat, float lng) {
 		this.id = id;
-		this.place = place;
+		this.setLatitude(lat);
+		this.setLongitude(lng);
 	}
 
 	public int getId() {
@@ -25,14 +26,26 @@ public abstract class Station {
 		this.id = id;
 	}
 	
-	public Place getPlace() {
-		return place;
-	}
-
-	public void setPlace(Place place) {
-		this.place = place;
-	}
-
 	public abstract boolean isBusStation();
 	public abstract boolean isBoatStation();
+
+	public float distanceFrom(Station v) {
+		return 1; // TODO: Heversine formula
+	}
+
+	public float getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(float latitude) {
+		this.latitude = latitude;
+	}
+
+	public float getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(float longitude) {
+		this.longitude = longitude;
+	}
 }
