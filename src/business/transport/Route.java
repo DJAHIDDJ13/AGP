@@ -8,7 +8,7 @@ public abstract class Route {
 	private float ticketPrice;
 	private float routeLength;
 	
-	private List<Station> route;
+	private List<Station> routes;
 	
 	public Route() {
 		
@@ -17,19 +17,19 @@ public abstract class Route {
 	public Route(float ticketPrice, float routeLength) {
 		this.ticketPrice = ticketPrice;
 		this.routeLength = routeLength;
-		this.route = new ArrayList<Station>();
+		this.routes = new ArrayList<Station>();
 	}
 	
-	public Route(float ticketPrice, float routeLength, List<Station> route) {
+	public Route(float ticketPrice, float routeLength, List<Station> routes) {
 		this.ticketPrice = ticketPrice;
 		this.routeLength = routeLength;
-		this.route = route;
+		this.routes = routes;
 	}
 	
-	public Route(float ticketPrice, List<Station> route) {
+	public Route(float ticketPrice, List<Station> routes) {
 		this.ticketPrice = ticketPrice;
-		this.routeLength = computeLength(route);
-		this.route = route;
+		this.routeLength = computeLength(routes);
+		this.routes = routes;
 	}
 	
 	public float getTicketPrice() {
@@ -49,11 +49,11 @@ public abstract class Route {
 	}
 
 	public List<Station> getStations() {
-		return route;
+		return routes;
 	}
 
 	public void setStations(List<Station> route) {
-		this.route = route;
+		this.routes = route;
 	}
 
 	private float computeLength(List<Station> route) {
