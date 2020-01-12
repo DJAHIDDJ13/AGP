@@ -1,14 +1,11 @@
 package business.engine;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ListIterator;
 
-import business.transport.BusRoute;
-import business.transport.BusStation;
 import business.transport.Route;
 import business.transport.Station;
 import business.transport.Transport;
@@ -61,7 +58,11 @@ public class PathFinding {
 		int curId = B.getId();
 		while(curId != A.getId()) {
 			path.add(transport.getStations().get(curId)); // TODO: optimize this 
-			curId = prev[curId].node;
+			Node n = prev[curId];
+			if(n == null) {
+				return null;
+			}
+			curId = n.node;
 		}
 		path.add(transport.getStations().get(0));
 		Collections.reverse(path); // put them in the right order
