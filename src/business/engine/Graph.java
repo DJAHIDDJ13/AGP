@@ -78,7 +78,5 @@ public class Graph {
 
 	public Node[] getPrev() {
 		return prev;
-	}
-    
-    
+	}   
 }
