@@ -1,5 +1,6 @@
-package AGPException;
+package exception;
 
+@SuppressWarnings("serial")
 public class NullStationsException extends RuntimeException {
 
 	public NullStationsException() {
