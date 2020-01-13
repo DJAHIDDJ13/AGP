@@ -7,21 +7,31 @@ public class LinkedList<T> implements Iterable<T> {
  
 	private Node<T> head;
  
+    public LinkedList() {
+    	head = null;
+    }
+	
     public LinkedList(T data) {
         head = new Node<>(data);
     }
- 
-    public void add(T data) {
-    	Node<T> current = head;
-        while (current.next != null)
-        	current = current.next;
-        current.next = new Node<>(data);
+
+	public void add(T data) {
+		if(head == null) {
+			head = new Node<>(data);
+		}
+		else {
+			Node<T> current = head;
+			while (current.next != null)
+				current = current.next;
+			current.next = new Node<>(data);
+		}
     }
     
     public Iterator<T> iterator() {
         return new LinkedListIterator();
     }
  
+    //private iterator for thin container
     private class LinkedListIterator implements Iterator<T> {
  
         private Node<T> node = head;
