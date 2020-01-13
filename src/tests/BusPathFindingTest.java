@@ -8,15 +8,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import AGPException.NullRoutesException;
 import AGPException.NullStationsException;
 import business.engine.PathFinding;
-import business.transport.BoatRoute;
-import business.transport.BoatStation;
 import business.transport.BusRoute;
 import business.transport.BusStation;
 import business.transport.Route;
@@ -58,7 +55,7 @@ public class BusPathFindingTest {
     			Arrays.asList(
     					new BusRoute(1, 1, 4, new ArrayList<>(
     										   Arrays.asList(
-							    					stations.get(0),
+							    					stations.get(0), // TODO: change the way stations are accessed
 							    					stations.get(1),
 							    					stations.get(2),
 							    					stations.get(3)
@@ -107,12 +104,14 @@ public class BusPathFindingTest {
 	{	
 		initStations();		
 		PathFinding pf = new PathFinding();
+		pf.findShortestPath(stations.get(0), stations.get(1));
 	}
 	
 	@Test(expected = NullStationsException.class)
 	public void testWhenThereIsNoStationsAtAll()
 	{	
 		PathFinding pf = new PathFinding();
+		pf.findShortestPath(stations.get(0), stations.get(1));
 	}
 	
 	@Test
