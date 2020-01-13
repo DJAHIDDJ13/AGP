@@ -57,7 +57,7 @@ public class BusPathFindingTest {
 	}
 	
 	@Test
-	public void initialeTest()
+	public void testShortestPathResult()
 	{
 		initStations();
 		initRoutes();
@@ -72,35 +72,26 @@ public class BusPathFindingTest {
 		    				  transport.getStationById(1),
 		    				  transport.getStationById(2),
 		    			      transport.getStationById(3)));
-/*		
-		List<Route> routes = pf.findCheapestPath(transport.getStationById(0), transport.getStationById(3));
-		for(Route r: routes) {
-			System.out.println(r.getId());
-		}
-*/
-//		pf.findCheapestPath(transport.getStationById(1), transport.getStationById(3));
-    	assertTrue(path.equals(expectedResult));
+
+		assertTrue(path.equals(expectedResult));
 	}
 
-/** Shouldn't be possible now
-	@Test(expected = NullRoutesException.class)
-	public void testWhenThereIsNoRoutes()
+	@Test
+	public void testCheapestPathResult()
 	{
-		hardReset();
-		initStations();	
+		initStations();
+		initRoutes();
 		
 		PathFinding pf = new PathFinding();
-		pf.findShortestPath(transport.getStationById(0), transport.getStationById(1));
+		
+		List<Route> routes = pf.findCheapestPath(transport.getStationById(0), transport.getStationById(3));
+    	assertNotNull(routes);
+    	
+		List<Route> expectedResult = new ArrayList<Route>(
+    			Arrays.asList(transport.getRouteById(1)));
+
+    	assertTrue(routes.equals(expectedResult));
 	}
-	
-	@Test(expected = NullStationsException.class)
-	public void testWhenThereIsNoStationsAtAll()
-	{	
-		//hardReset();
-		PathFinding pf = new PathFinding();
-		pf.findShortestPath(transport.getStationById(0), transport.getStationById(1));
-	}
-*/
 	
 	@Test
 	public void testBoatRouteWhenOnlyBusAvailable() {
@@ -113,7 +104,7 @@ public class BusPathFindingTest {
 		PathFinding pf = new PathFinding();
 
 		List<Station> path = pf.findShortestPath(b1,transport.getStationById(0));*/ 
-    	assertTrue(true);	
+    	assertTrue(true);
 	}
 	
 	

@@ -16,6 +16,7 @@ public abstract class Route {
 		
 	}
 
+	// TODO: remove route length not needed
 	public Route(int id, float ticketPrice, float routeLength) {
 		this.id = id;
 		this.ticketPrice = ticketPrice;
