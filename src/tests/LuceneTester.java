@@ -5,7 +5,7 @@ import java.util.Iterator;
 
 import org.apache.lucene.queryparser.classic.ParseException;
 
-import bde.iterator.LinkedList;
+import bde.iterator.OperatorLucene;
 import bde.lucene.core.LuceneResult;
 import bde.lucene.persistence.LucenePersistence;
 
@@ -19,7 +19,7 @@ public class LuceneTester {
 		LucenePersistence lucene = new LucenePersistence(indexDir, dataDir);
 		
 		lucene.createIndex();
-		LinkedList<LuceneResult> luceneResult = lucene.search("hello");
+		OperatorLucene luceneResult = lucene.search("hello");
 		
         Iterator<LuceneResult> itr = luceneResult.iterator();
         while (itr.hasNext()) {

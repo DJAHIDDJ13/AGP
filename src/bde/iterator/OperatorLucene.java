@@ -3,38 +3,42 @@ package bde.iterator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class LinkedList<T> implements Iterable<T> {
+import bde.lucene.core.LuceneResult;
+
+@SuppressWarnings("rawtypes")
+public class OperatorLucene implements Iterable {
  
-	private Node<T> head;
+	private Node<LuceneResult> head;
  
-    public LinkedList() {
+    public OperatorLucene() {
     	head = null;
     }
 	
-    public LinkedList(T data) {
+    public OperatorLucene(LuceneResult data) {
         head = new Node<>(data);
     }
 
-	public void add(T data) {
+	public void add(LuceneResult data) {
 		if(head == null) {
 			head = new Node<>(data);
 		}
 		else {
-			Node<T> current = head;
+			Node<LuceneResult> current = head;
 			while (current.next != null)
 				current = current.next;
 			current.next = new Node<>(data);
 		}
     }
     
-    public Iterator<T> iterator() {
-        return new LinkedListIterator();
+    @SuppressWarnings("unchecked")
+	public Iterator<LuceneResult> iterator() {
+        return new OperatorLuceneIterator();
     }
  
-    //private iterator for thin container
-    private class LinkedListIterator implements Iterator<T> {
+    //private iterator for this container
+    private class OperatorLuceneIterator implements Iterator {
  
-        private Node<T> node = head;
+        private Node<LuceneResult> node = head;
  
         @Override
         public boolean hasNext() {
@@ -42,10 +46,10 @@ public class LinkedList<T> implements Iterable<T> {
         }
  
         @Override
-        public T next() {
+        public LuceneResult next() {
             if (!hasNext())
                 throw new NoSuchElementException();
-            Node<T> prevNode = node;
+            Node<LuceneResult> prevNode = node;
             node = node.next;
             return prevNode.data;
         }

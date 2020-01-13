@@ -9,7 +9,7 @@ import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 
 import bde.dao.Persistence;
-import bde.iterator.LinkedList;
+import bde.iterator.OperatorLucene;
 import bde.lucene.core.Indexer;
 import bde.lucene.core.LuceneResult;
 import bde.lucene.core.Searcher;
@@ -54,8 +54,8 @@ public class LucenePersistence implements Persistence{
 		System.out.println(numIndexed+" File indexed, time taken: "+(endTime-startTime)+" ms");		
 	}
 		   
-	public LinkedList<LuceneResult> search(String searchQuery) throws IOException, ParseException {
-		LinkedList<LuceneResult> listLuceneResult = new LinkedList<LuceneResult>();
+	public OperatorLucene search(String searchQuery) throws IOException, ParseException {
+		OperatorLucene listLuceneResult = new OperatorLucene();
 		
 		searcher = new Searcher(indexDir);
 		
