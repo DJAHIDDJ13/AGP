@@ -1,4 +1,4 @@
-package persistence.jdbc;
+package bde.persistence.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

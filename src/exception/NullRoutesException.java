@@ -1,4 +1,4 @@
-package AGPException;
+package exception;
 
 public class NullRoutesException extends RuntimeException {
 
