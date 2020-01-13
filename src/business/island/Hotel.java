@@ -5,6 +5,7 @@ import business.transport.Station;
 public class Hotel {
 	
 	private int id;
+	private int etoile;
 	
 	private float pricePerDay;
 	
