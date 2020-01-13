@@ -3,9 +3,6 @@ package business.transport;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * TODO: Should use prototype pattern 
- */
 public abstract class Route {
 	private int id;
 	private float ticketPrice;
@@ -13,7 +10,7 @@ public abstract class Route {
 	
 	
 	
-	private List<Station> routes;
+	private List<Station> stations;
 	
 	public Route() {
 		
@@ -23,21 +20,21 @@ public abstract class Route {
 		this.id = id;
 		this.ticketPrice = ticketPrice;
 		this.routeLength = routeLength;
-		this.routes = new ArrayList<Station>();
+		this.stations = new ArrayList<Station>();
 	}
 	
 	public Route(int id, float ticketPrice, float routeLength, List<Station> routes) {
 		this.id = id;
 		this.ticketPrice = ticketPrice;
 		this.routeLength = routeLength;
-		this.routes = routes;
+		this.stations = routes;
 	}
 	
 	public Route(int id, float ticketPrice, List<Station> routes) {
 		this.id = id;
 		this.ticketPrice = ticketPrice;
 		this.routeLength = computeLength(routes);
-		this.routes = routes;
+		this.stations = routes;
 	}
 	
 	public float getTicketPrice() {
@@ -57,11 +54,11 @@ public abstract class Route {
 	}
 
 	public List<Station> getStations() {
-		return routes;
+		return stations;
 	}
 
 	public void setStations(List<Station> route) {
-		this.routes = route;
+		this.stations = route;
 	}
 
 	private float computeLength(List<Station> route) {

@@ -1,40 +1,50 @@
 package business.transport;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
+import java.util.HashMap;
 
 public class Transport {
 
 	private static Transport transport = new Transport();
 	
-	private List<Station> stations;
-	private List<Route> routes;
+	private HashMap<Integer, Station> stations;
+	private HashMap<Integer, Route> routes;
 	
 	private Transport() {
-		stations = new ArrayList<Station>();
-		routes = new ArrayList<Route>();
+		stations = new HashMap<Integer, Station>();
+		routes = new HashMap<Integer, Route>();
 	}
 	
-	private Transport(List<Station> stations, List<Route> routes) {
+	private Transport(HashMap<Integer, Station> stations, HashMap<Integer, Route> routes) {
 		this.stations = stations;
 		this.routes = routes;
 	}
 
-	public List<Station> getStations() {
-		return stations;
+	public void addStation(int id, Station station) {
+		stations.put(id, station);
 	}
-
-	public void setStations(List<Station> stations) {
+	
+	public void addRoute(int id, Route route) {
+		routes.put(id, route);
+	}
+	
+	public Collection<Station> getStations() {
+		return stations.values();
+	}
+	/*
+	public void setStations(HashMap<Integer, Station> stations) {
 		this.stations = stations;
 	}
-
-	public List<Route> getRoutes() {
-		return routes;
+	*/
+	public Collection<Route> getRoutes() {
+		return routes.values();
 	}
-
-	public void setRoutes(List<Route> routes) {
+	
+	/*
+	public void setRoutes(HashMap<Integer, Route> routes) {
 		this.routes = routes;
 	}
+	*/
 
 	public static Transport getTransport() {
 		return transport;
@@ -42,5 +52,13 @@ public class Transport {
 
 	public static void setTransport(Transport transport) {
 		Transport.transport = transport;
+	}
+
+	public Station getStationById(int curId) {
+		return stations.get(curId);
+	}
+
+	public Route getRouteById(int id) {
+		return routes.get(id);
 	}
 }
