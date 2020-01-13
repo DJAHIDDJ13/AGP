@@ -3,9 +3,9 @@ CREATE DATABASE voyageDB;
 USE voyageDB;
 
 
------------------------------------------------
+/*-----------------------------------------------
 -- Création des tables de la base de données -- 
------------------------------------------------
+-----------------------------------------------*/
 DROP TABLE IF EXISTS island, hotel, site, station, line, s_belongs_to_l CASCADE;
 
 CREATE TABLE island
@@ -57,6 +57,8 @@ CREATE TABLE station
 CREATE TABLE line 
 (
   id_line		VARCHAR(6) NOT NULL,
+  type          ENUM('boat', 'bus'),
+  price         FLOAT,
   number_line  	INTEGER,
   PRIMARY KEY (id_line)
 );
