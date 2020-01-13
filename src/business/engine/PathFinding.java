@@ -1,6 +1,7 @@
 package business.engine;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -27,8 +28,8 @@ public class PathFinding {
 	
 	private Graph buildGraph() {
 	    HashMap<String, List<Node>> adj = new HashMap<String, List<Node>>();
-	    List<Route> routes = transport.getRoutes();
-		List<Station> stations = transport.getStations();
+	    Collection<Route> routes = transport.getRoutes();
+	    Collection<Station> stations = transport.getStations();
 
 		if(stations == null ) {
 			throw new NullStationsException();
@@ -62,8 +63,6 @@ public class PathFinding {
 	}
 	
 	public List<Station> findShortestPath(Station A, Station B) {
-		List<Station> stations = transport.getStations();
-
 		transport_graph.dijkstra(String.valueOf(A.getId()));
 		
 		HashMap<String, Node> prev = transport_graph.getPrev();
@@ -73,7 +72,7 @@ public class PathFinding {
 		// TODO: use the getPath method of Graph
 		int curId = B.getId();
 		while(curId != A.getId()) {
-			path.add(stations.get(curId)); // TODO: optimize this 
+			path.add(transport.getStationById(curId)); // TODO: optimize this 
 
 			Node n = prev.get(String.valueOf(curId));
 			if(n == null) {
@@ -83,17 +82,18 @@ public class PathFinding {
 			curId = Integer.parseInt(n.node);
 		}
 		
-		path.add(transport.getStations().get(0)); // add the source station
+		path.add(transport.getStationById(0)); // add the source station
 		Collections.reverse(path); // put them in the right order
 		
 		return path;
 	}
+	
 	/*
 	 * TODO: put this in transport
 	 */
 	private int calculateNumStationsInRoutes() {
 		int n = 0;
-		List<Route> routes = transport.getRoutes();
+		Collection<Route> routes = transport.getRoutes();
 		for(Route r: routes) {
 			n += r.getStations().size();
 		}
@@ -104,8 +104,8 @@ public class PathFinding {
 	 * TODO: put this in transport
 	 */
 	private void buildBuckets() {
-		List<Route> routes = transport.getRoutes();
-		List<Station> stations = transport.getStations();
+		Collection<Route> routes = transport.getRoutes();
+		Collection<Station> stations = transport.getStations();
 		buckets = new HashMap<Station, List<Route>>(); 
 
 	    for	(Route route: routes) {
@@ -124,8 +124,8 @@ public class PathFinding {
 	
 	// TODO: This needs to change; not good
 	private Graph buildRouteGraph() {
-		List<Route> routes = transport.getRoutes();
-	    List<Station> stations = transport.getStations();
+		Collection<Route> routes = transport.getRoutes();
+	    Collection<Station> stations = transport.getStations();
 		//List<Station> stations = transport.getStations();
 		int num_station_routes = calculateNumStationsInRoutes();
 	    HashMap<String, List<Node>> adj = new HashMap<String, List<Node>>();
@@ -220,14 +220,31 @@ public class PathFinding {
 			endLst.remove(endLst.size() - 1); // remove last item added
 		}
 		
-		List<String> prev = g.getPath("S", "E");
-		System.out.print(prev);
+		// TODO: Find a better way to do this
+		ListIterator<String> prev = g.getPath("S", "E").listIterator();
 		
 		// transform list of string to list of Route
-		/*List<Route> res = new ArrayList<Route>();
-		for	(String cur: prev) {
-			res.add(routes)
-		}*/
-		return null;
+		List<Route> res = new ArrayList<Route>();
+
+		prev.next();
+		String cur = prev.next();
+		
+		int split = cur.indexOf(";");
+		
+		int prevRouteId = -1;
+		int curRouteId = Integer.parseInt(cur.substring(split + 1));
+		while(prev.hasNext()) {
+			split = cur.indexOf(";");
+			if(split == -1) {
+				break;
+			}
+			
+			if(curRouteId != prevRouteId) {
+				res.add(transport.getRouteById(curRouteId));
+			}
+			cur = prev.next();
+			prevRouteId = curRouteId;
+		}
+		return res;
 	}
 }
