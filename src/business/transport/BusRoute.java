@@ -8,16 +8,16 @@ public class BusRoute extends Route{
 		super();
 	}
 
-	public BusRoute(float ticketPrice, float routeLength) {
-		super(ticketPrice, routeLength);
+	public BusRoute(int id, float ticketPrice, float routeLength) {
+		super(id, ticketPrice, routeLength);
 	}
 	
-	public BusRoute(float ticketPrice, float routeLength, List<Station> route) {
-		super(ticketPrice, routeLength, route);
+	public BusRoute(int id, float ticketPrice, float routeLength, List<Station> route) {
+		super(id, ticketPrice, routeLength, route);
 	}
 	
-	public BusRoute(float ticketPrice, List<Station> route) {
-		super(ticketPrice, route);
+	public BusRoute(int id, float ticketPrice, List<Station> route) {
+		super(id, ticketPrice, route);
 	}
 	
 	@Override

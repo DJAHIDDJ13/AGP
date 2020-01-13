@@ -3,10 +3,15 @@ package business.transport;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * TODO: Should use prototype pattern 
+ */
 public abstract class Route {
-
+	private int id;
 	private float ticketPrice;
 	private float routeLength;
+	
+	
 	
 	private List<Station> routes;
 	
@@ -14,19 +19,22 @@ public abstract class Route {
 		
 	}
 
-	public Route(float ticketPrice, float routeLength) {
+	public Route(int id, float ticketPrice, float routeLength) {
+		this.id = id;
 		this.ticketPrice = ticketPrice;
 		this.routeLength = routeLength;
 		this.routes = new ArrayList<Station>();
 	}
 	
-	public Route(float ticketPrice, float routeLength, List<Station> routes) {
+	public Route(int id, float ticketPrice, float routeLength, List<Station> routes) {
+		this.id = id;
 		this.ticketPrice = ticketPrice;
 		this.routeLength = routeLength;
 		this.routes = routes;
 	}
 	
-	public Route(float ticketPrice, List<Station> routes) {
+	public Route(int id, float ticketPrice, List<Station> routes) {
+		this.id = id;
 		this.ticketPrice = ticketPrice;
 		this.routeLength = computeLength(routes);
 		this.routes = routes;
@@ -63,4 +71,12 @@ public abstract class Route {
 	
 	public abstract boolean isBoatRoute();
 	public abstract boolean isBusRoute();
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 }

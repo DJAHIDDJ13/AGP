@@ -1,7 +1,8 @@
 package business.transport;
 
-//import business.island.Place;
-
+/**
+ * Should use prototype pattern
+ */
 public abstract class Station {
 
 	private int id;

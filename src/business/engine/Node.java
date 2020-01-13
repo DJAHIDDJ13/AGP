@@ -3,11 +3,11 @@ package business.engine;
 import java.util.Comparator;
 
 public class Node implements Comparator<Node>{
-    public int node; 
+    public String node; 
     public float cost; 
   
     public Node() { } 
-    public Node(int node, float cost) 
+    public Node(String node, float cost) 
     { 
         this.node = node; 
         this.cost = cost; 
