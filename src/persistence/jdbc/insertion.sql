@@ -1,9 +1,8 @@
---------------------------------------------------
+ USE voyageDB;
 -- Remplissage des tables de la base de données -- 
---------------------------------------------------
 
 
----------   Table Island  ---------  
+--  Table Island  --  
 INSERT INTO island VALUES ('isl001','Praslin');
 INSERT INTO island VALUES ('isl002','La Digue');
 INSERT INTO island VALUES ('isl003','Ste Anne');
@@ -25,7 +24,7 @@ INSERT INTO island VALUES ('isl018','D Arros');
 INSERT INTO island VALUES ('isl019','Felicite');
 INSERT INTO island VALUES ('isl020','Mahe');
 
----------   Table Hotel  --------- 
+--   Table Hotel  -- 
 INSERT INTO hotel VALUES ('hot001','isl002','Six Senses Zil Pasyon', 5, 375); 
 INSERT INTO hotel VALUES ('hot002','isl020','Anse Soleil Beachcomber', 2, 100); 
 INSERT INTO hotel VALUES ('hot003','isl001','Hotel Le Duc de Praslin', 3, 186); 
