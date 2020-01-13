@@ -3,32 +3,33 @@ CREATE DATABASE voyageDB;
 USE voyageDB;
 
 
------------------------------------------------
+/*-----------------------------------------------
 -- Création des tables de la base de données -- 
------------------------------------------------
+-----------------------------------------------*/
 DROP TABLE IF EXISTS island, hotel, site, station, line, s_belongs_to_l CASCADE;
 
 CREATE TABLE island
 (
-  id_island    INTEGER NOT NULL,
+  id_island    VARCHAR(6) NOT NULL,
   name_island  VARCHAR(100),
   PRIMARY KEY (id_Island)
 );
 
 CREATE TABLE hotel
 (
-  id_hotel  	INTEGER NOT NULL,
-  id_island 	INTEGER NOT NULL, 
-  name_hotel	VARCHAR(100),
-  price_hotel   FLOAT,
+  id_hotel  	  VARCHAR(6) NOT NULL,
+  id_island 	  VARCHAR(6) NOT NULL, 
+  name_hotel	  VARCHAR(100),
+  etoiles       INTEGER,
+  price_hotel   INTEGER,
   PRIMARY KEY (id_hotel),
   FOREIGN KEY (id_island) REFERENCES  island(id_island)
 );
 
 CREATE TABLE site 
 (
-  id_site	  INTEGER NOT NULL,
-  id_island	  INTEGER NOT NULL,
+  id_site	   VARCHAR(6) NOT NULL,
+  id_island	 VARCHAR(6) NOT NULL,
   name_site  VARCHAR(100),
   details  	  TEXT,
   type_site  ENUM('activity', 'historic'),
@@ -42,10 +43,10 @@ CREATE TABLE site
 
 CREATE TABLE station 
 (
-  id_station	INTEGER NOT NULL,
-  id_site	  	INTEGER,
-  id_hotel  	INTEGER,
-  name_station	VARCHAR(100),
+  id_station	VARCHAR(6) NOT NULL,
+  id_site	  	VARCHAR(6),
+  id_hotel  	VARCHAR(6),    
+  name_station  VARCHAR(100),
   latitude   	FLOAT,
   longitude		FLOAT,
   PRIMARY KEY (id_station),
@@ -55,23 +56,21 @@ CREATE TABLE station
 
 CREATE TABLE line 
 (
-  id_line		INTEGER NOT NULL,
+  id_line		VARCHAR(6) NOT NULL,
+  type          ENUM('boat', 'bus'),
+  price         FLOAT,
   number_line  	INTEGER,
   PRIMARY KEY (id_line)
 );
 
 CREATE TABLE s_belongs_to_l
 (
-  id 			INTEGER NOT NULL,
-  id_station	INTEGER NOT NULL,
-  id_line		INTEGER NOT NULL,
+  id 			    VARCHAR(6) NOT NULL,
+  id_station	VARCHAR(6) NOT NULL,
+  id_line		  VARCHAR(6) NOT NULL,
   station_order	INTEGER,
   PRIMARY KEY (id),
   FOREIGN KEY (id_station) REFERENCES station(id_station),
   FOREIGN KEY (id_line) REFERENCES line(id_line)
 );
-
---------------------------------------------------
--- Remplissage des tables de la base de données -- 
---------------------------------------------------
 
