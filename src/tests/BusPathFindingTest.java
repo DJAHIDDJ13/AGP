@@ -8,20 +8,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import AGPException.NullRoutesException;
-import AGPException.NullStationsException;
 import business.engine.PathFinding;
-import business.transport.BoatRoute;
-import business.transport.BoatStation;
 import business.transport.BusRoute;
 import business.transport.BusStation;
 import business.transport.Route;
 import business.transport.Station;
 import business.transport.Transport;
+import exception.NullRoutesException;
+import exception.NullStationsException;
 
 
 
@@ -91,12 +88,14 @@ public class BusPathFindingTest {
 	public void testWhenThereIsNoRoutes()
 	{	
 		initStations();		
+		@SuppressWarnings("unused")
 		PathFinding pf = new PathFinding();
 	}
 	
 	@Test(expected = NullStationsException.class)
 	public void testWhenThereIsNoStationsAtAll()
 	{	
+		@SuppressWarnings("unused")
 		PathFinding pf = new PathFinding();
 	}
 	

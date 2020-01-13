@@ -1,4 +1,4 @@
-package persistence.jdbc;
+package bde.persistence.jdbc;
 
 public class JdbcPersistence {
 	
