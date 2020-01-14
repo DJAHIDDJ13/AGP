@@ -9,8 +9,6 @@ import java.util.ListIterator;
 import business.transport.Route;
 import business.transport.Station;
 import business.transport.Transport;
-import exception.NullRoutesException;
-import exception.NullStationsException;
 
 public class PathFinding {
 
@@ -40,16 +38,7 @@ public class PathFinding {
 	            Station dst = stationIter.next();
 	            Node dstNode = new Node(String.valueOf(dst.getId()), src.distanceFrom(dst));
 	            transport_graph.addAdjacencyEntry(String.valueOf(src.getId()), dst, dstNode);
-
-	            /*  
-	    	    List<Node> lst = adj.get(String.valueOf(src.getId()));
-	    	    if(lst == null) {
-	    	    	lst = new ArrayList<Node>();
-	    	    	adj.put(String.valueOf(src.getId()), lst);
-	    	    }
-	    	    lst.add(dstNode);
-	    	   */ 
-	    	    src = dst;
+	            src = dst;
 	        }
 	    }
 	}
@@ -57,31 +46,9 @@ public class PathFinding {
 	public List<Station> findShortestPath(Station A, Station B) {
 		transport_graph.dijkstra(String.valueOf(A.getId()));
 		
-//		HashMap<String, Node> prev = transport_graph.getPrev();
-		
-		
-		// TODO: use the getPath method of Graph
-		/*
-		List<Station> path = new ArrayList<Station>();
-		int curId = B.getId();
-		while(curId != A.getId()) {
-			path.add(transport.getStationById(curId)); // TODO: optimize this 
-
-			Node n = prev.get(String.valueOf(curId));
-			if(n == null) {
-				return null;
-			}
-			
-			curId = Integer.parseInt(n.node);
-		}
-		
-		path.add(transport.getStationById(0)); // add the source station
-		Collections.reverse(path); // put them in the right order
-		*/
-		
 		List<Object> path = transport_graph.getPath(String.valueOf(A.getId()), String.valueOf(B.getId()));
 		
-		return (List<Station>)(Object) path; // this might be dangerous, TODO: find a better way
+		return (List<Station>) (Object) path; // this might be dangerous, TODO: find a better way
 	}
 	
 	/*
@@ -137,7 +104,8 @@ public class PathFinding {
     	    	String srcKey = String.valueOf(src.getId())+";"+String.valueOf(route.getId());
     	    	String dstKey = String.valueOf(dst.getId())+";"+String.valueOf(route.getId());
     	    	
-    	    	g.addAdjacencyEntry(srcKey, route, new Node(dstKey, 0));
+    	    	g.addAdjacencyEntry(srcKey, new Tuple<Station, Route>(dst, route), 
+    	    			 					new Node(dstKey, 0));
     	    	src = dst;
 	        }
 	    }
@@ -153,7 +121,8 @@ public class PathFinding {
 	    	    	String srcKey = String.valueOf(station.getId())+";"+String.valueOf(srcRoute.getId());
 	    	    	String dstKey = String.valueOf(station.getId())+";"+String.valueOf(dstRoute.getId());
 	    	    	
-	    	    	g.addAdjacencyEntry(srcKey, dstRoute, new Node(dstKey, dstRoute.getTicketPrice()));
+	    	    	g.addAdjacencyEntry(srcKey, new Tuple<Station, Route>(station, dstRoute),
+	    	    						        new Node(dstKey, dstRoute.getTicketPrice()));
 	    	    }
 	    	}
 	    }
@@ -161,7 +130,7 @@ public class PathFinding {
 		return g;
 	}
 	
-	public List<Route> findCheapestPath(Station A, Station B) { // (List<Station> path) {
+	public Path findCheapestPath(Station A, Station B) { // (List<Station> path) {
 		Graph g = buildRouteGraph();
 		
 		// TODO: this is bad; find a better way
@@ -170,12 +139,12 @@ public class PathFinding {
 		List<Route> endStation = buckets.get(B); // get all the lines that pass by the end Station
 
 		// Adding the "S" node
-		List<Node> strtLst = new ArrayList<Node>();
+// 		List<Node> strtLst = new ArrayList<Node>();
 		for	(Route r: strtStation) {
 			String key = String.valueOf(A.getId())+";"+String.valueOf(r.getId());
-			strtLst.add(new Node(key, r.getTicketPrice()));
+			g.addAdjacencyEntry("S", new Tuple<Station, Route>(A, r), new Node(key, r.getTicketPrice()));
 		}
-		g.addAdjacencyEntries("S", null, strtLst);
+		//g.addAdjacencyEntries("S", new Tuple<Station, Route>(B, r), strtLst);
 		
 		// Adding the "E" node
 		for (Route r: endStation) {
@@ -199,21 +168,17 @@ public class PathFinding {
 		}
 		
 		// TODO: Use this on the resulting path
-		List<Route> routes = (List<Route>)(Object)g.getPath("S", "E");
-		ListIterator<Route> routesIter = routes.listIterator();
-		
-		List<Route> res = new ArrayList<Route>();
-		Route prevRoute = null;
-		// TODO: verify if routes has at least one hasNext
-		Route curRoute = routesIter.next();
-		while(routesIter.hasNext()) {
-			if(curRoute != prevRoute)
-				res.add(curRoute);
-			
-			prevRoute = curRoute;
-			curRoute = routesIter.next();
-		}
+		// TODO: change AbstractMap.SimpleEntry to something better
+		List<Tuple<Station, Route>> lst = (List<Tuple<Station, Route>>) (Object) g.getPath("S", "E");
 
-		return res;
+		if(lst == null) {
+			return null;
+		}
+		
+		lst.remove(0); lst.remove(lst.size() - 1); // remove the S and E nodes
+
+		Path path = new Path(lst);
+		
+		return path;
 	}
 }
