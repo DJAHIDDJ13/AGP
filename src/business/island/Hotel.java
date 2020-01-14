@@ -5,7 +5,7 @@ import business.transport.Station;
 public class Hotel {
 	
 	private int id;
-	private int star;
+	private int rating;
 	
 	private float pricePerDay;
 	
@@ -20,11 +20,11 @@ public class Hotel {
 		
 	}
 	
-	public Hotel(int id, float pricePerDay, String name, int star, String beach, Place place, Station station) {
+	public Hotel(int id, float pricePerDay, String name, int rating, String beach, Place place, Station station) {
 		this.id = id;
 		this.pricePerDay = pricePerDay;
 		this.name = name;
-		this.star = star; 
+		this.rating = rating; 
 		this.beach = beach;
 		this.place = place;
 		this.station = station;
@@ -54,14 +54,6 @@ public class Hotel {
 		this.name = name;
 	}
 
-	public int getStar() {
-		return star;
-	}
-
-	public void setStar(int star) {
-		this.star = star;
-	}
-	
 	public String getBeach() {
 		return beach;
 	}
@@ -86,11 +78,11 @@ public class Hotel {
 		this.station = station;
 	}
 
-	public int getEtoile() {
-		return etoile;
+	public int getRating() {
+		return rating;
 	}
 
-	public void setEtoile(int etoile) {
-		this.etoile = etoile;
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
 }
