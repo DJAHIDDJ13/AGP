@@ -18,12 +18,12 @@
 	<fieldset>
 	
 
-		<h:panelGroup  class="result-container" rendered="#{searchBean.hotels != null}">
-		<legend>Hotels Result For Gamme of #{searchBean.gamme} stars</legend>
+		<h:panelGroup  class="result-container" rendered="#{searchBean.hotelsName != null}">
+		<legend>Hotels Result For Gamme of #{searchBean.rating} stars</legend>
 
 			<ul>
-				<ui:repeat var="hotel" value="#{searchBean.hotels}" >
-				  <li> #{hotel.name} </li>   <br />
+				<ui:repeat var="hn" value="#{searchBean.hotelsName}" >
+				  <li> #{hn} </li>   <br />
 				</ui:repeat>
 			</ul>
 			

@@ -19,12 +19,12 @@
 	<fieldset>
 	
 
-		<h:panelGroup  class="result-container" rendered="#{searchBean.sites != null}">
+		<h:panelGroup  class="result-container" rendered="#{searchBean.sitesName != null}">
 		<legend>Sites Result :</legend>
 
 			<ul>
-				<ui:repeat var="site" value="#{searchBean.sites}" >
-				  <li> #{site.id} </li>  
+				<ui:repeat var="site" value="#{searchBean.sitesName}" >
+				  <li> #{site} </li>  
 				   <br />
 				</ui:repeat>
 			</ul>

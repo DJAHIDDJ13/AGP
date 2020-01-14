@@ -29,12 +29,12 @@ public class BDEClient {
 		System.out.println("-----------------------------\n");
 		
 		query = "SELECT * FROM site WHERE type_site = 'historic'";
-		Iterator iterator2 = clientFacadeAPI.SQLQuery(query);
+		iterator = clientFacadeAPI.SQLQuery(query);
 		
 		try {
-			while(iterator2.next()) {
-				for(int i = 1; i <= iterator2.getColumnCount(); i++) {
-					System.out.print(iterator2.getString(i) + " ");
+			while(iterator.next()) {
+				for(int i = 1; i <= iterator.getColumnCount(); i++) {
+					System.out.print(iterator.getString(i) + " ");
 				}
 				System.out.println();
 			}
@@ -46,18 +46,35 @@ public class BDEClient {
 		
 		//query = "SELECT * FROM site WHERE type_site = 'historic' with baie OR culture";
 		query = "SELECT type_site FROM site WHERE type_site = 'historic' with baie OR culture";
-		Iterator iterator3 = clientFacadeAPI.MixedQuery(query);
+		iterator = clientFacadeAPI.MixedQuery(query);
 		
 		try {
-			while(iterator3.next()) {
-				for(int i = 1; i < iterator3.getColumnCount(); i++) {
-					System.out.print(iterator3.getString(i) + " ");
+			while(iterator.next()) {
+				for(int i = 1; i < iterator.getColumnCount(); i++) {
+					System.out.print(iterator.getString(i) + " ");
 				}
 				System.out.println();
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-		}		
+		}
+		
+		System.out.println("-----------------------------\n");
+		
+		//query = "SELECT * FROM site WHERE type_site = 'historic' with baie OR culture";
+		query = "SELECT type_site FROM site WHERE type_site = 'historic' with baie OR culture";
+		iterator = clientFacadeAPI.MixedIndexedQuery(query);
+		
+		try {
+			while(iterator.next()) {
+				for(int i = 1; i < iterator.getColumnCount(); i++) {
+					System.out.print(iterator.getString(i) + " ");
+				}
+				System.out.println();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
 		
 		clientFacadeAPI.close();
 	}

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import bde.dao.Persistence;
 import business.island.ActivitySite;
 import business.island.HistoricSite;
 import business.island.Hotel;
@@ -18,7 +19,7 @@ import business.transport.BusRoute;
 import business.transport.Route;
 import business.transport.Station;
 
-public class IslandPersistance {
+public class IslandPersistance implements Persistence{
 	
 	public void dataInit() {
 		System.err.println("Please don't forget to create tables manually by importing creation.sql in your database !");
@@ -63,7 +64,7 @@ public class IslandPersistance {
 		return null; 
 	}
 	
-	public Hotel getHotel(int hotelId) {
+	public Hotel getHotelById(int hotelId) {
 		
 		Hotel hotel = null; 
 		ResultSet resultSet = request("select * from  hotel where id_hotel=" + hotelId);
@@ -87,15 +88,12 @@ public class IslandPersistance {
 	public HashMap<Integer, Hotel> getHotelsByIslandId(int islandId){
 		
 		HashMap<Integer, Hotel> hotels = new HashMap<Integer, Hotel>(); 
-		ResultSet resultSet = request("select * from  hotel where id_island=" + islandId);
+		ResultSet resultSet = request("select id_hotel from  hotel where id_island=" + islandId);
 		
 		try {
 			while(resultSet.next() == true) { 
-				Position position = getPositionById(resultSet.getInt("id_position")); 
-				Station station = getStationById(resultSet.getInt("id_station")); 
-				Hotel hotel = new Hotel(resultSet.getInt("id_hotel"), resultSet.getFloat("price_hotel"), resultSet.getString("name_hotel"), resultSet.getInt("stars"), resultSet.getString("beach"), position, station);
+				Hotel hotel = getHotelById(resultSet.getInt("id_hotel")); 
 				hotels.put(hotel.getId(), hotel); 
-				
 			}
 			
 		} catch (SQLException e) {
@@ -105,11 +103,32 @@ public class IslandPersistance {
 		return hotels; 
 	}
 	
+
+	
+	
+	public List<String> getHotelNamesByRating(String ranting)
+	{
+		String sqlQuery = "Select * from hotel where stars="+ranting;
+		ResultSet resultSet = request(sqlQuery);
+		List<String> hotels = new ArrayList<String>();
+		try 
+		{
+			while(resultSet.next())
+			{
+				hotels.add(resultSet.getString("name_hotel"));
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return hotels;
+	}
+	
 	public HashMap<Integer, Route> getAllRoutes(){
 		
 		HashMap<Integer, Route> routes = new HashMap<Integer, Route>(); 
 		ResultSet resultSet = request("select id_line from line");
-		
 		try {
 			while(resultSet.next() == true) {
 				Route route = getRouteById(resultSet.getInt("id_line")); 
@@ -273,5 +292,28 @@ public class IslandPersistance {
 	        }
 	
 	     return result;
+	}
+
+	public List<String> fetchSites(String siteType, String searchQuery) {
+		String siteTypeConstraint    = siteType.isEmpty() ? "1" : "type_site ='"+siteType+"'";
+		//TODO
+		String searchQueryConstraint = siteType.isEmpty() ? "1" : "type_site =\'"+siteType; 
+		String sqlQuery = "Select * from site where "+siteTypeConstraint;
+		
+		ResultSet resultSet = request(sqlQuery);
+
+		List<String> sitesNames = new ArrayList<String>();
+		try 
+		{
+			while(resultSet.next())
+			{
+				sitesNames.add(resultSet.getString("name_site"));
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return sitesNames;
 	}
 }
