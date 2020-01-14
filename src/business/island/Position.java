@@ -1,15 +1,15 @@
 package business.island;
 
-public class Place {
+public class Position {
 	
 	private float latitude;
 	private float longitude;
 	
-	public Place() {
+	public Position() {
 		
 	}
 	
-	public Place(float latitude, float longitude) {
+	public Position(float latitude, float longitude) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}

@@ -2,13 +2,13 @@ package business.island;
 
 import business.transport.Station;
 
-public class Activity extends Site{
+public class ActivitySite extends Site{
 
-	public Activity() {
+	public ActivitySite() {
 		
 	}
 	
-	public Activity(int id, String name, Place place, Station station) {
+	public ActivitySite(int id, String name, Position place, Station station) {
 		super(id, name, place, station);
 	}
 	
