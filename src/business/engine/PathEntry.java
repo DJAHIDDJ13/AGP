@@ -6,12 +6,14 @@ import business.transport.Route;
 import business.transport.Station;
 
 public class PathEntry {
-	Tuple<Station, Route> entry;
+	private Station station;
+	private Route route;
 	static HashMap<String, PathEntry> entries = new HashMap<String, PathEntry>();
 	
 	public PathEntry(Station s, Route r) {
 		if(entries.get(generateKey(s, r)) == null) {
-			entry = new Tuple<Station, Route>(s, r);
+			this.station = s;
+			this.route = r;
 			entries.put(generateKey(s, r), this);
 		}
 	}
@@ -34,10 +36,10 @@ public class PathEntry {
 	}
 	
 	public Station getStation() {
-		return entry.x;
+		return station;
 	}
 	
 	public Route getRoute() {
-		return entry.y;
+		return route;
 	}
 }

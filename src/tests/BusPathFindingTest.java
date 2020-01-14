@@ -11,8 +11,8 @@ import java.util.List;
 import org.junit.Test;
 
 import business.engine.Path;
+import business.engine.PathEntry;
 import business.engine.PathFinding;
-import business.engine.Tuple;
 import business.island.Position;
 import business.transport.BusRoute;
 import business.transport.Route;
@@ -89,18 +89,13 @@ public class BusPathFindingTest {
 		System.out.println(routes.getPathLength() + "km");
 		System.out.println(routes.getPathDuration() + "s");
     	
-		List<Tuple<Station, Route>> expectedResult = new ArrayList<Tuple<Station, Route>>(
-				Arrays.asList(new Tuple<Station, Route>(transport.getStationById(0), transport.getRouteById(1)),
-						      new Tuple<Station, Route>(transport.getStationById(1), transport.getRouteById(1)),
-						      new Tuple<Station, Route>(transport.getStationById(2), transport.getRouteById(1)),
-						      new Tuple<Station, Route>(transport.getStationById(3), transport.getRouteById(1))));
+		List<PathEntry> expectedResult = new ArrayList<PathEntry>(
+				Arrays.asList(PathEntry.getEntry(transport.getStationById(0), transport.getRouteById(1)),
+							  PathEntry.getEntry(transport.getStationById(1), transport.getRouteById(1)),
+							  PathEntry.getEntry(transport.getStationById(2), transport.getRouteById(1)),
+							  PathEntry.getEntry(transport.getStationById(3), transport.getRouteById(1))));
 
-		assertTrue(routes.getSize() == expectedResult.size());
-		
-		for(int i = 0; i < routes.getSize(); i++) {
-	    	assertTrue(expectedResult.get(i).x == routes.getEntry(i).getStation());
-	    	assertTrue(expectedResult.get(i).y == routes.getEntry(i).getRoute());
-		}
+		assertTrue(expectedResult.equals(routes.getPath()));
 	}
 	
 	@Test

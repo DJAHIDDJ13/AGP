@@ -66,4 +66,8 @@ public class Path {
 		float len = getPathLength();
 		return len / average_speed * 3600; // in seconds
 	}
+
+	public List<PathEntry> getPath() {
+		return path;
+	}
 }
