@@ -13,7 +13,6 @@ import business.island.Hotel;
 import business.island.Island;
 import business.island.Position;
 import business.island.Site;
-import business.transport.Route;
 import business.transport.Station;
 
 public class IslandPersistance {
@@ -83,6 +82,25 @@ public class IslandPersistance {
 	}
 	
 	
+	
+	public List<String> getHotelNamesByRating(String ranting)
+	{
+		String sqlQuery = "Select * from hotel where stars="+ranting;
+		ResultSet resultSet = request(sqlQuery);
+		List<String> hotels = new ArrayList<String>();
+		try 
+		{
+			while(resultSet.next())
+			{
+				hotels.add(resultSet.getString("name_hotel"));
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return hotels;
+	}
 	
 	public Hotel getHotel(int hotelId) {
 		
@@ -236,5 +254,28 @@ public class IslandPersistance {
 	        }
 	
 	     return result;
+	}
+
+	public List<String> fetchSites(String siteType, String searchQuery) {
+		String siteTypeConstraint    = siteType.isEmpty() ? "1" : "type_site ='"+siteType+"'";
+		//TODO
+		String searchQueryConstraint = siteType.isEmpty() ? "1" : "type_site =\'"+siteType; 
+		String sqlQuery = "Select * from site where "+siteTypeConstraint;
+		
+		ResultSet resultSet = request(sqlQuery);
+
+		List<String> sitesNames = new ArrayList<String>();
+		try 
+		{
+			while(resultSet.next())
+			{
+				sitesNames.add(resultSet.getString("name_site"));
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return sitesNames;
 	}
 }

@@ -25,7 +25,7 @@
 <h3 >1 - Trouver des hotels par gamme :  </h3>  
  
  <h:form>
-		<h:selectOneMenu value="#{searchBean.gamme}">
+		<h:selectOneMenu value="#{searchBean.rating}">
 		   	<f:selectItem itemValue="1" itemLabel="1 etoile" />
 		   	<f:selectItem itemValue="2" itemLabel="2 etoile" />
 		   	<f:selectItem itemValue="3" itemLabel="3 etoile" />
@@ -41,14 +41,14 @@
  
  <h:form>
 		<h:selectOneMenu value="#{searchBean.siteType}">
-		   	<f:selectItem itemValue="0" itemLabel="peu importe" />
-		   	<f:selectItem itemValue="1" itemLabel="site touristique" />
-		   	<f:selectItem itemValue="2" itemLabel="activity" />
+		   	<f:selectItem itemValue="" itemLabel="peu importe" />
+		   	<f:selectItem itemValue="historic" itemLabel="site touristique" />
+		   	<f:selectItem itemValue="activity" itemLabel="activity" />
 		</h:selectOneMenu>
 		
 		<h:inputText class="search-bar" value="#{searchBean.searchQuery}" /> 
 		
-			  <h:commandLink  class="action-button" action="#{searchBean.findSites}"  value="Trouver des sites"/>
+			  <h:commandLink  class="action-button" action="#{searchBean.findSitesNames}"  value="Trouver des sites"/>
  </h:form>
  
   <hr/>
