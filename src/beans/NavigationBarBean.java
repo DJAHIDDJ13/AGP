@@ -18,15 +18,12 @@ public class NavigationBarBean implements Serializable {
 	
 	public String generateOffers()
 	{
-		return "offers";
+		return "trips";
 	}
 	
 	public String homePage()
 	{
 		return "home";
 	}
-	
-	public String panelPage() {
-		return "panel";
-	}
+
 }

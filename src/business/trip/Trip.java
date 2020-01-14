@@ -10,7 +10,12 @@ public class Trip {
 	private Hotel hotel;
 	
 	private List<Excursion> excursion;
-
+	
+	private float price;
+	
+	private float daysCount;
+	
+	
 	public Trip() {
 		
 	}
@@ -38,5 +43,25 @@ public class Trip {
 
 	public void setExcursion(List<Excursion> excursion) {
 		this.excursion = excursion;
+	}
+
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
+
+	public float getDensity() {
+		return (((float) excursion.size()) /daysCount );
+	}
+
+	public float getDaysCount() {
+		return daysCount;
+	}
+
+	public void setDaysCount(float daysCount) {
+		this.daysCount = daysCount;
 	}
 }

@@ -30,3 +30,14 @@ fieldset {
   display: inline-block;
   cursor: pointer;
 }
+
+.trip-container{
+	margin-top: 55px;
+	margin-left: 150px;
+}
+
+
+hr {
+width : 50%;	
+  border-top: 1px solid black;
+}
