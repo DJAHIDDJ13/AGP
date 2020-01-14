@@ -19,7 +19,6 @@ public class BDEClient {
 		Iterator iterator = clientFacadeAPI.luceneQuery(query);
 		
 		try {
-			System.out.println("ID : " + iterator.getString(0) + ", Pertinance : " + iterator.getString(1));
 			while(iterator.next()) {
 				System.out.println("ID : " + iterator.getString(0) + ", Pertinance : " + iterator.getString(1));		
 			}

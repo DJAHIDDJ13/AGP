@@ -12,7 +12,7 @@ public class OperatorLucene implements Iterator{
 	private String query;
 	
 	public OperatorLucene() {
-	
+
 	}
 	
 	public OperatorLucene(String query) {
@@ -48,10 +48,11 @@ public class OperatorLucene implements Iterator{
 	@Override
 	public void add(Node node) {
 		if(head == null) {
-			head = node;
+			head = new Node();
+			head.setNext(node);
 		}
 		else {
-			Node current = head;
+			Node current = head.getNext();
 			while (current.getNext() != null) {
 				current = current.getNext();
 			}
@@ -71,7 +72,7 @@ public class OperatorLucene implements Iterator{
 	
 	public Node exists(String id) {
 		Node exists = null;
-		Node current = head;
+		Node current = head.getNext();
 		
 		while(current != null && exists == null) {
 			exists = (current.getData()[0].equals(id)) ? current : null;
