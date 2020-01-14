@@ -69,5 +69,10 @@ public class OperatorSQL implements Iterator{
 			e.printStackTrace();
 		}
 		return 0;
+	}
+
+	@Override
+	public String getString(int columnIndex) throws SQLException {
+		return head.getString(columnIndex);
 	}	
 }

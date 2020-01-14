@@ -9,4 +9,6 @@ public interface Iterator {
 	public void add(Node node);
 	
 	public int getColumnCount();
+	
+	public String getString(int columnIndex) throws Exception;
 }
