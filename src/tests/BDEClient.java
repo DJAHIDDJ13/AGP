@@ -15,9 +15,11 @@ public class BDEClient {
 		
 		clientFacadeAPI.createIndexDir();
 		
+		System.out.println("\nQUERY : ");
 		String query = "baie OR culture";
 		Iterator iterator = clientFacadeAPI.luceneQuery(query);
 		
+		System.out.println("\n-------- Lucene Iterator result --------");
 		try {
 			while(iterator.next()) {
 				System.out.println("ID : " + iterator.getString(0) + ", Pertinance : " + iterator.getString(1));		
@@ -26,7 +28,7 @@ public class BDEClient {
 			e.printStackTrace();
 		}
 		
-		System.out.println("-----------------------------\n");
+		System.out.println("\n-------- SQL JDBC Iterator result --------");
 		
 		query = "SELECT * FROM site WHERE type_site = 'historic'";
 		iterator = clientFacadeAPI.SQLQuery(query);
@@ -42,7 +44,7 @@ public class BDEClient {
 			e.printStackTrace();
 		}
 		
-		System.out.println("-----------------------------\n");
+		System.out.println("\n-------- Plan 1 Nested Loop join Iterator result --------");
 		
 		//query = "SELECT * FROM site WHERE type_site = 'historic' with baie OR culture";
 		query = "SELECT type_site FROM site WHERE type_site = 'historic' with baie OR culture";
@@ -59,7 +61,7 @@ public class BDEClient {
 			e.printStackTrace();
 		}
 		
-		System.out.println("-----------------------------\n");
+		System.out.println("\n-------- Plan 1 Indexed join Iterator result --------");
 		
 		//query = "SELECT * FROM site WHERE type_site = 'historic' with baie OR culture";
 		query = "SELECT type_site FROM site WHERE type_site = 'historic' with baie OR culture";
