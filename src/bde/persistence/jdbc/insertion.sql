@@ -191,27 +191,27 @@ INSERT INTO station VALUES (80, 80, 'Anse aux Cedres');
 INSERT INTO station VALUES (81, 81, 'Anse Marron');
 
 
-/*--------------------------   Table Hotel  ---------------------------
--- id_hotel, id_position, id_island, id_station, name, stars, price  -- 
------------------------------------------------------------------------*/
-INSERT INTO hotel VALUES (1, 1, 1, 1, 'Berjaya Beau Vallon Bay', 3, 180); # -4.614931, 55.426747
-INSERT INTO hotel VALUES (2, 2, 1, 2, 'MAIA Luxury Resort', 5, 2005); # -4.716797, 55.479342
-INSERT INTO hotel VALUES (3, 3, 2, 3, 'La Belle Tortue', 4, 425); # -4.485815, 55.253051
-INSERT INTO hotel VALUES (4, 4, 2, 4, 'Hilton Seychelles Labriz', 5, 336); # -4.481282, 55.248330
-INSERT INTO hotel VALUES (5, 5, 3, 5, 'Le lion d\'or', 3, 155); # -4.660673, 55.362001
-INSERT INTO hotel VALUES (6, 6, 3, 6, 'Venus', 4, 199); # -4.666522, 55.371957
-INSERT INTO hotel VALUES (7, 7, 4, 7, 'Sainte Therese', 2, 115); # -4.669209, 55.397591
-INSERT INTO hotel VALUES (8, 8, 4, 8, 'Pluton', 5, 399); # -4.678122, 55.405005
-INSERT INTO hotel VALUES (9, 9, 5, 9, 'Mercure', 4, 245); # -4.610455, 55.496891
-INSERT INTO hotel VALUES (10, 10, 5, 10, 'Le Quincys', 3, 150); # -4.599804, 55.499345
-INSERT INTO hotel VALUES (11, 11, 6, 11, 'Cerf Island Resort', 4, 413); # -4.630498, 55.493472
-INSERT INTO hotel VALUES (12, 12, 6, 12, 'Jupiter', 3, 185); # -4.639362, 55.500801
-INSERT INTO hotel VALUES (13, 13, 7, 13, 'Constance Lemuria', 5, 718); # -4.299230, 55.681470
-INSERT INTO hotel VALUES (14, 14, 7, 14, 'Hotel L\'Archipel', 4, 349); # -4.319137, 55.763596
-INSERT INTO hotel VALUES (15, 15, 8, 15, 'L\'Ocean', 2, 139); # -4.337518, 55.832570
-INSERT INTO hotel VALUES (16, 16, 8, 16, 'La Digue Island Lodge', 4, 228); # -4.354841, 55.826255
-INSERT INTO hotel VALUES (17, 17, 1, 17, 'Hilltop Boutique Hotel', 3, 119); # -4.622245, 55.446411
-INSERT INTO hotel VALUES (18, 18, 1, 18, 'Le Nautique Luxury Beachfront Apartments', 4, 204); # -4.747073, 55.515514
+/*--------------------------   Table Hotel  ----------------------------------
+-- id_hotel, id_position, id_island, id_station, beach, name, stars, price  -- 
+------------------------------------------------------------------------------*/
+INSERT INTO hotel VALUES (1, 1, 1, 1, 'Baie Beau Vallon', 'Berjaya Beau Vallon Bay', 3, 180); # -4.614931, 55.426747
+INSERT INTO hotel VALUES (2, 2, 1, 2, 'Anse Louis', 'MAIA Luxury Resort', 5, 2005); # -4.716797, 55.479342
+INSERT INTO hotel VALUES (3, 3, 2, 3, 'Anse La Passe', 'La Belle Tortue', 4, 425); # -4.485815, 55.253051
+INSERT INTO hotel VALUES (4, 4, 2, 4, 'Anse La Passe', 'Hilton Seychelles Labriz', 5, 336); # -4.481282, 55.248330
+INSERT INTO hotel VALUES (5, 5, 3, 5, 'Anse Lion', 'Le lion d\'or', 3, 155); # -4.660673, 55.362001
+INSERT INTO hotel VALUES (6, 6, 3, 6, 'Anse Vénus', 'Vénus', 4, 199); # -4.666522, 55.371957
+INSERT INTO hotel VALUES (7, 7, 4, 7, 'Anse Thérèse', 'Sainte Thérèse', 2, 115); # -4.669209, 55.397591
+INSERT INTO hotel VALUES (8, 8, 4, 8, 'Anse Pluton', 'Pluton', 5, 399); # -4.678122, 55.405005
+INSERT INTO hotel VALUES (9, 9, 5, 9, 'Anse Mercure', 'Mercure', 4, 245); # -4.610455, 55.496891
+INSERT INTO hotel VALUES (10, 10, 5, 10, 'De Quincy', 'Le Quincys', 3, 150); # -4.599804, 55.499345
+INSERT INTO hotel VALUES (11, 11, 6, 11, 'Providence', 'Cerf Island Resort', 4, 413); # -4.630498, 55.493472
+INSERT INTO hotel VALUES (12, 12, 6, 12, 'Anse Jupiter', 'Jupiter', 3, 185); # -4.639362, 55.500801
+INSERT INTO hotel VALUES (13, 13, 7, 13, 'Petite Anse Kerlan', 'Constance Lemuria', 5, 718); # -4.299230, 55.681470
+INSERT INTO hotel VALUES (14, 14, 7, 14, 'Anse Gouvernement', 'Hotel L\'Archipel', 4, 349); # -4.319137, 55.763596
+INSERT INTO hotel VALUES (15, 15, 8, 15, 'Anse Patates', 'L\'Ocean', 2, 139); # -4.337518, 55.832570
+INSERT INTO hotel VALUES (16, 16, 8, 16, 'Anse La Reunion', 'La Digue Island Lodge', 4, 228); # -4.354841, 55.826255
+INSERT INTO hotel VALUES (17, 17, 1, 17, 'Anse Nord D\'est', 'Hilltop Boutique Hotel', 3, 119); # -4.622245, 55.446411
+INSERT INTO hotel VALUES (18, 18, 1, 18, 'Anse Royale', 'Le Nautique Luxury Beachfront Apartments', 4, 204); # -4.747073, 55.515514
 
 /*-----------------------------------   Table Site  -------------------------------------
 -- id_site, id_position, id_island, id_station, name, type, activity, monument, price  -- 

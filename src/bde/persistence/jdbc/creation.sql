@@ -38,6 +38,7 @@ CREATE TABLE hotel
   id_position   INT NOT NULL,
   id_island 	INT NOT NULL,
   id_station    INT NOT NULL,
+  beach     	VARCHAR(100),
   name_hotel	VARCHAR(100),
   stars         INTEGER,
   price_hotel   INTEGER,
