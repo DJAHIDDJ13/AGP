@@ -2,7 +2,7 @@ package business.transport;
 
 import business.island.Position;
 
-public abstract class Station {
+public class Station {
 	private int id;
 	private float latitude;
 	private float longitude;
@@ -25,9 +25,6 @@ public abstract class Station {
 		this.id = id;
 	}
 	
-	public abstract boolean isBusStation();
-	public abstract boolean isBoatStation();
-
 	public float distanceFrom(Station v) {
 		return 1; // TODO: Heversine formula
 	}
