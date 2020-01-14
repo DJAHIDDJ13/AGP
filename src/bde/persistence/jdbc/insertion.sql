@@ -17,108 +17,90 @@ INSERT INTO island VALUES (6,'Ile au Cerf');
 INSERT INTO island VALUES (7,'Praslin');
 INSERT INTO island VALUES (8,'La Digue');
 
-
-INSERT INTO station VALUES (3, 3, 'Hotel La Belle Tortue', );
-INSERT INTO station VALUES (4, 4, 'Hotel Hilton Seychelles Labriz', );
-INSERT INTO station VALUES (5, 5, 'Hotel Le lion d\'or', );
-INSERT INTO station VALUES (6, 6, 'Hotel Venus', );
-INSERT INTO station VALUES (7, 7, 'Hotel Sainte Therese', );
-INSERT INTO station VALUES (8, 8, 'Hotel Pluton', );
-INSERT INTO station VALUES (9, 9, 'Hotel Mercure', );
-INSERT INTO station VALUES (10, 10, 'Hotel Le Quincys', );
-INSERT INTO station VALUES (11, 11, 'Hotel Cerf Island Resort', );
-INSERT INTO station VALUES (12, 12, 'Hotel Jupiter', );
-INSERT INTO station VALUES (13, 13, 'Hotel Constance Lemuria', );
-INSERT INTO station VALUES (14, 14, 'Hotel L\'Archipel', -4.319137, 55.763596);
-INSERT INTO station VALUES (15, 15, 'Hotel L\'Ocean', -4.337518, 55.832570);
-INSERT INTO station VALUES (16, 16, 'Hotel La Digue Island Lodge', -4.354841, 55.826255);
-INSERT INTO station VALUES (17, 17, 'Hotel Hilltop Boutique', -4.622245, 55.446411);
-INSERT INTO station VALUES (18, 18, 'Hotel Le Nautique Luxury Beachfront', -4.747073, 55.515514);
-
 /*---------   Table Position  ---------
 -- id_position, latitude, longitude, -- 
 ---------------------------------------*/
-INSERT INTO position VALUES (1, -4.614931, 55.426747);
-INSERT INTO position VALUES (2, -4.716797, 55.479342);
-INSERT INTO position VALUES (3, -4.485815, 55.253051);
-INSERT INTO position VALUES (4, -4.481282, 55.248330);
-INSERT INTO position VALUES (5, -4.660673, 55.362001);
-INSERT INTO position VALUES (6, -4.666522, 55.371957);
-INSERT INTO position VALUES (7, -4.669209, 55.397591);
-INSERT INTO position VALUES (8, -4.678122, 55.405005);
-INSERT INTO position VALUES (9, -4.610455, 55.496891);
-INSERT INTO position VALUES (10, -4.599804, 55.499345);
-INSERT INTO position VALUES (11, -4.630498, 55.493472);
-INSERT INTO position VALUES (12, -4.639362, 55.500801);
-INSERT INTO position VALUES (13, -4.299230, 55.681470);
-INSERT INTO position VALUES (14, -4.319137, 55.763596);
-INSERT INTO position VALUES (15, -4.337518, 55.832570);
-INSERT INTO position VALUES (16, -4.354841, 55.826255);
-INSERT INTO position VALUES (17, -4.622245, 55.446411);
-INSERT INTO position VALUES (18, -4.747073, 55.515514);
-INSERT INTO position VALUES (19, -4.710817, 55.519360);
-INSERT INTO position VALUES (20, -4.623168, 55.452309);
-INSERT INTO position VALUES (21, -4.641255, 55.465292);
-INSERT INTO position VALUES (22, -4.625628, 55.452397);
-INSERT INTO position VALUES (23, -4.639464, 55.375215);
-INSERT INTO position VALUES (24, -4.621595, 55.391576);
-INSERT INTO position VALUES (25, -4.626966, 55.420058);
-INSERT INTO position VALUES (26, -4.624341, 55.426691);
-INSERT INTO position VALUES (27, -4.706771, 55.500458);
-INSERT INTO position VALUES (28, -4.682461, 55.455898);
-INSERT INTO position VALUES (29, -4.786514, 55.525911);
-INSERT INTO position VALUES (30, -4.660455, 55.437482);
-INSERT INTO position VALUES (31, -4.652031, 55.445115);
-INSERT INTO position VALUES (32, -4.646963, 55.452784);
-INSERT INTO position VALUES (33, -4.504413, 55.255792);
-INSERT INTO position VALUES (34, -4.466778, 55.245835);
-INSERT INTO position VALUES (35, -4.466108, 55.21219);
-INSERT INTO position VALUES (36, -4.502474, 55.225150);
-INSERT INTO position VALUES (37, -4.488199, 55.212361);
-INSERT INTO position VALUES (38, -4.512171, 55.23811);
-INSERT INTO position VALUES (39, -4.488056, 55.232961);
-INSERT INTO position VALUES (40, -4.659746, 55.364574);
-INSERT INTO position VALUES (41, -4.664939, 55.363372);
-INSERT INTO position VALUES (42, -4.666582, 55.369037));
-INSERT INTO position VALUES (43, -4.662922, 55.37011);
-INSERT INTO position VALUES (44, -4.663517, 55.366269);
-INSERT INTO position VALUES (45, -4.661283, 55.360986);
-INSERT INTO position VALUES (46, -4.666911, 55.373517);
-INSERT INTO position VALUES (47, -4.67941, 55.40379);
-INSERT INTO position VALUES (48, -4.675681, 55.406794);
-INSERT INTO position VALUES (49, -4.673521, 55.400099);
-INSERT INTO position VALUES (50, -4.667312, 55.401472);
-INSERT INTO position VALUES (51, -4.675546, 55.399927);
-INSERT INTO position VALUES (52, -4.670399, 55.40173);
-INSERT INTO position VALUES (53, -4.669508, 55.396923);
-INSERT INTO position VALUES (54, -4.605047, 55.503517);
-INSERT INTO position VALUES (55, -4.610625, 55.50467);
-INSERT INTO position VALUES (56, -4.601751, 55.497287);
-INSERT INTO position VALUES (57, -4.613921, 55.499825);
-INSERT INTO position VALUES (58, -4.605297, 55.494748);
-INSERT INTO position VALUES (59, -4.605737, 55.511477);
-INSERT INTO position VALUES (60, -4.600122, 55.505016);
-INSERT INTO position VALUES (61, -4.628564, 55.494748);
-INSERT INTO position VALUES (62, -4.63347, 55.505593);
-INSERT INTO position VALUES (63, -4.632071, 55.499248);
-INSERT INTO position VALUES (64, -4.633317, 55.492903);
-INSERT INTO position VALUES (65, -4.639737, 55.501786);
-INSERT INTO position VALUES (66, -4.634467, 55.497287);
-INSERT INTO position VALUES (67, -4.629886, 55.501671);
-INSERT INTO position VALUES (68, -4.320583, 55.749477);
-INSERT INTO position VALUES (69, -4.330251, 55.775721);
-INSERT INTO position VALUES (70, -4.339714, 55.766107);
-INSERT INTO position VALUES (71, -4.358976, 55.755104);
-INSERT INTO position VALUES (72, -4.329098, 55.740148);
-INSERT INTO position VALUES (73, -4.321836, 55.718036);
-INSERT INTO position VALUES (74, -4.297904, 55.708742);
-INSERT INTO position VALUES (75, -4.363827, 55.825754);
-INSERT INTO position VALUES (76, -4.341461, 55.833822);
-INSERT INTO position VALUES (77, -4.359234, 55.848928);
-INSERT INTO position VALUES (78, -4.350448, 55.829702);
-INSERT INTO position VALUES (79, -4.360005, 55.838628);
-INSERT INTO position VALUES (80, -4.378633, 55.833135);
-INSERT INTO position VALUES (81, -4.381942, 55.8388);
+INSERT INTO coordinate VALUES (1, -4.614931, 55.426747);
+INSERT INTO coordinate VALUES (2, -4.716797, 55.479342);
+INSERT INTO coordinate VALUES (3, -4.485815, 55.253051);
+INSERT INTO coordinate VALUES (4, -4.481282, 55.248330);
+INSERT INTO coordinate VALUES (5, -4.660673, 55.362001);
+INSERT INTO coordinate VALUES (6, -4.666522, 55.371957);
+INSERT INTO coordinate VALUES (7, -4.669209, 55.397591);
+INSERT INTO coordinate VALUES (8, -4.678122, 55.405005);
+INSERT INTO coordinate VALUES (9, -4.610455, 55.496891);
+INSERT INTO coordinate VALUES (10, -4.599804, 55.499345);
+INSERT INTO coordinate VALUES (11, -4.630498, 55.493472);
+INSERT INTO coordinate VALUES (12, -4.639362, 55.500801);
+INSERT INTO coordinate VALUES (13, -4.299230, 55.681470);
+INSERT INTO coordinate VALUES (14, -4.319137, 55.763596);
+INSERT INTO coordinate VALUES (15, -4.337518, 55.832570);
+INSERT INTO coordinate VALUES (16, -4.354841, 55.826255);
+INSERT INTO coordinate VALUES (17, -4.622245, 55.446411);
+INSERT INTO coordinate VALUES (18, -4.747073, 55.515514);
+INSERT INTO coordinate VALUES (19, -4.710817, 55.519360);
+INSERT INTO coordinate VALUES (20, -4.623168, 55.452309);
+INSERT INTO coordinate VALUES (21, -4.641255, 55.465292);
+INSERT INTO coordinate VALUES (22, -4.625628, 55.452397);
+INSERT INTO coordinate VALUES (23, -4.639464, 55.375215);
+INSERT INTO coordinate VALUES (24, -4.621595, 55.391576);
+INSERT INTO coordinate VALUES (25, -4.626966, 55.420058);
+INSERT INTO coordinate VALUES (26, -4.624341, 55.426691);
+INSERT INTO coordinate VALUES (27, -4.706771, 55.500458);
+INSERT INTO coordinate VALUES (28, -4.682461, 55.455898);
+INSERT INTO coordinate VALUES (29, -4.786514, 55.525911);
+INSERT INTO coordinate VALUES (30, -4.660455, 55.437482);
+INSERT INTO coordinate VALUES (31, -4.652031, 55.445115);
+INSERT INTO coordinate VALUES (32, -4.646963, 55.452784);
+INSERT INTO coordinate VALUES (33, -4.504413, 55.255792);
+INSERT INTO coordinate VALUES (34, -4.466778, 55.245835);
+INSERT INTO coordinate VALUES (35, -4.466108, 55.21219);
+INSERT INTO coordinate VALUES (36, -4.502474, 55.225150);
+INSERT INTO coordinate VALUES (37, -4.488199, 55.212361);
+INSERT INTO coordinate VALUES (38, -4.512171, 55.23811);
+INSERT INTO coordinate VALUES (39, -4.488056, 55.232961);
+INSERT INTO coordinate VALUES (40, -4.659746, 55.364574);
+INSERT INTO coordinate VALUES (41, -4.664939, 55.363372);
+INSERT INTO coordinate VALUES (42, -4.666582, 55.369037);
+INSERT INTO coordinate VALUES (43, -4.662922, 55.37011);
+INSERT INTO coordinate VALUES (44, -4.663517, 55.366269);
+INSERT INTO coordinate VALUES (45, -4.661283, 55.360986);
+INSERT INTO coordinate VALUES (46, -4.666911, 55.373517);
+INSERT INTO coordinate VALUES (47, -4.67941, 55.40379);
+INSERT INTO coordinate VALUES (48, -4.675681, 55.406794);
+INSERT INTO coordinate VALUES (49, -4.673521, 55.400099);
+INSERT INTO coordinate VALUES (50, -4.667312, 55.401472);
+INSERT INTO coordinate VALUES (51, -4.675546, 55.399927);
+INSERT INTO coordinate VALUES (52, -4.670399, 55.40173);
+INSERT INTO coordinate VALUES (53, -4.669508, 55.396923);
+INSERT INTO coordinate VALUES (54, -4.605047, 55.503517);
+INSERT INTO coordinate VALUES (55, -4.610625, 55.50467);
+INSERT INTO coordinate VALUES (56, -4.601751, 55.497287);
+INSERT INTO coordinate VALUES (57, -4.613921, 55.499825);
+INSERT INTO coordinate VALUES (58, -4.605297, 55.494748);
+INSERT INTO coordinate VALUES (59, -4.605737, 55.511477);
+INSERT INTO coordinate VALUES (60, -4.600122, 55.505016);
+INSERT INTO coordinate VALUES (61, -4.628564, 55.494748);
+INSERT INTO coordinate VALUES (62, -4.63347, 55.505593);
+INSERT INTO coordinate VALUES (63, -4.632071, 55.499248);
+INSERT INTO coordinate VALUES (64, -4.633317, 55.492903);
+INSERT INTO coordinate VALUES (65, -4.639737, 55.501786);
+INSERT INTO coordinate VALUES (66, -4.634467, 55.497287);
+INSERT INTO coordinate VALUES (67, -4.629886, 55.501671);
+INSERT INTO coordinate VALUES (68, -4.320583, 55.749477);
+INSERT INTO coordinate VALUES (69, -4.330251, 55.775721);
+INSERT INTO coordinate VALUES (70, -4.339714, 55.766107);
+INSERT INTO coordinate VALUES (71, -4.358976, 55.755104);
+INSERT INTO coordinate VALUES (72, -4.329098, 55.740148);
+INSERT INTO coordinate VALUES (73, -4.321836, 55.718036);
+INSERT INTO coordinate VALUES (74, -4.297904, 55.708742);
+INSERT INTO coordinate VALUES (75, -4.363827, 55.825754);
+INSERT INTO coordinate VALUES (76, -4.341461, 55.833822);
+INSERT INTO coordinate VALUES (77, -4.359234, 55.848928);
+INSERT INTO coordinate VALUES (78, -4.350448, 55.829702);
+INSERT INTO coordinate VALUES (79, -4.360005, 55.838628);
+INSERT INTO coordinate VALUES (80, -4.378633, 55.833135);
+INSERT INTO coordinate VALUES (81, -4.381942, 55.8388);
 
 /*------------------   Table Station  -------------------
 -- id_station, id_position, name, latitude, longitude, -- 
@@ -167,7 +149,7 @@ INSERT INTO station VALUES (38, 38, 'Silhouette Sud');
 INSERT INTO station VALUES (39, 39, 'Silhouette Centre');
 INSERT INTO station VALUES (40, 40, 'Conception Nord');
 INSERT INTO station VALUES (41, 41, 'Conception Ouest');
-INSERT INTO station VALUES (42, 42, 'Conception Sud', ;
+INSERT INTO station VALUES (42, 42, 'Conception Sud');
 INSERT INTO station VALUES (43, 43, 'Conception Est');
 INSERT INTO station VALUES (44, 44, 'Conception Centre');
 INSERT INTO station VALUES (45, 45, 'Petite Cigale');
@@ -209,27 +191,27 @@ INSERT INTO station VALUES (80, 80, 'Anse aux Cedres');
 INSERT INTO station VALUES (81, 81, 'Anse Marron');
 
 
-/*--------------------------   Table Hotel  ---------------------------
--- id_hotel, id_position, id_island, id_station, name, stars, price  -- 
------------------------------------------------------------------------*/
-INSERT INTO hotel VALUES (1, 1, 1, 1, 'Berjaya Beau Vallon Bay', 3, 180); # -4.614931, 55.426747
-INSERT INTO hotel VALUES (2, 2, 1, 2, 'MAIA Luxury Resort', 5, 2005); # -4.716797, 55.479342
-INSERT INTO hotel VALUES (3, 3, 2, 3, 'La Belle Tortue', 4, 425); # -4.485815, 55.253051
-INSERT INTO hotel VALUES (4, 4, 2, 4, 'Hilton Seychelles Labriz', 5, 336); # -4.481282, 55.248330
-INSERT INTO hotel VALUES (5, 5, 3, 5, 'Le lion d\'or', 3, 155); # -4.660673, 55.362001
-INSERT INTO hotel VALUES (6, 6, 3, 6, 'Venus', 4, 199); # -4.666522, 55.371957
-INSERT INTO hotel VALUES (7, 7, 4, 7, 'Sainte Therese', 2, 115); # -4.669209, 55.397591
-INSERT INTO hotel VALUES (8, 8, 4, 8, 'Pluton', 5, 399); # -4.678122, 55.405005
-INSERT INTO hotel VALUES (9, 9, 5, 9, 'Mercure', 4, 245); # -4.610455, 55.496891
-INSERT INTO hotel VALUES (10, 10, 5, 10, 'Le Quincys', 3, 150); # -4.599804, 55.499345
-INSERT INTO hotel VALUES (11, 11, 6, 11, 'Cerf Island Resort', 4, 413); # -4.630498, 55.493472
-INSERT INTO hotel VALUES (12, 12, 6, 12, 'Jupiter', 3, 185); # -4.639362, 55.500801
-INSERT INTO hotel VALUES (13, 13, 7, 13, 'Constance Lemuria', 5, 718); # -4.299230, 55.681470
-INSERT INTO hotel VALUES (14, 14, 7, 14, 'Hotel L\'Archipel', 4, 349); # -4.319137, 55.763596
-INSERT INTO hotel VALUES (15, 15, 8, 15, 'L\'Ocean', 2, 139); # -4.337518, 55.832570
-INSERT INTO hotel VALUES (16, 16, 8, 16, 'La Digue Island Lodge', 4, 228); # -4.354841, 55.826255
-INSERT INTO hotel VALUES (17, 17, 1, 17, 'Hilltop Boutique Hotel', 3, 119); # -4.622245, 55.446411
-INSERT INTO hotel VALUES (18, 18, 1, 18, 'Le Nautique Luxury Beachfront Apartments', 4, 204); # -4.747073, 55.515514
+/*--------------------------   Table Hotel  ----------------------------------
+-- id_hotel, id_position, id_island, id_station, beach, name, stars, price  -- 
+------------------------------------------------------------------------------*/
+INSERT INTO hotel VALUES (1, 1, 1, 1, 'Baie Beau Vallon', 'Berjaya Beau Vallon Bay', 3, 180); # -4.614931, 55.426747
+INSERT INTO hotel VALUES (2, 2, 1, 2, 'Anse Louis', 'MAIA Luxury Resort', 5, 2005); # -4.716797, 55.479342
+INSERT INTO hotel VALUES (3, 3, 2, 3, 'Anse La Passe', 'La Belle Tortue', 4, 425); # -4.485815, 55.253051
+INSERT INTO hotel VALUES (4, 4, 2, 4, 'Anse La Passe', 'Hilton Seychelles Labriz', 5, 336); # -4.481282, 55.248330
+INSERT INTO hotel VALUES (5, 5, 3, 5, 'Anse Lion', 'Le lion d\'or', 3, 155); # -4.660673, 55.362001
+INSERT INTO hotel VALUES (6, 6, 3, 6, 'Anse Vénus', 'Vénus', 4, 199); # -4.666522, 55.371957
+INSERT INTO hotel VALUES (7, 7, 4, 7, 'Anse Thérèse', 'Sainte Thérèse', 2, 115); # -4.669209, 55.397591
+INSERT INTO hotel VALUES (8, 8, 4, 8, 'Anse Pluton', 'Pluton', 5, 399); # -4.678122, 55.405005
+INSERT INTO hotel VALUES (9, 9, 5, 9, 'Anse Mercure', 'Mercure', 4, 245); # -4.610455, 55.496891
+INSERT INTO hotel VALUES (10, 10, 5, 10, 'De Quincy', 'Le Quincys', 3, 150); # -4.599804, 55.499345
+INSERT INTO hotel VALUES (11, 11, 6, 11, 'Providence', 'Cerf Island Resort', 4, 413); # -4.630498, 55.493472
+INSERT INTO hotel VALUES (12, 12, 6, 12, 'Anse Jupiter', 'Jupiter', 3, 185); # -4.639362, 55.500801
+INSERT INTO hotel VALUES (13, 13, 7, 13, 'Petite Anse Kerlan', 'Constance Lemuria', 5, 718); # -4.299230, 55.681470
+INSERT INTO hotel VALUES (14, 14, 7, 14, 'Anse Gouvernement', 'Hotel L\'Archipel', 4, 349); # -4.319137, 55.763596
+INSERT INTO hotel VALUES (15, 15, 8, 15, 'Anse Patates', 'L\'Ocean', 2, 139); # -4.337518, 55.832570
+INSERT INTO hotel VALUES (16, 16, 8, 16, 'Anse La Reunion', 'La Digue Island Lodge', 4, 228); # -4.354841, 55.826255
+INSERT INTO hotel VALUES (17, 17, 1, 17, 'Anse Nord D\'est', 'Hilltop Boutique Hotel', 3, 119); # -4.622245, 55.446411
+INSERT INTO hotel VALUES (18, 18, 1, 18, 'Anse Royale', 'Le Nautique Luxury Beachfront Apartments', 4, 204); # -4.747073, 55.515514
 
 /*-----------------------------------   Table Site  -------------------------------------
 -- id_site, id_position, id_island, id_station, name, type, activity, monument, price  -- 

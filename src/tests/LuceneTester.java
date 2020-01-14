@@ -17,12 +17,16 @@ public class LuceneTester {
 		LucenePersistence lucene = new LucenePersistence(indexDir, dataDir);
 		
 		lucene.createIndex();
-		OperatorLucene luceneResult = new OperatorLucene("hello OR by");
+		OperatorLucene luceneResult = new OperatorLucene("hello AND NOT by");
 		luceneResult.init();
 		
-		if(luceneResult.getHead() != null) {
+		if(luceneResult != null) {
 			do {
-				System.out.println("id: " + luceneResult.getHead().getData()[0] + ",score: "+ luceneResult.getHead().getData()[1]);
+				try {
+					System.out.println("id: " + luceneResult.getString(0) + ",score: "+ luceneResult.getString(1));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}while(luceneResult.next());
 		}
 		

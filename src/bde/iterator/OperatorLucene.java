@@ -7,6 +7,7 @@ import org.apache.lucene.queryparser.classic.ParseException;
 import bde.lucene.persistence.LucenePersistence;
 
 public class OperatorLucene implements Iterator{
+	
 	private Node head;
 	private String query;
 	
@@ -22,15 +23,7 @@ public class OperatorLucene implements Iterator{
 		this.head = head;
 		this.query = query;
 	}
-
-	public Node getHead() {
-		return head;
-	}
-
-	public void setHead(Node head) {
-		this.head = head;
-	}
-
+	
 	@Override
 	public void init() {
 		try {
@@ -66,7 +59,25 @@ public class OperatorLucene implements Iterator{
 		}
 	}
 
+	@Override
 	public int getColumnCount() {
 		return head.getSize();
+	}
+
+	@Override
+	public String getString(int columnIndex) throws Exception{
+		return head.getColumnAt(columnIndex);
+	}
+	
+	public Node exists(String id) {
+		Node exists = null;
+		Node current = head;
+		
+		while(current != null && exists == null) {
+			exists = (current.getData()[0].equals(id)) ? current : null;
+			current = current.getNext();
+		}
+		
+		return exists;
 	}
 }
