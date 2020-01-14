@@ -5,6 +5,7 @@ import business.transport.Station;
 public class Hotel {
 	
 	private int id;
+	private int etoile;
 	
 	private float pricePerDay;
 	
@@ -74,5 +75,13 @@ public class Hotel {
 
 	public void setStation(Station station) {
 		this.station = station;
+	}
+
+	public int getEtoile() {
+		return etoile;
+	}
+
+	public void setEtoile(int etoile) {
+		this.etoile = etoile;
 	}
 }
