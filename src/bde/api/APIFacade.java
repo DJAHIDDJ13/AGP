@@ -1,6 +1,7 @@
 package bde.api;
 import java.io.IOException;
 
+import bde.iterator.IndexedJoint;
 import bde.iterator.NestedLoopJoint;
 import bde.iterator.OperatorLucene;
 import bde.iterator.OperatorSQL;
@@ -118,6 +119,22 @@ public class APIFacade {
 		
 		return iterator;
 	}
+	
+	public IndexedJoint MixedIndexedQuery(String Mixedquery) {
+		String[] query = Mixedquery.split(" with ");		
+		IndexedJoint iterator = new IndexedJoint();
+		
+		String queryModified = checkSyntax(query[0]);
+		if(!queryModified.isEmpty()) {
+			iterator = new IndexedJoint(queryModified, query[1], tableKey);
+			iterator.init();
+		}
+		else {
+			System.err.println("Syntax error please give the right table !");
+		}
+		
+		return iterator;
+	}	
 
 	private String checkSyntax(String string) {
 		String check = "";

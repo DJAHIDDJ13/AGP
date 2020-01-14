@@ -1,5 +1,7 @@
 package bde.iterator;
 
+import java.sql.SQLException;
+
 public class IndexedJoint implements Iterator{
 	
 	private Node head;
@@ -7,13 +9,20 @@ public class IndexedJoint implements Iterator{
 	private OperatorLucene LuceneIterator;
 	
 	private String LuceneQuery;
+	private String SQLQuery;
+	private String key;
+	
+	private boolean containsWHERE;
 	
 	public IndexedJoint() {
 		
 	}
 	
-	public IndexedJoint(String luceneQuery) {
+	public IndexedJoint(String sQLQuery, String luceneQuery, String key) {
 		LuceneQuery = luceneQuery;
+		SQLQuery = sQLQuery.toLowerCase();
+		this.key = key;
+		containsWHERE = SQLQuery.contains(" where ");
 	}
 
 	@Override
@@ -26,10 +35,54 @@ public class IndexedJoint implements Iterator{
 	@Override
 	public boolean next() {
 		boolean next = false;
+		String pertinance;
 		
-		
+		try {	
+			while(!next && LuceneIterator.next()) {
+				String id = LuceneIterator.getString(0);
+				String query = injectIdToQuery(id);
+				
+				OperatorSQL SQLIterator = new OperatorSQL(query);
+				SQLIterator.init();
+				if(SQLIterator.next()) {
+					pertinance = LuceneIterator.getString(1);
+					fusion(SQLIterator, pertinance);
+					next = true;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		return next;
+	}
+	
+	private void fusion(OperatorSQL sQLIterator, String pertinance) {
+		int size = sQLIterator.getColumnCount() + 2;
+		String[] data = new String[size];
+		head = new Node(size);
+		
+		for(int i = 1; i < size-1; i++) {
+			try {
+				data[i] = sQLIterator.getString(i);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		data[size-1] = pertinance;
+		
+		head.setData(data);
+	}
+
+	private String injectIdToQuery(String id) {
+		String query = SQLQuery;
+		
+		if(containsWHERE)
+			query += " AND " + key +" = " + id;
+		else
+			query += " WHERE " + key +" = " + id;
+		
+		return query;
 	}
 
 	@Override
