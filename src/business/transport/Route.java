@@ -4,32 +4,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Route {
-
+	private int id;
 	private float ticketPrice;
 	private float routeLength;
-	
-	private List<Station> routes;
+	private List<Station> stations;
 	
 	public Route() {
 		
 	}
 
-	public Route(float ticketPrice, float routeLength) {
+	// TODO: remove route length not needed
+	public Route(int id, float ticketPrice, float routeLength) {
+		this.id = id;
 		this.ticketPrice = ticketPrice;
 		this.routeLength = routeLength;
-		this.routes = new ArrayList<Station>();
+		this.stations = new ArrayList<Station>();
 	}
 	
-	public Route(float ticketPrice, float routeLength, List<Station> routes) {
+	public Route(int id, float ticketPrice, float routeLength, List<Station> routes) {
+		this.id = id;
 		this.ticketPrice = ticketPrice;
 		this.routeLength = routeLength;
-		this.routes = routes;
+		this.stations = routes;
 	}
 	
-	public Route(float ticketPrice, List<Station> routes) {
+	public Route(int id, float ticketPrice, List<Station> routes) {
+		this.id = id;
 		this.ticketPrice = ticketPrice;
 		this.routeLength = computeLength(routes);
-		this.routes = routes;
+		this.stations = routes;
 	}
 	
 	public float getTicketPrice() {
@@ -49,11 +52,11 @@ public abstract class Route {
 	}
 
 	public List<Station> getStations() {
-		return routes;
+		return stations;
 	}
 
-	public void setStations(List<Station> route) {
-		this.routes = route;
+	public void setStations(List<Station> stations) {
+		this.stations = stations;
 	}
 
 	private float computeLength(List<Station> route) {
@@ -63,4 +66,12 @@ public abstract class Route {
 	
 	public abstract boolean isBoatRoute();
 	public abstract boolean isBusRoute();
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
 }

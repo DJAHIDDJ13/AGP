@@ -8,17 +8,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import business.engine.PathFinding;
+import business.island.Position;
 import business.transport.BusRoute;
 import business.transport.BusStation;
 import business.transport.Route;
 import business.transport.Station;
 import business.transport.Transport;
-import exception.NullRoutesException;
-import exception.NullStationsException;
 
 
 
@@ -27,90 +25,85 @@ public class BusPathFindingTest {
 	Transport transport = Transport.getTransport();
 	List<Station> stations ;
 	List<Route> routes ;
-	
+	/*
 	@Before
 	public void hardReset()
 	{
-		transport.setRoutes(null);
-		transport.setStations(null);
+		// transport.setRoutes(null);
+		// transport.setStations(null);
 	}
-	
+	*/
 	public void initStations()
 	{
-		stations = new ArrayList<Station>(
-    			Arrays.asList(
-    					new BusStation(0, 0, 0),
-    					new BusStation(1, 0, 1),
-    					new BusStation(2, 0, 2),
-    					new BusStation(3, 1, 3)
-    					)
-    			);
-	
+		// TODO: The id shouldn't be in the Station constructor ??
 		
-		transport.setStations(stations);
+		transport.addStation(0, new BusStation(0, new Position(0, 0)));
+		transport.addStation(1, new BusStation(1, new Position(0, 1)));
+		transport.addStation(2, new BusStation(2, new Position(0, 2)));
+		transport.addStation(3, new BusStation(3, new Position(1, 3)));
 	}
 
 	private void initRoutes() {
-		routes = new ArrayList<Route>(
-    			Arrays.asList(
-    					new BusRoute(1, 4, new ArrayList<>(stations)),
-    					
-    					
-    					new BusRoute(1, 4, new ArrayList<Station>(
-    			    						   Arrays.asList(
-			    			    					stations.get(3),
-			    			    					stations.get(2),
-			    			    					stations.get(1),
-			    			    					stations.get(0)
-    			    						   )
-    			    			))
-    					)
-    			);
+		transport.addRoute(1, new BusRoute(1, 1, 4, new ArrayList<Station>(
+				   Arrays.asList(transport.getStationById(0),
+			 					 transport.getStationById(1),
+			 					 transport.getStationById(2),
+			 					 transport.getStationById(3)))));
 		
-		transport.setRoutes(routes);
+		transport.addRoute(2, new BusRoute(2, 1, 4, new ArrayList<Station>(
+				   Arrays.asList(transport.getStationById(3),
+			 					 transport.getStationById(2),
+			 					 transport.getStationById(1),
+			 					 transport.getStationById(0)))));
 	}
 	
 	@Test
-	public void initialeTest()
+	public void testShortestPathResult()
+	{
+		initStations();
+		initRoutes();
+		
+		PathFinding pf = new PathFinding();
+		
+    	List<Station> path = pf.findShortestPath(transport.getStationById(0), transport.getStationById(3));
+    	assertNotNull(path);
+    	
+		List<Station> expectedResult = new ArrayList<Station>(
+    			Arrays.asList(transport.getStationById(0),
+		    				  transport.getStationById(1),
+		    				  transport.getStationById(2),
+		    			      transport.getStationById(3)));
+
+		assertTrue(path.equals(expectedResult));
+	}
+
+	@Test
+	public void testCheapestPathResult()
 	{
 		initStations();
 		initRoutes();
 		PathFinding pf = new PathFinding();
 		
-    	List<Station> path = pf.findShortestPath(stations.get(0), stations.get(3));
-    	assertNotNull(path);
-    	assertTrue(!path.isEmpty());
-	}
-	
-	
+		List<Route> routes = pf.findCheapestPath(transport.getStationById(0), transport.getStationById(3));
+    	assertNotNull(routes);
+    	
+		List<Route> expectedResult = new ArrayList<Route>(
+    			Arrays.asList(transport.getRouteById(1)));
 
-	@Test(expected = NullRoutesException.class)
-	public void testWhenThereIsNoRoutes()
-	{	
-		initStations();		
-		@SuppressWarnings("unused")
-		PathFinding pf = new PathFinding();
-	}
-	
-	@Test(expected = NullStationsException.class)
-	public void testWhenThereIsNoStationsAtAll()
-	{	
-		@SuppressWarnings("unused")
-		PathFinding pf = new PathFinding();
+    	assertTrue(routes.equals(expectedResult));
 	}
 	
 	@Test
 	public void testBoatRouteWhenOnlyBusAvailable() {
-		/*check if unknown station throw NotFoundStationException*/ 
+		/*
 		initStations();
 		initRoutes();
 		BusStation b1  = new BusStation(10, 5, 6);
 	
 		PathFinding pf = new PathFinding();
-
-		@SuppressWarnings("unused")
-		List<Station> path = pf.findShortestPath(b1,stations.get(0));
-    	assertTrue(true);	
+		List<Station> path = pf.findShortestPath(b1,transport.getStationById(0));
+    	*/
+    	assertTrue(true);
 	}
 	
 	
@@ -118,23 +111,13 @@ public class BusPathFindingTest {
 	public void testWhenStationIsNonAccessible()
 	{
 		initStations();
-		routes = new ArrayList<Route>(
-    			Arrays.asList(
-    					new BusRoute(1, 4, new ArrayList<Station>(
-    			    						   Arrays.asList(
-			    			    					stations.get(3),
-			    			    					stations.get(2)
-			    							   )
-    			    			))
-    					)
-    			);
-		
-		transport.setRoutes(routes);
+		transport.addRoute(1, new BusRoute(1, 1, 2, new ArrayList<Station>(
+				   Arrays.asList(transport.getStationById(3),
+			 					 transport.getStationById(2)))));
 	
-		
 		PathFinding pf = new PathFinding();
 
-		List<Station> path = pf.findShortestPath(stations.get(0),stations.get(1)); 
+		List<Station> path = pf.findShortestPath(transport.getStationById(0), transport.getStationById(1)); 
     	assertNull(path);	
 	}
 	
@@ -142,28 +125,20 @@ public class BusPathFindingTest {
 	public void testPathIsOrientationSensitive()
 	{
 		initStations();
-		routes = new ArrayList<Route>(
-    			Arrays.asList(
-    					new BusRoute(1, 4, new ArrayList<Station>(
-    			    						   Arrays.asList(
-			    			    					stations.get(3),
-			    			    					stations.get(2),
-			    			    					stations.get(1),
-			    			    					stations.get(0)
-    			    						   )
-    			    			))
-    					)
-    			);
-		
-		transport.setRoutes(routes);
-	
+		transport.addRoute(1, new BusRoute(1, 1, 4, new ArrayList<Station>(
+				   Arrays.asList(transport.getStationById(3),
+			 					 transport.getStationById(2),
+			 					 transport.getStationById(1),
+			 					 transport.getStationById(0)))));
 		
 		PathFinding pf = new PathFinding();
 
-		List<Station> path = pf.findShortestPath(stations.get(1),stations.get(0)); 
-    	assertNotNull(path);	
+		List<Station> path = pf.findShortestPath(transport.getStationById(1),
+				                                 transport.getStationById(0));
+    	assertNotNull(path);
     	
-    	path = pf.findShortestPath(stations.get(0),stations.get(1)); 
+    	path = pf.findShortestPath(transport.getStationById(0),
+    							   transport.getStationById(1));
     	assertNull(path);
 	}
 }
