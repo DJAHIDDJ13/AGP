@@ -17,198 +17,197 @@ INSERT INTO island VALUES (6,'Ile au Cerf');
 INSERT INTO island VALUES (7,'Praslin');
 INSERT INTO island VALUES (8,'La Digue');
 
+/*------------   Table Station  ------------
+-- id_station, name, latitude, longitude, -- 
+--------------------------------------------*/
+# HOTELS
+INSERT INTO station VALUES (1, 'Hotel Berjaya Beau Vallon Bay', -4.614931, 55.426747);
+INSERT INTO station VALUES (2, 'Hotel MAIA Luxury Resort', -4.716797, 55.479342);
+INSERT INTO station VALUES (3, 'Hotel La Belle Tortue', -4.485815, 55.253051);
+INSERT INTO station VALUES (4, 'Hotel Hilton Seychelles Labriz', -4.481282, 55.248330);
+INSERT INTO station VALUES (5, 'Hotel Le lion d\'or', -4.660673, 55.362001);
+INSERT INTO station VALUES (6, 'Hotel Venus', -4.666522, 55.371957);
+INSERT INTO station VALUES (7, 'Hotel Sainte Therese', -4.669209, 55.397591);
+INSERT INTO station VALUES (8, 'Hotel Pluton', -4.678122, 55.405005);
+INSERT INTO station VALUES (9, 'Hotel Mercure', -4.610455, 55.496891);
+INSERT INTO station VALUES (10, 'Hotel Le Quincys', -4.599804, 55.499345);
+INSERT INTO station VALUES (11, 'Hotel Cerf Island Resort', -4.630498, 55.493472);
+INSERT INTO station VALUES (12, 'Hotel Jupiter', -4.639362, 55.500801);
+INSERT INTO station VALUES (13, 'Hotel Constance Lemuria', -4.299230, 55.681470);
+INSERT INTO station VALUES (14, 'Hotel L\'Archipel', -4.319137, 55.763596);
+INSERT INTO station VALUES (15, 'Hotel L\'Ocean', -4.337518, 55.832570);
+INSERT INTO station VALUES (16, 'Hotel La Digue Island Lodge', -4.354841, 55.826255);
+INSERT INTO station VALUES (17, 'Hotel Hilltop Boutique', -4.622245, 55.446411);
+INSERT INTO station VALUES (18, 'Hotel Le Nautique Luxury Beachfront', -4.747073, 55.515514);
 
-/*--------------   Table Hotel  --------------
--- id_hotel, id_island, name, stars, price  -- 
-----------------------------------------------*/
-INSERT INTO hotel VALUES (1, 1,'Berjaya Beau Vallon Bay', 3, 180); # -4.614931, 55.426747
-INSERT INTO hotel VALUES (2, 1,'MAIA Luxury Resort', 5, 2005); # -4.716797, 55.479342
-INSERT INTO hotel VALUES (3, 2,'La Belle Tortue', 4, 425); # -4.485815, 55.253051
-INSERT INTO hotel VALUES (4, 2,'Hilton Seychelles Labriz', 5, 336); # -4.481282, 55.248330
-INSERT INTO hotel VALUES (5, 3,'Le lion d\'or', 3, 155); # -4.660673, 55.362001
-INSERT INTO hotel VALUES (6, 3,'Venus', 4, 199); # -4.666522, 55.371957
-INSERT INTO hotel VALUES (7, 4,'Sainte Therese', 2, 115); # -4.669209, 55.397591
-INSERT INTO hotel VALUES (8, 4,'Pluton', 5, 399); # -4.678122, 55.405005
-INSERT INTO hotel VALUES (9, 5,'Mercure', 4, 245); # -4.610455, 55.496891
-INSERT INTO hotel VALUES (10, 5,'Le Quincys', 3, 150); # -4.599804, 55.499345
-INSERT INTO hotel VALUES (11, 6,'Cerf Island Resort', 4, 413); # -4.630498, 55.493472
-INSERT INTO hotel VALUES (12, 6,'Jupiter', 3, 185); # -4.639362, 55.500801
-INSERT INTO hotel VALUES (13, 7,'Constance Lemuria', 5, 718); # -4.299230, 55.681470
-INSERT INTO hotel VALUES (14, 7,'Hotel L\'Archipel', 4, 349); # -4.319137, 55.763596
-INSERT INTO hotel VALUES (15, 8,'L\'Ocean', 2, 139); # -4.337518, 55.832570
-INSERT INTO hotel VALUES (16, 8,'La Digue Island Lodge', 4, 228); # -4.354841, 55.826255
-INSERT INTO hotel VALUES (17, 1,'Hilltop Boutique Hotel', 3, 119); # -4.622245, 55.446411
-INSERT INTO hotel VALUES (18, 1,'Le Nautique Luxury Beachfront Apartments', 4, 204); # -4.747073, 55.515514
+# SITES
+INSERT INTO station VALUES (19, 'Pointe au Sel', -4.710817, 55.519360);
+INSERT INTO station VALUES (20, 'Francis Rachel St', -4.623168, 55.452309);
+INSERT INTO station VALUES (21, 'Victoria', -4.641255, 55.465292);
+INSERT INTO station VALUES (22, 'Rue De La Poudrière', -4.625628, 55.452397);
+INSERT INTO station VALUES (23, 'Cap Matoopa', -4.639464, 55.375215);
+INSERT INTO station VALUES (24, 'Anse Major Trail', -4.621595, 55.391576);
+INSERT INTO station VALUES (25, 'Mare Aux Cochons Trail', -4.626966, 55.420058);
+INSERT INTO station VALUES (26, 'Dans Gallas Trail', -4.624341, 55.426691);
+INSERT INTO station VALUES (27, 'Glacis La Reserve Trail', -4.706771, 55.500458);
+INSERT INTO station VALUES (28, 'Vacoa Nature Trail', -4.682461, 55.455898);
+INSERT INTO station VALUES (29, 'Anse Capucin Trail', -4.786514, 55.525911);
+INSERT INTO station VALUES (30, 'Morne Blanc Trail', -4.660455, 55.437482);
+INSERT INTO station VALUES (31, 'Salazie Trail', -4.652031, 55.445115);
+INSERT INTO station VALUES (32, 'Copolia Trail', -4.646963, 55.452784);
+INSERT INTO station VALUES (33, 'Sihouette Est', -4.504413, 55.255792);
+INSERT INTO station VALUES (34, 'Plage de la Grande Guerre', -4.466778, 55.245835);
+INSERT INTO station VALUES (35, 'Sihouette Nord', -4.466108, 55.21219);
+INSERT INTO station VALUES (36, 'Grand Barbe', -4.502474, 55.225150);
+INSERT INTO station VALUES (37, 'Petite Barbe', -4.488199, 55.212361);
+INSERT INTO station VALUES (38, 'Silhouette Sud', -4.512171, 55.23811);
+INSERT INTO station VALUES (39, 'Silhouette Centre', -4.488056, 55.232961);
+INSERT INTO station VALUES (40, 'Conception Nord', -4.659746, 55.364574);
+INSERT INTO station VALUES (41, 'Conception Ouest', -4.664939, 55.363372);
+INSERT INTO station VALUES (42, 'Conception Sud', -4.666582, 55.369037);
+INSERT INTO station VALUES (43, 'Conception Est', -4.662922, 55.37011);
+INSERT INTO station VALUES (44, 'Conception Centre', -4.663517, 55.366269);
+INSERT INTO station VALUES (45, 'Petite Cigale', -4.661283, 55.360986);
+INSERT INTO station VALUES (46, 'Grande Cigale', -4.666911, 55.373517);
+INSERT INTO station VALUES (47, 'Therese Sud', -4.67941, 55.40379);
+INSERT INTO station VALUES (48, 'Therese Est', -4.675681, 55.406794);
+INSERT INTO station VALUES (49, 'Therese Centre', -4.673521, 55.400099);
+INSERT INTO station VALUES (50, 'Oreille de Lapin', -4.667312, 55.401472);
+INSERT INTO station VALUES (51, 'Therese Ouest', -4.675546, 55.399927);
+INSERT INTO station VALUES (52, 'Le Grand Creux', -4.670399, 55.40173);
+INSERT INTO station VALUES (53, 'Therese Nord', -4.669508, 55.396923);
+INSERT INTO station VALUES (54, 'Sainte Anne Centre', -4.605047, 55.503517);
+INSERT INTO station VALUES (55, 'Sainte Anne Sud', -4.610625, 55.50467);
+INSERT INTO station VALUES (56, 'Sainte Anne Ouest', -4.601751, 55.497287);
+INSERT INTO station VALUES (57, 'Anse Mare Jupe', -4.613921, 55.499825);
+INSERT INTO station VALUES (58, 'La Retraite', -4.605297, 55.494748);
+INSERT INTO station VALUES (59, 'Sainte Anne Est', -4.605737, 55.511477);
+INSERT INTO station VALUES (60, 'Ma Constance', -4.600122, 55.505016);
+INSERT INTO station VALUES (61, 'Ile au Cerf Nord', -4.628564, 55.494748);
+INSERT INTO station VALUES (62, 'Ile au Cerf Est', -4.63347, 55.505593);
+INSERT INTO station VALUES (63, 'Viewpoint Cerf', -4.632071, 55.499248);
+INSERT INTO station VALUES (64, 'L\'Habitation', -4.633317, 55.492903);
+INSERT INTO station VALUES (65, 'Ile au Cerf Sud', -4.639737, 55.501786);
+INSERT INTO station VALUES (66, 'St. James Chapel', -4.634467, 55.497287);
+INSERT INTO station VALUES (67, 'Cascade', -4.629886, 55.501671);
+INSERT INTO station VALUES (68, 'Salazie-Track', -4.320583, 55.749477);
+INSERT INTO station VALUES (69, 'Baie Sainte Anne Nord', -4.330251, 55.775721);
+INSERT INTO station VALUES (70, 'Baie Sainte Anne Sud', -4.339714, 55.766107);
+INSERT INTO station VALUES (71, 'Praslin Sud', -4.358976, 55.755104);
+INSERT INTO station VALUES (72, 'Vallée de Mai', -4.329098, 55.740148);
+INSERT INTO station VALUES (73, 'Praslin Centre', -4.321836, 55.718036);
+INSERT INTO station VALUES (74, 'Anse Boudin', -4.297904, 55.708742);
+INSERT INTO station VALUES (75, 'Union Estate Farm', -4.363827, 55.825754);
+INSERT INTO station VALUES (76, 'Island Bungalow', -4.341461, 55.833822);
+INSERT INTO station VALUES (77, 'La Digue Est', -4.359234, 55.848928);
+INSERT INTO station VALUES (78, 'La Digue Ouest', -4.350448, 55.829702);
+INSERT INTO station VALUES (79, 'La Digue Centre', -4.360005, 55.838628);
+INSERT INTO station VALUES (80, 'Anse aux Cedres', -4.378633, 55.833135);
+INSERT INTO station VALUES (81, 'Anse Marron', -4.381942, 55.8388);
 
-/*-----------------------   Table Site  ------------------------
--- id_site, id_island, name, type, activity, monument, price  -- 
-----------------------------------------------------------------*/
+/*--------------------   Table Hotel  --------------------
+-- id_hotel, id_island, id_station, name, stars, price  -- 
+----------------------------------------------------------*/
+INSERT INTO hotel VALUES (1, 1, 1, 'Berjaya Beau Vallon Bay', 3, 180); # -4.614931, 55.426747
+INSERT INTO hotel VALUES (2, 1, 2, 'MAIA Luxury Resort', 5, 2005); # -4.716797, 55.479342
+INSERT INTO hotel VALUES (3, 2, 3, 'La Belle Tortue', 4, 425); # -4.485815, 55.253051
+INSERT INTO hotel VALUES (4, 2, 4, 'Hilton Seychelles Labriz', 5, 336); # -4.481282, 55.248330
+INSERT INTO hotel VALUES (5, 3, 5, 'Le lion d\'or', 3, 155); # -4.660673, 55.362001
+INSERT INTO hotel VALUES (6, 3, 6, 'Venus', 4, 199); # -4.666522, 55.371957
+INSERT INTO hotel VALUES (7, 4, 7, 'Sainte Therese', 2, 115); # -4.669209, 55.397591
+INSERT INTO hotel VALUES (8, 4, 8, 'Pluton', 5, 399); # -4.678122, 55.405005
+INSERT INTO hotel VALUES (9, 5, 9, 'Mercure', 4, 245); # -4.610455, 55.496891
+INSERT INTO hotel VALUES (10, 5, 10, 'Le Quincys', 3, 150); # -4.599804, 55.499345
+INSERT INTO hotel VALUES (11, 6, 11, 'Cerf Island Resort', 4, 413); # -4.630498, 55.493472
+INSERT INTO hotel VALUES (12, 6, 12, 'Jupiter', 3, 185); # -4.639362, 55.500801
+INSERT INTO hotel VALUES (13, 7, 13, 'Constance Lemuria', 5, 718); # -4.299230, 55.681470
+INSERT INTO hotel VALUES (14, 7, 14, 'Hotel L\'Archipel', 4, 349); # -4.319137, 55.763596
+INSERT INTO hotel VALUES (15, 8, 15, 'L\'Ocean', 2, 139); # -4.337518, 55.832570
+INSERT INTO hotel VALUES (16, 8, 16, 'La Digue Island Lodge', 4, 228); # -4.354841, 55.826255
+INSERT INTO hotel VALUES (17, 1, 17, 'Hilltop Boutique Hotel', 3, 119); # -4.622245, 55.446411
+INSERT INTO hotel VALUES (18, 1, 18, 'Le Nautique Luxury Beachfront Apartments', 4, 204); # -4.747073, 55.515514
+
+/*-----------------------------   Table Site  ------------------------------
+-- id_site, id_island, id_station, name, type, activity, monument, price  -- 
+----------------------------------------------------------------------------*/
 # 1
-INSERT INTO site VALUES (1, 1, 'Pointe au Sel', 'historic', NULL, 'Domaine de Val des Prés', 10); # -4.710817, 55.519360
-INSERT INTO site VALUES (2, 1, 'Francis Rachel St', 'historic', NULL, 'Horloge de Victoria', 0); # -4.623168, 55.452309
-INSERT INTO site VALUES (3, 1, 'Victoria', 'historic', NULL, 'Eglise Sainte Thérèse Plaisance', 0); # -4.641255, 55.465292
-INSERT INTO site VALUES (4, 1, 'Rue De La Poudrière', 'historic', NULL, 'Victoria Mosque', 0); # -4.625628, 55.452397
-INSERT INTO site VALUES (5, 1, 'Cap Matoopa', 'historic', NULL, 'Buste de Jean Jaurès', 0); # -4.639464, 55.375215
-INSERT INTO site VALUES (6, 1, 'Anse Major Trail', 'activity', 'Randonnée', NULL, 57); # -4.621595, 55.391576
-INSERT INTO site VALUES (7, 1, 'Mare Aux Cochons Trail', 'activity', 'Randonnée', NULL, 59); # -4.626966, 55.420058
-INSERT INTO site VALUES (8, 1, 'Dans Gallas Trail', 'activity', 'Randonnée', NULL, 45); # -4.624341, 55.426691
-INSERT INTO site VALUES (9, 1, 'Glacis La Reserve Trail', 'activity', 'Randonnée', NULL, 49); # -4.706771, 55.500458
-INSERT INTO site VALUES (10, 1, 'Vacoa Nature Trail', 'activity', 'Randonnée', NULL, 35); # -4.682461, 55.455898
-INSERT INTO site VALUES (11, 1, 'Anse Capucin Trail', 'activity', 'Randonnée', NULL, 35); # -4.786514, 55.525911
-INSERT INTO site VALUES (12, 1, 'Morne Blanc Trail', 'activity', 'Randonnée', NULL, 44); # -4.660455, 55.437482
-INSERT INTO site VALUES (13, 1, 'Salazie Trail', 'activity', 'Randonnée', NULL, 60); # -4.652031, 55.445115
-INSERT INTO site VALUES (14, 1, 'Copolia Trail', 'activity', 'Randonnée', NULL, 59); # -4.646963, 55.452784
+INSERT INTO site VALUES (1, 1, 19, 'Pointe au Sel', 'historic', NULL, 'Domaine de Val des Prés', 10); # -4.710817, 55.519360
+INSERT INTO site VALUES (2, 1, 20, 'Francis Rachel St', 'historic', NULL, 'Horloge de Victoria', 0); # -4.623168, 55.452309
+INSERT INTO site VALUES (3, 1, 21, 'Victoria', 'historic', NULL, 'Eglise Sainte Thérèse Plaisance', 0); # -4.641255, 55.465292
+INSERT INTO site VALUES (4, 1, 22, 'Rue De La Poudrière', 'historic', NULL, 'Victoria Mosque', 0); # -4.625628, 55.452397
+INSERT INTO site VALUES (5, 1, 23, 'Cap Matoopa', 'historic', NULL, 'Buste de Jean Jaurès', 0); # -4.639464, 55.375215
+INSERT INTO site VALUES (6, 1, 24, 'Anse Major Trail', 'activity', 'Randonnée', NULL, 57); # -4.621595, 55.391576
+INSERT INTO site VALUES (7, 1, 25, 'Mare Aux Cochons Trail', 'activity', 'Randonnée', NULL, 59); # -4.626966, 55.420058
+INSERT INTO site VALUES (8, 1, 26, 'Dans Gallas Trail', 'activity', 'Randonnée', NULL, 45); # -4.624341, 55.426691
+INSERT INTO site VALUES (9, 1, 27, 'Glacis La Reserve Trail', 'activity', 'Randonnée', NULL, 49); # -4.706771, 55.500458
+INSERT INTO site VALUES (10, 1, 28, 'Vacoa Nature Trail', 'activity', 'Randonnée', NULL, 35); # -4.682461, 55.455898
+INSERT INTO site VALUES (11, 1, 29, 'Anse Capucin Trail', 'activity', 'Randonnée', NULL, 35); # -4.786514, 55.525911
+INSERT INTO site VALUES (12, 1, 30, 'Morne Blanc Trail', 'activity', 'Randonnée', NULL, 44); # -4.660455, 55.437482
+INSERT INTO site VALUES (13, 1, 31, 'Salazie Trail', 'activity', 'Randonnée', NULL, 60); # -4.652031, 55.445115
+INSERT INTO site VALUES (14, 1, 32, 'Copolia Trail', 'activity', 'Randonnée', NULL, 59); # -4.646963, 55.452784
 
 # 2
-INSERT INTO site VALUES (15, 2, 'Silhouette Est', 'historic', NULL, 'Epaves des Premiers Hommes', 0); # -4.504413, 55.255792
-INSERT INTO site VALUES (16, 2, 'Plage de la Grande Guerre', 'historic', NULL, 'Vestiges de guerre', 0); # -4.466778, 55.245835
-INSERT INTO site VALUES (17, 2, 'Sihouette Nord', 'historic', NULL, 'Eglise de Silhouette', 0); # -4.466108, 55.21219
-INSERT INTO site VALUES (18, 2, 'Grand Barbe', 'activity', 'Randonnée Plant Trail', NULL, 25); # -4.502474, 55.225150
-INSERT INTO site VALUES (19, 2, 'Petite Barbe', 'activity', 'Surf', NULL, 25); # -4.488199, 55.212361
-INSERT INTO site VALUES (20, 2, 'Silhouette Sud', 'activity', 'Jetski', NULL, 35); # -4.512171, 55.23811
-INSERT INTO site VALUES (21, 2, 'Silhouette Centre', 'activity', 'Accrobranche', NULL, 29); # -4.488056, 55.232961
+INSERT INTO site VALUES (15, 2, 33, 'Silhouette Est', 'historic', NULL, 'Epaves des Premiers Hommes', 0); # -4.504413, 55.255792
+INSERT INTO site VALUES (16, 2, 34, 'Plage de la Grande Guerre', 'historic', NULL, 'Vestiges de guerre', 0); # -4.466778, 55.245835
+INSERT INTO site VALUES (17, 2, 35, 'Sihouette Nord', 'historic', NULL, 'Eglise de Silhouette', 0); # -4.466108, 55.21219
+INSERT INTO site VALUES (18, 2, 36, 'Grand Barbe', 'activity', 'Randonnée Plant Trail', NULL, 25); # -4.502474, 55.225150
+INSERT INTO site VALUES (19, 2, 37, 'Petite Barbe', 'activity', 'Surf', NULL, 25); # -4.488199, 55.212361
+INSERT INTO site VALUES (20, 2, 38, 'Silhouette Sud', 'activity', 'Jetski', NULL, 35); # -4.512171, 55.23811
+INSERT INTO site VALUES (21, 2, 39, 'Silhouette Centre', 'activity', 'Accrobranche', NULL, 29); # -4.488056, 55.232961
 
 # 3
-INSERT INTO site VALUES (22, 3, 'Conception Nord', 'historic', NULL, 'Mosquée de Conception', 0); # -4.659746, 55.364574
-INSERT INTO site VALUES (23, 3, 'Conception Ouest', 'historic', NULL, 'Falaises sculptées', 0); # -4.664939, 55.363372
-INSERT INTO site VALUES (24, 3, 'Conception Sud', 'historic', NULL, 'Temple autochtone', 0); # -4.666582, 55.369037
-INSERT INTO site VALUES (25, 3, 'Conception Est', 'activity', 'Surf', NULL, 27); # -4.662922, 55.37011
-INSERT INTO site VALUES (26, 3, 'Conception Centre', 'activity', 'Escalade', NULL, 45); # -4.663517, 55.366269
-INSERT INTO site VALUES (27, 3, 'Petite Cigale', 'activity', 'Voilier', NULL, 55); # -4.661283, 55.360986
-INSERT INTO site VALUES (28, 3, 'Grande Cigale', 'activity', 'Discothèque', NULL, 10); # -4.666911, 55.373517
+INSERT INTO site VALUES (22, 3, 40, 'Conception Nord', 'historic', NULL, 'Mosquée de Conception', 0); # -4.659746, 55.364574
+INSERT INTO site VALUES (23, 3, 41, 'Conception Ouest', 'historic', NULL, 'Falaises sculptées', 0); # -4.664939, 55.363372
+INSERT INTO site VALUES (24, 3, 42, 'Conception Sud', 'historic', NULL, 'Temple autochtone', 0); # -4.666582, 55.369037
+INSERT INTO site VALUES (25, 3, 43, 'Conception Est', 'activity', 'Surf', NULL, 27); # -4.662922, 55.37011
+INSERT INTO site VALUES (26, 3, 44, 'Conception Centre', 'activity', 'Escalade', NULL, 45); # -4.663517, 55.366269
+INSERT INTO site VALUES (27, 3, 45, 'Petite Cigale', 'activity', 'Voilier', NULL, 55); # -4.661283, 55.360986
+INSERT INTO site VALUES (28, 3, 46, 'Grande Cigale', 'activity', 'Discothèque', NULL, 10); # -4.666911, 55.373517
 
 # 4
-INSERT INTO site VALUES (29, 4, 'Therese Sud', 'historic', NULL, 'Musée naval', 10); # -4.67941, 55.40379
-INSERT INTO site VALUES (30, 4, 'Therese Est', 'historic', NULL, 'Grand phare de l\'Est', 0); # -4.675681, 55.406794
-INSERT INTO site VALUES (31, 4, 'Therese Centre', 'historic', NULL, 'Village historique', 15); #  -4.673521, 55.400099
-INSERT INTO site VALUES (32, 4, 'Oreille de Lapin', 'activity', 'Parapente', NULL, 35); # -4.667312, 55.401472
-INSERT INTO site VALUES (33, 4, 'Therese Ouest', 'activity', 'Plongée', NULL, 65); # -4.675546, 55.399927
-INSERT INTO site VALUES (34, 4, 'Le Grand Creux', 'activity', 'Jetski', NULL, 49); # -4.670399, 55.40173
-INSERT INTO site VALUES (35, 4, 'Therese Nord', 'activity', 'Voilier', NULL, 75); #  -4.669508, 55.396923
+INSERT INTO site VALUES (29, 4, 47, 'Therese Sud', 'historic', NULL, 'Musée naval', 10); # -4.67941, 55.40379
+INSERT INTO site VALUES (30, 4, 48, 'Therese Est', 'historic', NULL, 'Grand phare de l\'Est', 0); # -4.675681, 55.406794
+INSERT INTO site VALUES (31, 4, 49, 'Therese Centre', 'historic', NULL, 'Village historique', 15); #  -4.673521, 55.400099
+INSERT INTO site VALUES (32, 4, 50, 'Oreille de Lapin', 'activity', 'Parapente', NULL, 35); # -4.667312, 55.401472
+INSERT INTO site VALUES (33, 4, 51, 'Therese Ouest', 'activity', 'Plongée', NULL, 65); # -4.675546, 55.399927
+INSERT INTO site VALUES (34, 4, 52, 'Le Grand Creux', 'activity', 'Jetski', NULL, 49); # -4.670399, 55.40173
+INSERT INTO site VALUES (35, 4, 53, 'Therese Nord', 'activity', 'Voilier', NULL, 75); #  -4.669508, 55.396923
 
 
 # 5
-INSERT INTO site VALUES (36, 5, 'Sainte Anne Centre', 'historic', NULL, 'Ferme traditionnelle', 15); # -4.605047, 55.503517
-INSERT INTO site VALUES (37, 5, 'Sainte Anne Sud', 'historic', NULL, 'Visite d\'un bateau pirate', 0); # -4.610625, 55.50467
-INSERT INTO site VALUES (38, 5, 'Sainte Anne Ouest', 'historic', NULL, 'Grande Ancre de Sainte Anne', 0); # -4.601751, 55.497287
-INSERT INTO site VALUES (39, 5, 'Anse Mare Jupe, Saffron Avenue', 'activity', 'Tenis', NULL, 20); # -4.613921, 55.499825
-INSERT INTO site VALUES (40, 5, 'La Retraite', 'activity', 'Rencontre animale', NULL, 45); # -4.605297, 55.494748
-INSERT INTO site VALUES (41, 5, 'Sainte Anne Est', 'activity', 'Volleyball', NULL, 0); #  -4.605737, 55.511477
-INSERT INTO site VALUES (42, 5, 'North Coast Road, Ma Constance', 'activity', 'Plongée', NULL, 79); # -4.600122, 55.505016
+INSERT INTO site VALUES (36, 5, 54, 'Sainte Anne Centre', 'historic', NULL, 'Ferme traditionnelle', 15); # -4.605047, 55.503517
+INSERT INTO site VALUES (37, 5, 55, 'Sainte Anne Sud', 'historic', NULL, 'Visite d\'un bateau pirate', 0); # -4.610625, 55.50467
+INSERT INTO site VALUES (38, 5, 56, 'Sainte Anne Ouest', 'historic', NULL, 'Grande Ancre de Sainte Anne', 0); # -4.601751, 55.497287
+INSERT INTO site VALUES (39, 5, 57, 'Anse Mare Jupe, Saffron Avenue', 'activity', 'Tenis', NULL, 20); # -4.613921, 55.499825
+INSERT INTO site VALUES (40, 5, 58, 'La Retraite', 'activity', 'Rencontre animale', NULL, 45); # -4.605297, 55.494748
+INSERT INTO site VALUES (41, 5, 59, 'Sainte Anne Est', 'activity', 'Volleyball', NULL, 0); #  -4.605737, 55.511477
+INSERT INTO site VALUES (42, 5, 60, 'North Coast Road, Ma Constance', 'activity', 'Plongée', NULL, 79); # -4.600122, 55.505016
 
 # 6
-INSERT INTO site VALUES (43, 6, 'Ile au Cerf Nord', 'historic', NULL, 'Port historique de l\'Ile au Cerf', 0); # -4.628564, 55.494748
-INSERT INTO site VALUES (44, 6, 'Ile au Cerf Est', 'historic', NULL, 'Eglise de l\'Ile au Cerf', 0); # -4.63347, 55.505593
-INSERT INTO site VALUES (45, 6, 'Viewpoint Cerf, Cinnamon Drive', 'historic', NULL, 'Cimetière des cerfs', 0); # -4.632071, 55.499248
-INSERT INTO site VALUES (46, 6, 'L\'Habitation, Cinnamon Drive', 'activity', 'Production locale de rhum', NULL, 0); # -4.633317, 55.492903
-INSERT INTO site VALUES (47, 6, 'Ile au Cerf Sud', 'activity', 'Discothèque', NULL, 15); # -4.639737, 55.501786
-INSERT INTO site VALUES (48, 6, 'St. James Chapel, Cinnamon Drive', 'activity', 'Escalade', NULL, 59); # -4.634467, 55.497287
-INSERT INTO site VALUES (49, 6, 'Cascade', 'activity', 'Voilier', NULL, 69); # -4.629886, 55.501671
+INSERT INTO site VALUES (43, 6, 61, 'Ile au Cerf Nord', 'historic', NULL, 'Port historique de l\'Ile au Cerf', 0); # -4.628564, 55.494748
+INSERT INTO site VALUES (44, 6, 62, 'Ile au Cerf Est', 'historic', NULL, 'Eglise de l\'Ile au Cerf', 0); # -4.63347, 55.505593
+INSERT INTO site VALUES (45, 6, 63, 'Viewpoint Cerf, Cinnamon Drive', 'historic', NULL, 'Cimetière des cerfs', 0); # -4.632071, 55.499248
+INSERT INTO site VALUES (46, 6, 64, 'L\'Habitation, Cinnamon Drive', 'activity', 'Production locale de rhum', NULL, 0); # -4.633317, 55.492903
+INSERT INTO site VALUES (47, 6, 65, 'Ile au Cerf Sud', 'activity', 'Discothèque', NULL, 15); # -4.639737, 55.501786
+INSERT INTO site VALUES (48, 6, 66, 'St. James Chapel, Cinnamon Drive', 'activity', 'Escalade', NULL, 59); # -4.634467, 55.497287
+INSERT INTO site VALUES (49, 6, 67, 'Cascade', 'activity', 'Voilier', NULL, 69); # -4.629886, 55.501671
 # 7
-INSERT INTO site VALUES (50, 7, 'Salazie-Track, Grande Anse', 'historic', NULL, 'Musée de Praslin', 0); # -4.320583, 55.749477
-INSERT INTO site VALUES (51, 7, 'Baie Sainte Anne Nord', 'historic', NULL, 'Grotte de Praslin', 0); # -4.330251, 55.775721
-INSERT INTO site VALUES (52, 7, 'Baie Sainte Anne Sud', 'historic', NULL, 'Plantation traditionnelle', 0); # -4.339714, 55.766107
-INSERT INTO site VALUES (53, 7, 'Praslin Sud', 'activity', 'Randonnée', NULL, 39); # -4.358976, 55.755104
-INSERT INTO site VALUES (54, 7, 'Réserve naturelle, Vallée de Mai', 'activity', 'Visite de la réserve naturelle', NULL, 49); # -4.329098, 55.740148
-INSERT INTO site VALUES (55, 7, 'Praslin Centre', 'activity', 'Escalade', NULL, 49); # -4.321836, 55.718036
-INSERT INTO site VALUES (56, 7, 'Anse Boudin', 'activity', 'Pêche traditionnelle', NULL, 50); # -4.297904, 55.708742
+INSERT INTO site VALUES (50, 7, 68, 'Salazie-Track, Grande Anse', 'historic', NULL, 'Musée de Praslin', 0); # -4.320583, 55.749477
+INSERT INTO site VALUES (51, 7, 69, 'Baie Sainte Anne Nord', 'historic', NULL, 'Grotte de Praslin', 0); # -4.330251, 55.775721
+INSERT INTO site VALUES (52, 7, 70, 'Baie Sainte Anne Sud', 'historic', NULL, 'Plantation traditionnelle', 0); # -4.339714, 55.766107
+INSERT INTO site VALUES (53, 7, 71, 'Praslin Sud', 'activity', 'Randonnée', NULL, 39); # -4.358976, 55.755104
+INSERT INTO site VALUES (54, 7, 72, 'Réserve naturelle, Vallée de Mai', 'activity', 'Visite de la réserve naturelle', NULL, 49); # -4.329098, 55.740148
+INSERT INTO site VALUES (55, 7, 73, 'Praslin Centre', 'activity', 'Escalade', NULL, 49); # -4.321836, 55.718036
+INSERT INTO site VALUES (56, 7, 74, 'Anse Boudin', 'activity', 'Pêche traditionnelle', NULL, 50); # -4.297904, 55.708742
 
 # 8
-INSERT INTO site VALUES (57, 8, 'L\'Union Estate Farm, Allée Kersley', 'historic', NULL, 'Ferme taditionnelle sur plantation coloniale', 9); # -4.363827, 55.825754
-INSERT INTO site VALUES (58, 8, 'Island Bungalow, Allée Kersley', 'historic', NULL, 'Musée de La Digue', 10); # -4.341461, 55.833822
-INSERT INTO site VALUES (59, 8, 'La Digue Est', 'historic', NULL, 'Eglise de la Digue', 0); # -4.359234, 55.848928
-INSERT INTO site VALUES (60, 8, 'La Digue Ouest', 'activity', 'Pêche', NULL, 10); # -4.350448, 55.829702
-INSERT INTO site VALUES (61, 8, 'La Digue Centre', 'activity', 'Equitation', NULL, 25); # -4.360005, 55.838628
-INSERT INTO site VALUES (62, 8, 'Anse aux Cedres, Way to Anse Marron', 'activity', 'Surf', NULL, 35); # -4.378633, 55.833135
-INSERT INTO site VALUES (63, 8, 'Anse Marron, Way to Anse Marron', 'activity', 'Rencontre animale', NULL, 50); # -4.381942, 55.8388
-
-/*---------------------   Table Station  ----------------------
--- id_station, id_site, id_hotel, name, latitude, longitude, -- 
----------------------------------------------------------------*/
-# HOTELS
-INSERT INTO station VALUES (1, NULL, 1, 'Hotel Berjaya Beau Vallon Bay', -4.614931, 55.426747);
-INSERT INTO station VALUES (2, NULL, 2, 'Hotel MAIA Luxury Resort', -4.716797, 55.479342);
-INSERT INTO station VALUES (3, NULL, 3, 'Hotel La Belle Tortue', -4.485815, 55.253051);
-INSERT INTO station VALUES (4, NULL, 4, 'Hotel Hilton Seychelles Labriz', -4.481282, 55.248330);
-INSERT INTO station VALUES (5, NULL, 5, 'Hotel Le lion d\'or', -4.660673, 55.362001);
-INSERT INTO station VALUES (6, NULL, 6, 'Hotel Venus', -4.666522, 55.371957);
-INSERT INTO station VALUES (7, NULL, 7, 'Hotel Sainte Therese', -4.669209, 55.397591);
-INSERT INTO station VALUES (8, NULL, 8, 'Hotel Pluton', -4.678122, 55.405005);
-INSERT INTO station VALUES (9, NULL, 9, 'Hotel Mercure', -4.610455, 55.496891);
-INSERT INTO station VALUES (10, NULL, 10, 'Hotel Le Quincys', -4.599804, 55.499345);
-INSERT INTO station VALUES (11, NULL, 11, 'Hotel Cerf Island Resort', -4.630498, 55.493472);
-INSERT INTO station VALUES (12, NULL, 12, 'Hotel Jupiter', -4.639362, 55.500801);
-INSERT INTO station VALUES (13, NULL, 13, 'Hotel Constance Lemuria', -4.299230, 55.681470);
-INSERT INTO station VALUES (14, NULL, 14, 'Hotel L\'Archipel', -4.319137, 55.763596);
-INSERT INTO station VALUES (15, NULL, 15, 'Hotel L\'Ocean', -4.337518, 55.832570);
-INSERT INTO station VALUES (16, NULL, 16, 'Hotel La Digue Island Lodge', -4.354841, 55.826255);
-INSERT INTO station VALUES (17, NULL, 17, 'Hotel Hilltop Boutique', -4.622245, 55.446411);
-INSERT INTO station VALUES (18, NULL, 18, 'Hotel Le Nautique Luxury Beachfront', -4.747073, 55.515514);
-
-# SITES
-INSERT INTO station VALUES (19, 1, NULL, 'Pointe au Sel', -4.710817, 55.519360);
-INSERT INTO station VALUES (20, 2, NULL, 'Francis Rachel St', -4.623168, 55.452309);
-INSERT INTO station VALUES (21, 3, NULL, 'Victoria', -4.641255, 55.465292);
-INSERT INTO station VALUES (22, 4, NULL, 'Rue De La Poudrière', -4.625628, 55.452397);
-INSERT INTO station VALUES (23, 5, NULL, 'Cap Matoopa', -4.639464, 55.375215);
-INSERT INTO station VALUES (24, 6, NULL, 'Anse Major Trail', -4.621595, 55.391576);
-INSERT INTO station VALUES (25, 7, NULL, 'Mare Aux Cochons Trail', -4.626966, 55.420058);
-INSERT INTO station VALUES (26, 8, NULL, 'Dans Gallas Trail', -4.624341, 55.426691);
-INSERT INTO station VALUES (27, 9, NULL, 'Glacis La Reserve Trail', -4.706771, 55.500458);
-INSERT INTO station VALUES (28, 10, NULL, 'Vacoa Nature Trail', -4.682461, 55.455898);
-INSERT INTO station VALUES (29, 11, NULL, 'Anse Capucin Trail', -4.786514, 55.525911);
-INSERT INTO station VALUES (30, 12, NULL, 'Morne Blanc Trail', -4.660455, 55.437482);
-INSERT INTO station VALUES (31, 13, NULL, 'Salazie Trail', -4.652031, 55.445115);
-INSERT INTO station VALUES (32, 14, NULL, 'Copolia Trail', -4.646963, 55.452784);
-INSERT INTO station VALUES (33, 15, NULL, 'Sihouette Est', -4.504413, 55.255792);
-INSERT INTO station VALUES (34, 16, NULL, 'Plage de la Grande Guerre', -4.466778, 55.245835);
-INSERT INTO station VALUES (35, 17, NULL, 'Sihouette Nord', -4.466108, 55.21219);
-INSERT INTO station VALUES (36, 18, NULL, 'Grand Barbe', -4.502474, 55.225150);
-INSERT INTO station VALUES (37, 19, NULL, 'Petite Barbe', -4.488199, 55.212361);
-INSERT INTO station VALUES (38, 20, NULL, 'Silhouette Sud', -4.512171, 55.23811);
-INSERT INTO station VALUES (39, 21, NULL, 'Silhouette Centre', -4.488056, 55.232961);
-INSERT INTO station VALUES (40, 22, NULL, 'Conception Nord', -4.659746, 55.364574);
-INSERT INTO station VALUES (41, 23, NULL, 'Conception Ouest', -4.664939, 55.363372);
-INSERT INTO station VALUES (42, 24, NULL, 'Conception Sud', -4.666582, 55.369037);
-INSERT INTO station VALUES (43, 25, NULL, 'Conception Est', -4.662922, 55.37011);
-INSERT INTO station VALUES (44, 26, NULL, 'Conception Centre', -4.663517, 55.366269);
-INSERT INTO station VALUES (45, 27, NULL, 'Petite Cigale', -4.661283, 55.360986);
-INSERT INTO station VALUES (46, 28, NULL, 'Grande Cigale', -4.666911, 55.373517);
-INSERT INTO station VALUES (47, 29, NULL, 'Therese Sud', -4.67941, 55.40379);
-INSERT INTO station VALUES (48, 30, NULL, 'Therese Est', -4.675681, 55.406794);
-INSERT INTO station VALUES (49, 31, NULL, 'Therese Centre', -4.673521, 55.400099);
-INSERT INTO station VALUES (50, 32, NULL, 'Oreille de Lapin', -4.667312, 55.401472);
-INSERT INTO station VALUES (51, 33, NULL, 'Therese Ouest', -4.675546, 55.399927);
-INSERT INTO station VALUES (52, 34, NULL, 'Le Grand Creux', -4.670399, 55.40173);
-INSERT INTO station VALUES (53, 35, NULL, 'Therese Nord', -4.669508, 55.396923);
-INSERT INTO station VALUES (54, 36, NULL, 'Sainte Anne Centre', -4.605047, 55.503517);
-INSERT INTO station VALUES (55, 37, NULL, 'Sainte Anne Sud', -4.610625, 55.50467);
-INSERT INTO station VALUES (56, 38, NULL, 'Sainte Anne Ouest', -4.601751, 55.497287);
-INSERT INTO station VALUES (57, 39, NULL, 'Anse Mare Jupe', -4.613921, 55.499825);
-INSERT INTO station VALUES (58, 40, NULL, 'La Retraite', -4.605297, 55.494748);
-INSERT INTO station VALUES (59, 41, NULL, 'Sainte Anne Est', -4.605737, 55.511477);
-INSERT INTO station VALUES (60, 42, NULL, 'Ma Constance', -4.600122, 55.505016);
-INSERT INTO station VALUES (61, 43, NULL, 'Ile au Cerf Nord', -4.628564, 55.494748);
-INSERT INTO station VALUES (62, 44, NULL, 'Ile au Cerf Est', -4.63347, 55.505593);
-INSERT INTO station VALUES (63, 45, NULL, 'Viewpoint Cerf', -4.632071, 55.499248);
-INSERT INTO station VALUES (64, 46, NULL, 'L\'Habitation', -4.633317, 55.492903);
-INSERT INTO station VALUES (65, 47, NULL, 'Ile au Cerf Sud', -4.639737, 55.501786);
-INSERT INTO station VALUES (66, 48, NULL, 'St. James Chapel', -4.634467, 55.497287);
-INSERT INTO station VALUES (67, 49, NULL, 'Cascade', -4.629886, 55.501671);
-INSERT INTO station VALUES (68, 50, NULL, 'Salazie-Track', -4.320583, 55.749477);
-INSERT INTO station VALUES (69, 51, NULL, 'Baie Sainte Anne Nord', -4.330251, 55.775721);
-INSERT INTO station VALUES (70, 52, NULL, 'Baie Sainte Anne Sud', -4.339714, 55.766107);
-INSERT INTO station VALUES (71, 53, NULL, 'Praslin Sud', -4.358976, 55.755104);
-INSERT INTO station VALUES (72, 54, NULL, 'Vallée de Mai', -4.329098, 55.740148);
-INSERT INTO station VALUES (73, 55, NULL, 'Praslin Centre', -4.321836, 55.718036);
-INSERT INTO station VALUES (74, 56, NULL, 'Anse Boudin', -4.297904, 55.708742);
-INSERT INTO station VALUES (75, 57, NULL, 'Union Estate Farm', -4.363827, 55.825754);
-INSERT INTO station VALUES (76, 58, NULL, 'Island Bungalow', -4.341461, 55.833822);
-INSERT INTO station VALUES (77, 59, NULL, 'La Digue Est', -4.359234, 55.848928);
-INSERT INTO station VALUES (78, 60, NULL, 'La Digue Ouest', -4.350448, 55.829702);
-INSERT INTO station VALUES (79, 61, NULL, 'La Digue Centre', -4.360005, 55.838628);
-INSERT INTO station VALUES (80, 62, NULL, 'Anse aux Cedres', -4.378633, 55.833135);
-INSERT INTO station VALUES (81, 63, NULL, 'Anse Marron', -4.381942, 55.8388);
+INSERT INTO site VALUES (57, 8, 75, 'L\'Union Estate Farm, Allée Kersley', 'historic', NULL, 'Ferme taditionnelle sur plantation coloniale', 9); # -4.363827, 55.825754
+INSERT INTO site VALUES (58, 8, 76, 'Island Bungalow, Allée Kersley', 'historic', NULL, 'Musée de La Digue', 10); # -4.341461, 55.833822
+INSERT INTO site VALUES (59, 8, 77, 'La Digue Est', 'historic', NULL, 'Eglise de la Digue', 0); # -4.359234, 55.848928
+INSERT INTO site VALUES (60, 8, 78, 'La Digue Ouest', 'activity', 'Pêche', NULL, 10); # -4.350448, 55.829702
+INSERT INTO site VALUES (61, 8, 79, 'La Digue Centre', 'activity', 'Equitation', NULL, 25); # -4.360005, 55.838628
+INSERT INTO site VALUES (62, 8, 80, 'Anse aux Cedres, Way to Anse Marron', 'activity', 'Surf', NULL, 35); # -4.378633, 55.833135
+INSERT INTO site VALUES (63, 8, 81, 'Anse Marron, Way to Anse Marron', 'activity', 'Rencontre animale', NULL, 50); # -4.381942, 55.8388
 
 /*------------   Table Line  -----------
 -- id_line, type, price, number_line, -- 

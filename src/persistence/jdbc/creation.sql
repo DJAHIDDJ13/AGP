@@ -15,42 +15,41 @@ CREATE TABLE island
   PRIMARY KEY (id_Island)
 );
 
+CREATE TABLE station 
+(
+  id_station	INT NOT NULL,   
+  name_station  VARCHAR(100),
+  latitude   	FLOAT,
+  longitude		FLOAT,
+  PRIMARY KEY (id_station)
+);
+
 CREATE TABLE hotel
 (
   id_hotel  	INT NOT NULL,
-  id_island 	INT NOT NULL, 
+  id_island 	INT NOT NULL,
+  id_station    INT NOT NULL, 
   name_hotel	VARCHAR(100),
   stars         INTEGER,
   price_hotel   INTEGER,
   PRIMARY KEY (id_hotel),
-  FOREIGN KEY (id_island) REFERENCES  island(id_island)
+  FOREIGN KEY (id_island) REFERENCES  island(id_island),
+  FOREIGN KEY (id_station) REFERENCES  station(id_station)
 );
 
 CREATE TABLE site 
 (
   id_site	    INT NOT NULL,
   id_island	    INT NOT NULL,
+  id_station    INT NOT NULL, 
   name_site     VARCHAR(100),
   type_site     ENUM('activity', 'historic'),
   activity 	    VARCHAR(100),
   monument 	    VARCHAR(100),
   price_site    FLOAT,
   PRIMARY KEY (id_site),
-  FOREIGN KEY (id_island) REFERENCES island(id_island)
-);
-
-
-CREATE TABLE station 
-(
-  id_station	INT NOT NULL,
-  id_site	  	INT,
-  id_hotel  	INT,    
-  name_station  VARCHAR(100),
-  latitude   	FLOAT,
-  longitude		FLOAT,
-  PRIMARY KEY (id_station),
-  FOREIGN KEY (id_site) REFERENCES site(id_site),
-  FOREIGN KEY (id_hotel) REFERENCES hotel(id_hotel)
+  FOREIGN KEY (id_island) REFERENCES island(id_island),
+  FOREIGN KEY (id_station) REFERENCES  station(id_station)
 );
 
 CREATE TABLE line 
