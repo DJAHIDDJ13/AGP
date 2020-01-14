@@ -21,15 +21,13 @@
 
 		<h:panelGroup  class="result-container" rendered="#{searchBean.sites != null}">
 		<legend>Sites Result :</legend>
-<h:form>
 
 			<ul>
 				<ui:repeat var="site" value="#{searchBean.sites}" >
-				  <li> #{site.id}  <h:commandLink  action="#{panelBean.addSite(site.id)}" class="action-button"  value="Add this site to panel"/>  </li>  
+				  <li> #{site.id} </li>  
 				   <br />
 				</ui:repeat>
 			</ul>
-</h:form>			
 		</h:panelGroup>
 		
 		

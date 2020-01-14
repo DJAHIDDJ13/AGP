@@ -10,6 +10,8 @@ import java.util.List;
 
 import org.junit.Test;
 
+import business.engine.Path;
+import business.engine.PathEntry;
 import business.engine.PathFinding;
 import business.island.Position;
 import business.transport.BusRoute;
@@ -72,7 +74,6 @@ public class BusPathFindingTest {
 		    				  transport.getStationById(1),
 		    				  transport.getStationById(2),
 		    			      transport.getStationById(3)));
-
 		assertTrue(path.equals(expectedResult));
 	}
 
@@ -83,13 +84,18 @@ public class BusPathFindingTest {
 		initRoutes();
 		PathFinding pf = new PathFinding();
 		
-		List<Route> routes = pf.findCheapestPath(transport.getStationById(0), transport.getStationById(3));
-    	assertNotNull(routes);
+		Path routes = pf.findCheapestPath(transport.getStationById(0), transport.getStationById(3));
+		assertNotNull(routes);
+		System.out.println(routes.getPathLength() + "km");
+		System.out.println(routes.getPathDuration() + "s");
     	
-		List<Route> expectedResult = new ArrayList<Route>(
-    			Arrays.asList(transport.getRouteById(1)));
+		List<PathEntry> expectedResult = new ArrayList<PathEntry>(
+				Arrays.asList(PathEntry.getEntry(transport.getStationById(0), transport.getRouteById(1)),
+							  PathEntry.getEntry(transport.getStationById(1), transport.getRouteById(1)),
+							  PathEntry.getEntry(transport.getStationById(2), transport.getRouteById(1)),
+							  PathEntry.getEntry(transport.getStationById(3), transport.getRouteById(1))));
 
-    	assertTrue(routes.equals(expectedResult));
+		assertTrue(expectedResult.equals(routes.getPath()));
 	}
 	
 	@Test

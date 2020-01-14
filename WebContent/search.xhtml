@@ -3,8 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
       
       
     <h:head>
@@ -47,7 +46,7 @@
 		   	<f:selectItem itemValue="2" itemLabel="activity" />
 		</h:selectOneMenu>
 		
-		<h:inputText class="search-bar" a:placeholder="please enter keywords" value="#{searchBean.searchQuery}" /> 
+		<h:inputText class="search-bar" value="#{searchBean.searchQuery}" /> 
 		
 			  <h:commandLink  class="action-button" action="#{searchBean.findSites}"  value="Trouver des sites"/>
  </h:form>

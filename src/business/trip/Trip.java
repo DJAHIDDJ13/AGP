@@ -10,7 +10,11 @@ public class Trip {
 	private Hotel hotel;
 	
 	private List<Excursion> excursion;
-	private List<Site> sites;
+	private float price;
+	
+	private float daysCount;
+	
+		private List<Site> sites;
 
 	public Trip() {
 		
@@ -42,11 +46,32 @@ public class Trip {
 		this.excursion = excursion;
 	}
 
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
+	}
+
+	public float getDensity() {
+		return (((float) excursion.size()) /daysCount );
+	}
+
+	public float getDaysCount() {
+		return daysCount;
+	}
+
+	public void setDaysCount(float daysCount) {
+		this.daysCount = daysCount;
+	}
+	
 	public List<Site> getSites() {
 		return sites;
 	}
 
 	public void setSites(List<Site> sites) {
 		this.sites = sites;
+
 	}
 }

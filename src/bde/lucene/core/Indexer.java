@@ -1,10 +1,11 @@
 package bde.lucene.core;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -80,16 +81,18 @@ public class Indexer {
 	public int createIndex(String dataDirPath, String data, FileFilter filter, String id) throws IOException {
 		String path = dataDirPath + id + ".txt";
 	
-		Path filePath = Paths.get(path);
 		File file = new File(path);
 		
-		Files.writeString(filePath, data);
+		BufferedWriter w = new BufferedWriter(new FileWriter(path));
+		w.write(data);
+		
 		if(file.canRead() 
 		   && file.exists() 
 		   &&  filter.accept(file)) {
 			indexFile(file);
 		}
 		
+		w.close();
 		return writer.numRamDocs();
 	}
 }
