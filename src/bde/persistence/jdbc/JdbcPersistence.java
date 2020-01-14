@@ -24,7 +24,7 @@ public class JdbcPersistence implements Persistence{
 	     try {
 	  	  preparedStatement = JdbcConnection.getConnection().prepareStatement(selectAddressQuery);
 		  result = preparedStatement.executeQuery();
-	     } catch (SQLException e) { 
+	     } catch (SQLException e) {
 	    	 System.err.println("Anomalie lors de l'execution de la requête");  
 	     }
 
