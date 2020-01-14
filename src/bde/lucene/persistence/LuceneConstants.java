@@ -10,4 +10,9 @@ public class LuceneConstants {
 	
 	//maximum number of responses returned
 	public static final int MAX_SEARCH = 10;
+	
+	public static String DESCRIPTION_FILE ="src/bde/persistence/jdbc/description.csv";
+	
+	public static String INDEX_FILE ="src/luceneSRC/index/";	
+
 }

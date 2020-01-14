@@ -34,18 +34,21 @@ public class NestedLoopJoint implements Iterator{
 	public boolean next() {
 		boolean next = false;
 		Node node;
+		
 		try {
-			String id = SQLIterator.getString(0);
-			node = LuceneIterator.exists(id);
-			
-			while(node == null && SQLIterator.next()) {
-				id = SQLIterator.getString(0);
+			if(SQLIterator.next()) {
+				String id = SQLIterator.getString(1);
 				node = LuceneIterator.exists(id);
-			}
 			
-			next = node != null;
-			if(next)
-				fusion(SQLIterator, node);
+				while(node == null && SQLIterator.next()) {
+					id = SQLIterator.getString(1);
+					node = LuceneIterator.exists(id);
+				}
+			
+				next = node != null;
+				if(next)
+					fusion(SQLIterator, node);
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -59,7 +62,7 @@ public class NestedLoopJoint implements Iterator{
 		String[] data = new String[size];
 		head = new Node(size);
 		
-		for(int i = 0; i < size-1; i++) {
+		for(int i = 1; i < size-1; i++) {
 			try {
 				data[i] = sQLIterator.getString(i);
 			} catch (SQLException e) {

@@ -73,7 +73,7 @@ public class OperatorLucene implements Iterator{
 		Node exists = null;
 		Node current = head;
 		
-		while(current.getNext() != null && exists == null) {
+		while(current != null && exists == null) {
 			exists = (current.getData()[0].equals(id)) ? current : null;
 			current = current.getNext();
 		}
