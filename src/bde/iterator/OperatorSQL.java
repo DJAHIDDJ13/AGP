@@ -1,56 +1,78 @@
 package bde.iterator;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Iterator;
-import java.util.NoSuchElementException;
 
-@SuppressWarnings("rawtypes")
-public class OperatorSQL implements Iterable {
-	
+import com.mysql.jdbc.ResultSetMetaData;
+
+import bde.persistence.jdbc.JdbcConnection;
+
+public class OperatorSQL implements Iterator{
+
 	private ResultSet head;
 	
-    public OperatorSQL() {
-    	head = null;
-    }
-    
-    public OperatorSQL(ResultSet data) {
-    	head = data;
-    }   
+	private String query;
 	
-	@Override
-	public Iterator iterator() {
-		return new OperatorSQLIterator();
+	public OperatorSQL(String query) {
+		this.query = query;
 	}
 	
-    //private iterator for thin container
-	private class OperatorSQLIterator implements Iterator {
- 
-        private ResultSet node = head;
- 
-        @Override
-        public boolean hasNext() {
-            return node != null;
-        }
- 
-        @Override
-        public ResultSet next() {
-            if (!hasNext())
-                throw new NoSuchElementException();
-            ResultSet prevNode = node;
-            
-            try {
-				node.next();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-            return prevNode;
-        }
- 
-        @Override
-        public void remove() {
-        	throw new UnsupportedOperationException("Removal logic not implemented.");
-        }
-    }	
+	@Override
+	public void init() {
+		PreparedStatement preparedStatement;
+		try {
+			preparedStatement = JdbcConnection.getConnection().prepareStatement(query);
+			head = preparedStatement.executeQuery();	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+	}
+	
+	public ResultSet getHead() {
+		return head;
+	}
 
+	public void setHead(ResultSet head) {
+		this.head = head;
+	}
+
+	public String getQuery() {
+		return query;
+	}
+
+	public void setQuery(String query) {
+		this.query = query;
+	}
+
+	@Override
+	public boolean next() {
+		try {
+			return head.next();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	@Override
+	public void add(Node node) {
+		
+	}
+
+	@Override
+	public int getColumnCount() {
+		try {
+			ResultSetMetaData rsmd = (ResultSetMetaData) head.getMetaData();
+			return rsmd.getColumnCount();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return 0;
+	}
+
+	@Override
+	public String getString(int columnIndex) throws SQLException {
+		return head.getString(columnIndex);
+	}	
 }

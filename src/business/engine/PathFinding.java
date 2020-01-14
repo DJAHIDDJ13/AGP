@@ -9,6 +9,8 @@ import java.util.ListIterator;
 import business.transport.Route;
 import business.transport.Station;
 import business.transport.Transport;
+import exception.NullRoutesException;
+import exception.NullStationsException;
 
 public class PathFinding {
 
@@ -28,12 +30,7 @@ public class PathFinding {
 	    Collection<Route> routes = transport.getRoutes();
 	    Collection<Station> stations = transport.getStations();
 	    transport_graph = new Graph(stations.size());
-/*
-	    // Node keys to station mapping in the graph
-	    for(Station station: stations) {
-	    	transport_graph.addObjectMappingEntry(String.valueOf(station.getId()), station);
-	    }
-	*/    
+
 	    for(Route route: routes) {
 	    	ListIterator<Station> stationIter = route.getStations().listIterator();
 	        if(!stationIter.hasNext()) continue;

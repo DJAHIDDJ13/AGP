@@ -1,62 +1,83 @@
 package bde.iterator;
 
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+import java.io.IOException;
 
-import bde.lucene.core.LuceneResult;
+import org.apache.lucene.queryparser.classic.ParseException;
 
-@SuppressWarnings("rawtypes")
-public class OperatorLucene implements Iterable {
- 
-	private Node<LuceneResult> head;
- 
-    public OperatorLucene() {
-    	head = null;
-    }
+import bde.lucene.persistence.LucenePersistence;
+
+public class OperatorLucene implements Iterator{
 	
-    public OperatorLucene(LuceneResult data) {
-        head = new Node<>(data);
-    }
+	private Node head;
+	private String query;
+	
+	public OperatorLucene() {
+	
+	}
+	
+	public OperatorLucene(String query) {
+		this.query = query;
+	}
+	
+	public OperatorLucene(Node head, String query) {
+		this.head = head;
+		this.query = query;
+	}
+	
+	@Override
+	public void init() {
+		try {
+			head = LucenePersistence.search(query).head;
+		} catch (IOException | ParseException e) {
+			e.printStackTrace();
+		} 
+	}
 
-	public void add(LuceneResult data) {
-		if(head == null) {
-			head = new Node<>(data);
+	@Override
+	public boolean next() {
+		Node next = head.getNext();
+		if(next == null) {
+			return false;
 		}
 		else {
-			Node<LuceneResult> current = head;
-			while (current.next != null)
-				current = current.next;
-			current.next = new Node<>(data);
+			head = next;
+			return true;
 		}
-    }
-    
-    @SuppressWarnings("unchecked")
-	public Iterator<LuceneResult> iterator() {
-        return new OperatorLuceneIterator();
-    }
- 
-    //private iterator for this container
-    private class OperatorLuceneIterator implements Iterator {
- 
-        private Node<LuceneResult> node = head;
- 
-        @Override
-        public boolean hasNext() {
-            return node != null;
-        }
- 
-        @Override
-        public LuceneResult next() {
-            if (!hasNext())
-                throw new NoSuchElementException();
-            Node<LuceneResult> prevNode = node;
-            node = node.next;
-            return prevNode.data;
-        }
- 
-        @Override
-        public void remove() {
-        	throw new UnsupportedOperationException("Removal logic not implemented.");
-        }
-    }
+	}
+
+	@Override
+	public void add(Node node) {
+		if(head == null) {
+			head = node;
+		}
+		else {
+			Node current = head;
+			while (current.getNext() != null) {
+				current = current.getNext();
+			}
+			current.setNext(node);
+		}
+	}
+
+	@Override
+	public int getColumnCount() {
+		return head.getSize();
+	}
+
+	@Override
+	public String getString(int columnIndex) throws Exception{
+		return head.getColumnAt(columnIndex);
+	}
+	
+	public Node exists(String id) {
+		Node exists = null;
+		Node current = head;
+		
+		while(current.getNext() != null && exists == null) {
+			exists = (current.getData()[0].equals(id)) ? current : null;
+			current = current.getNext();
+		}
+		
+		return exists;
+	}
 }

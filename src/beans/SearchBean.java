@@ -8,8 +8,8 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import business.island.Activity;
-import business.island.Historic;
+import business.island.ActivitySite;
+import business.island.HistoricSite;
 import  business.island.Hotel;
 import business.island.Site;
 @ManagedBean
@@ -61,11 +61,11 @@ public class SearchBean implements Serializable
 	
 	public String findSites()
 	{
-		Site h1 = new Activity();
-		Site h2 = new Historic();
-		Site h3 = new Activity();
-		Site h4 = new Historic();
-		Site h5 = new Activity();
+		Site h1 = new ActivitySite();
+		Site h2 = new HistoricSite();
+		Site h3 = new ActivitySite();
+		Site h4 = new HistoricSite();
+		Site h5 = new ActivitySite();
 		
 		h1.setName("premier   site");
 		h1.setId(1);

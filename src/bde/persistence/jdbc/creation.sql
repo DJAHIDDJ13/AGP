@@ -6,33 +6,43 @@ USE voyageDB;
 /*-----------------------------------------------
 -- Création des tables de la base de données -- 
 -----------------------------------------------*/
-DROP TABLE IF EXISTS island, hotel, site, station, line, s_belongs_to_l CASCADE;
+DROP TABLE IF EXISTS island, coordinate, station, hotel, site, line, s_belongs_to_l CASCADE;
 
 CREATE TABLE island
 (
   id_island    INT NOT NULL,
   name_island  VARCHAR(100),
-  PRIMARY KEY (id_Island)
+  PRIMARY KEY (id_island)
+);
+
+CREATE TABLE coordinate
+(
+  id_position  INT NOT NULL,
+  latitude   	FLOAT,
+  longitude		FLOAT,    
+  PRIMARY KEY (id_position)
 );
 
 CREATE TABLE station 
 (
-  id_station	INT NOT NULL,   
+  id_station	INT NOT NULL,
+  id_position   INT NOT NULL,
   name_station  VARCHAR(100),
-  latitude   	FLOAT,
-  longitude		FLOAT,
+  FOREIGN KEY (id_position) REFERENCES  coordinate(id_position),
   PRIMARY KEY (id_station)
 );
 
 CREATE TABLE hotel
 (
   id_hotel  	INT NOT NULL,
+  id_position   INT NOT NULL,
   id_island 	INT NOT NULL,
-  id_station    INT NOT NULL, 
+  id_station    INT NOT NULL,
   name_hotel	VARCHAR(100),
   stars         INTEGER,
   price_hotel   INTEGER,
   PRIMARY KEY (id_hotel),
+  FOREIGN KEY (id_position) REFERENCES  coordinate(id_position),
   FOREIGN KEY (id_island) REFERENCES  island(id_island),
   FOREIGN KEY (id_station) REFERENCES  station(id_station)
 );
@@ -40,6 +50,7 @@ CREATE TABLE hotel
 CREATE TABLE site 
 (
   id_site	    INT NOT NULL,
+  id_position   INT NOT NULL,
   id_island	    INT NOT NULL,
   id_station    INT NOT NULL, 
   name_site     VARCHAR(100),
@@ -48,6 +59,7 @@ CREATE TABLE site
   monument 	    VARCHAR(100),
   price_site    FLOAT,
   PRIMARY KEY (id_site),
+  FOREIGN KEY (id_position) REFERENCES  coordinate(id_position),
   FOREIGN KEY (id_island) REFERENCES island(id_island),
   FOREIGN KEY (id_station) REFERENCES  station(id_station)
 );

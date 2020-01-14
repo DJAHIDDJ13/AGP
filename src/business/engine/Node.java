@@ -5,9 +5,12 @@ import java.util.Comparator;
 public class Node implements Comparator<Node>{
     public String node; 
     public float cost; 
-    // TODO: maybe put a generic object here to facilitate the reverse operation
-    public Node() { }
-    public Node(String node, float cost) {
+    
+    public Node() {
+    	
+    } 
+    
+    public Node(String node, float cost) { 
         this.node = node; 
         this.cost = cost; 
     }

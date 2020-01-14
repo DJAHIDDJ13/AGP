@@ -1,12 +1,10 @@
 package tests;
 
 import java.io.IOException;
-import java.util.Iterator;
 
 import org.apache.lucene.queryparser.classic.ParseException;
 
 import bde.iterator.OperatorLucene;
-import bde.lucene.core.LuceneResult;
 import bde.lucene.persistence.LucenePersistence;
 
 public class LuceneTester {
@@ -19,13 +17,18 @@ public class LuceneTester {
 		LucenePersistence lucene = new LucenePersistence(indexDir, dataDir);
 		
 		lucene.createIndex();
-		OperatorLucene luceneResult = lucene.search("hello");
+		OperatorLucene luceneResult = new OperatorLucene("hello AND NOT by");
+		luceneResult.init();
 		
-        Iterator<LuceneResult> itr = luceneResult.iterator();
-        while (itr.hasNext()) {
-            LuceneResult couple = itr.next();
-            System.out.println("id: " + couple.getId() + ",score: "+ couple.getScore());
-        }
+		if(luceneResult != null) {
+			do {
+				try {
+					System.out.println("id: " + luceneResult.getString(0) + ",score: "+ luceneResult.getString(1));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}while(luceneResult.next());
+		}
 		
 		lucene.deletIndexFile();
 	}

@@ -2,8 +2,8 @@ package bde.persistence.jdbc;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashMap;
-import business.island.Activity;
-import business.island.Historic;
+import business.island.ActivitySite;
+import business.island.HistoricSite;
 import business.island.Site;
 
 public class SitePersistance {
@@ -19,10 +19,10 @@ public class SitePersistance {
 			
 			if(resultSet.getString("type_site").equals("historic")) {
 				// Historic(int id, String name, Place place, Station station) {
-				site = new Historic(siteId, resultSet.getString("name_site"), null, null); 
+				site = new HistoricSite(siteId, resultSet.getString("name_site"), null, null); 
 			}
 			else{
-				site = new Activity(siteId, resultSet.getString("name_site"), null, null); 
+				site = new ActivitySite(siteId, resultSet.getString("name_site"), null, null); 
 			}
 			
 		} catch (SQLException e) {

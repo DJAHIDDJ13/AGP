@@ -9,25 +9,25 @@ import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 
 import bde.dao.Persistence;
+import bde.iterator.Node;
 import bde.iterator.OperatorLucene;
 import bde.lucene.core.Indexer;
-import bde.lucene.core.LuceneResult;
 import bde.lucene.core.Searcher;
 
 public class LucenePersistence implements Persistence{
 
-	private String indexDir;
+	private static String indexDir;
 	private String dataDir;
 	
 	private Indexer indexer;
-	private Searcher searcher;
+	private static Searcher searcher;
 	
 	public LucenePersistence() {
 		
 	}
 	
 	public LucenePersistence(String indexDir, String dataDir) {
-		this.indexDir = indexDir;
+		LucenePersistence.indexDir = indexDir;
 		this.dataDir = dataDir;
 	}
 	
@@ -53,9 +53,15 @@ public class LucenePersistence implements Persistence{
 		
 		System.out.println(numIndexed+" File indexed, time taken: "+(endTime-startTime)+" ms");		
 	}
+	
+	public void createIndex(String data, String id) {
+		
+	}
 		   
-	public OperatorLucene search(String searchQuery) throws IOException, ParseException {
+	public static OperatorLucene search(String searchQuery) throws IOException, ParseException {
 		OperatorLucene listLuceneResult = new OperatorLucene();
+		
+		int size = 2;
 		
 		searcher = new Searcher(indexDir);
 		
@@ -64,11 +70,14 @@ public class LucenePersistence implements Persistence{
 		for(ScoreDoc scoreDoc : hits.scoreDocs) {
 			Document doc = searcher.getDocument(scoreDoc);
 			
+			Node node = new Node(size);
 			String fileName = doc.get(LuceneConstants.FILE_NAME);
 			String id = fileName.split(".txt")[0];
 			
-			LuceneResult luceneResult = new LuceneResult(id, scoreDoc.score); 
-			listLuceneResult.add(luceneResult);
+			String[] data = {id, ""+scoreDoc.score};
+			node.setData(data);
+			
+			listLuceneResult.add(node);
 		}
 		
 		return listLuceneResult;
@@ -94,7 +103,7 @@ public class LucenePersistence implements Persistence{
 	}
 
 	public void setIndexDir(String indexDir) {
-		this.indexDir = indexDir;
+		LucenePersistence.indexDir = indexDir;
 	}
 
 	public String getDataDir() {
@@ -118,6 +127,6 @@ public class LucenePersistence implements Persistence{
 	}
 
 	public void setSearcher(Searcher searcher) {
-		this.searcher = searcher;
+		LucenePersistence.searcher = searcher;
 	}
 }

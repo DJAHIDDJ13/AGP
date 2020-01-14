@@ -8,7 +8,7 @@ public abstract class Site {
 	
 	private String name;
 	
-	private Place place;
+	private Position position;
 	
 	private Station station;
 	
@@ -16,10 +16,10 @@ public abstract class Site {
 		
 	}
 	
-	public Site(int id, String name, Place place, Station station) {
+	public Site(int id, String name, Position position, Station station) {
 		this.id = id;
 		this.name = name;
-		this.place = place;
+		this.position = position;
 		this.station = station;
 	}
 	
@@ -39,12 +39,12 @@ public abstract class Site {
 		this.name = name;
 	}
 
-	public Place getPlace() {
-		return place;
+	public Position getPosition() {
+		return position;
 	}
 
-	public void setPlace(Place place) {
-		this.place = place;
+	public void setPlace(Position position) {
+		this.position = position;
 	}
 
 	public Station getStation() {
