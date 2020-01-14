@@ -10,6 +10,7 @@ public class Trip {
 	private Hotel hotel;
 	
 	private List<Excursion> excursion;
+	private List<Site> sites;
 
 	public Trip() {
 		
@@ -32,11 +33,20 @@ public class Trip {
 		return excursion;
 	}
 
+	@SuppressWarnings("unused")
 	private void constructTrip(List<Site> sites, Hotel hotel, int budgetMin, int budgetMax) {
 		
 	}
 
 	public void setExcursion(List<Excursion> excursion) {
 		this.excursion = excursion;
+	}
+
+	public List<Site> getSites() {
+		return sites;
+	}
+
+	public void setSites(List<Site> sites) {
+		this.sites = sites;
 	}
 }

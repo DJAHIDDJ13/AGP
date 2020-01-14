@@ -1,6 +1,5 @@
 package exception;
 
-@SuppressWarnings("serial")
 public class NullStationsException extends RuntimeException {
 	private static final long serialVersionUID = 737017952456045259L;
 

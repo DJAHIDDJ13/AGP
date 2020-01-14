@@ -2,13 +2,13 @@ package business.island;
 
 import business.transport.Station;
 
-public class Historic extends Site{
+public class HistoricSite extends Site{
 
-	public Historic() {
+	public HistoricSite() {
 		
 	}
 	
-	public Historic(int id, String name, Place place, Station station) {
+	public HistoricSite(int id, String name, Position place, Station station) {
 		super(id, name, place, station);
 	}
 	

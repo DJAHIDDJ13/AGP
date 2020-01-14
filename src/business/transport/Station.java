@@ -1,18 +1,20 @@
 package business.transport;
 
+import business.island.Position;
+
 public abstract class Station {
 	private int id;
 	private float latitude;
 	private float longitude;
+	private Position position;
 	
 	public Station() {
 		
 	}
 	
-	public Station(int id, float lat, float lng) {
+	public Station(int id, Position position) {
 		this.id = id;
-		this.setLatitude(lat);
-		this.setLongitude(lng);
+		this.setPosition(position);
 	}
 
 	public int getId() {
@@ -44,5 +46,13 @@ public abstract class Station {
 
 	public void setLongitude(float longitude) {
 		this.longitude = longitude;
+	}
+
+	public Position getPosition() {
+		return position;
+	}
+
+	public void setPosition(Position position) {
+		this.position = position;
 	}
 }
