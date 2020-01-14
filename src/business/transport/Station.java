@@ -4,8 +4,7 @@ import business.island.Position;
 
 public class Station {
 	private int id;
-	private float latitude;
-	private float longitude;
+	private String name; 
 	private Position position;
 	
 	public Station() {
@@ -16,6 +15,11 @@ public class Station {
 		this.id = id;
 		this.setPosition(position);
 	}
+	public Station(int id, String name, Position position) {
+		this.id = id;
+		this.name = name;
+		this.setPosition(position);
+	}
 
 	public int getId() {
 		return id;
@@ -23,6 +27,10 @@ public class Station {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public String getName() {
+		return name;
 	}
 	
 	public float distanceFrom(Station v) {	    
@@ -45,22 +53,12 @@ public class Station {
         return (float) (R * c);
 	}
 
-	public float getLatitude() {
-		return latitude;
-	}
 
-	public void setLatitude(float latitude) {
-		this.latitude = latitude;
-	}
 
-	public float getLongitude() {
-		return longitude;
+	public void setName(String name) {
+		this.name = name;
 	}
-
-	public void setLongitude(float longitude) {
-		this.longitude = longitude;
-	}
-
+	
 	public Position getPosition() {
 		return position;
 	}
