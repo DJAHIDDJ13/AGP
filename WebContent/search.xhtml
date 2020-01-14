@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+      
+      
+    <h:head>
+        <title>Search Page</title>
+    </h:head>
+    <h:body>
+ 
+
+ 	<ui:insert name="header" >
+		  <ui:include src="/navbar.xhtml" />
+		</ui:insert>
+ 
+  <h:outputStylesheet library="css" name="searchStyle.css"/>
+ 
+ 
+  <h2>Trouver des informations :</h2>
+ 
+ 
+<h3 >1 - Trouver des hotels par gamme :  </h3>  
+ 
+ <h:form>
+		<h:selectOneMenu value="#{searchBean.gamme}">
+		   	<f:selectItem itemValue="1" itemLabel="1 etoile" />
+		   	<f:selectItem itemValue="2" itemLabel="2 etoile" />
+		   	<f:selectItem itemValue="3" itemLabel="3 etoile" />
+		   	<f:selectItem itemValue="4" itemLabel="4 etoile" />
+		   	<f:selectItem itemValue="5" itemLabel="5 etoile" />
+		</h:selectOneMenu>     
+			  <h:commandLink  class="action-button" action="#{searchBean.findHotelsByRating}"  value="Trouver l'hotel"/>
+ </h:form>
+ 
+ <hr/>
+ 
+ <h3 >2 - Trouver des sites :  </h3>  
+ 
+ <h:form>
+		<h:selectOneMenu value="#{searchBean.siteType}">
+		   	<f:selectItem itemValue="0" itemLabel="peu importe" />
+		   	<f:selectItem itemValue="1" itemLabel="site touristique" />
+		   	<f:selectItem itemValue="2" itemLabel="activity" />
+		</h:selectOneMenu>
+		
+		<h:inputText class="search-bar" a:placeholder="please enter keywords" value="#{searchBean.searchQuery}" /> 
+		
+			  <h:commandLink  class="action-button" action="#{searchBean.findSites}"  value="Trouver des sites"/>
+ </h:form>
+ 
+  <hr/>
+ 
+ 
+    </h:body>
+ </html>

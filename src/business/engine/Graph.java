@@ -16,6 +16,7 @@ public class Graph {
     private Set<String> settled; 
     private PriorityQueue<Node> pq;
     private HashMap<String, List<Node>> adj;
+    
     // TODO: remove V
     public Graph(int V) {
     	this(V, new HashMap<String, List<Node>>());

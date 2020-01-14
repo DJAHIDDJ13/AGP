@@ -7,9 +7,6 @@ public abstract class Route {
 	private int id;
 	private float ticketPrice;
 	private float routeLength;
-	
-	
-	
 	private List<Station> stations;
 	
 	public Route() {
@@ -58,8 +55,8 @@ public abstract class Route {
 		return stations;
 	}
 
-	public void setStations(List<Station> route) {
-		this.stations = route;
+	public void setStations(List<Station> stations) {
+		this.stations = stations;
 	}
 
 	private float computeLength(List<Station> route) {

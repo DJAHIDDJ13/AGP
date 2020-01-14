@@ -81,7 +81,6 @@ public class BusPathFindingTest {
 	{
 		initStations();
 		initRoutes();
-		
 		PathFinding pf = new PathFinding();
 		
 		List<Route> routes = pf.findCheapestPath(transport.getStationById(0), transport.getStationById(3));
@@ -96,14 +95,14 @@ public class BusPathFindingTest {
 	@Test
 	public void testBoatRouteWhenOnlyBusAvailable() {
 		/*
-		 *check if unknown station throw NotFoundStationException
 		initStations();
 		initRoutes();
 		BusStation b1  = new BusStation(10, 5, 6);
 	
 		PathFinding pf = new PathFinding();
 
-		List<Station> path = pf.findShortestPath(b1,transport.getStationById(0));*/ 
+		List<Station> path = pf.findShortestPath(b1,transport.getStationById(0));
+    	*/
     	assertTrue(true);
 	}
 	
