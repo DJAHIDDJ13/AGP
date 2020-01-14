@@ -48,7 +48,7 @@ public class JdbcPersistence implements Persistence{
 	       }
 	}
 	
-	public static ResultSet SelectTable(String tableName) {
+	private static ResultSet request(String tableName) {
 		
 		PreparedStatement preparedStatement = null;
 		ResultSet result = null;

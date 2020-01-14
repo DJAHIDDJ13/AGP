@@ -5,7 +5,7 @@ import business.transport.Station;
 public class Hotel {
 	
 	private int id;
-	private int etoile;
+	private int star;
 	
 	private float pricePerDay;
 	
@@ -20,10 +20,11 @@ public class Hotel {
 		
 	}
 	
-	public Hotel(int id, float pricePerDay, String name, String beach, Place place, Station station) {
+	public Hotel(int id, float pricePerDay, String name, int star, String beach, Place place, Station station) {
 		this.id = id;
 		this.pricePerDay = pricePerDay;
 		this.name = name;
+		this.star = star; 
 		this.beach = beach;
 		this.place = place;
 		this.station = station;
@@ -53,6 +54,14 @@ public class Hotel {
 		this.name = name;
 	}
 
+	public int getStar() {
+		return star;
+	}
+
+	public void setStar(int star) {
+		this.star = star;
+	}
+	
 	public String getBeach() {
 		return beach;
 	}
