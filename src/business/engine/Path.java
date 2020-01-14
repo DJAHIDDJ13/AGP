@@ -8,19 +8,20 @@ import business.transport.Route;
 import business.transport.Station;
 
 public class Path {
-	List<Tuple<Station, Route>> path;
+	List<PathEntry> path;
+	
 	private final float average_speed = 50; // km/h
 	
 	public Path() {
-		path = new ArrayList<Tuple<Station, Route>>();
+		path = new ArrayList<PathEntry>();
 	}
 	
-	public Path(List<Tuple<Station, Route>> path) {
+	public Path(List<PathEntry> path) {
 		this.path = path;
 	}
 	
 	public void addPathEntry(Station s, Route r) {
-		path.add(new Tuple<Station, Route>(s, r));
+		path.add(new PathEntry(s, r));
 	}
 	
 	public void removePathEntry(int index) {
@@ -31,27 +32,27 @@ public class Path {
 		return path.size();
 	}
 	
-	public Tuple<Station, Route> getEntry(int index) {
+	public PathEntry getEntry(int index) {
 		return path.get(index);
 	}
 	
 	public float getPathLength() {
 		float len = 0;
-		ListIterator<Tuple<Station, Route>> iter = path.listIterator();
+		ListIterator<PathEntry> iter = path.listIterator();
 		
 		if(!iter.hasNext()) {
 			return (float) 0;
 		}
-		Tuple<Station, Route> prev = iter.next();
+		PathEntry prev = iter.next();
 		
 		if(!iter.hasNext()) {
 			return (float) 0;
 		}
-		Tuple<Station, Route> cur = iter.next();
+		PathEntry cur = iter.next();
 		
 		while(iter.hasNext()) {
-			Station prevStation = prev.x;
-			Station curStation = cur.x;
+			Station prevStation = prev.getStation();
+			Station curStation = cur.getStation();
 			
 			len += prevStation.distanceFrom(curStation);
 			
