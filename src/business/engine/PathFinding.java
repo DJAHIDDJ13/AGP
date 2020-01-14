@@ -134,44 +134,45 @@ public class PathFinding {
 	public Path findCheapestPath(Station A, Station B) { // (List<Station> path) {
 		Graph<PathEntry> g = buildRouteGraph();
 		
-		// TODO: this is bad; find a better way
 		// Adding the S and E node to the graph
+		PathEntry S = PathEntry.getEntry(new Station(-1, null), null); // dummy entry 
+		PathEntry E = PathEntry.getEntry(new Station(-2, null), null); // dummy entry
+		
 		List<Route> strtStation = buckets.get(A); // get all the lines that pass by the start Station
 		List<Route> endStation = buckets.get(B); // get all the lines that pass by the end Station
-
+		
 		// Adding the "S" node
 		for	(Route r: strtStation) {
-			String key = String.valueOf(A.getId())+";"+String.valueOf(r.getId());
+			// String key = String.valueOf(A.getId())+";"+String.valueOf(r.getId());
 			PathEntry entry = PathEntry.getEntry(A, r);
 			
-			g.addAdjacencyEntry("S", new Node<PathEntry>(entry, r.getTicketPrice()));
+			g.addAdjacencyEntry(S, new Node<PathEntry>(entry, r.getTicketPrice()));
 		}
 		
 		// Adding the "E" node
 		for (Route r: endStation) {
-			//String key = String.valueOf(B.getId())+";"+String.valueOf(r.getId());
 			PathEntry entry = PathEntry.getEntry(B, r);
-			g.addAdjacencyEntry(entry, new Node("E", 0));
+			g.addAdjacencyEntry(entry, new Node<PathEntry>(E, 0));
 		}
 		
-		g.dijkstra("S");
+		g.dijkstra(S);
 		
 		// removing the S node
-		g.removeAdjacencyList("S");
+		g.removeAdjacencyList(S);
 		
 		// removing the E node
 		// Undo nodes to last station
-		HashMap<String, List<Node>> adj = g.getAdj();
+		HashMap<PathEntry, List<Node<PathEntry>>> adj = g.getAdj();
 		for (Route r: endStation) {
-			String key = String.valueOf(B.getId())+";"+String.valueOf(r.getId());
-			List<Node> endLst = adj.get(key);
+			PathEntry entry = PathEntry.getEntry(B, r);
+			List<Node<PathEntry>> endLst = adj.get(entry);
 			endLst.remove(endLst.size() - 1); 
 			// remove last item added (which is the "E" node)
 		}
 		
 		// TODO: Use this on the resulting path
 		// TODO: change AbstractMap.SimpleEntry to something better
-		List<PathEntry> lst = (List<PathEntry>) (Object) g.getPath("S", "E");
+		List<PathEntry> lst = (List<PathEntry>) (Object) g.getPath(S, E);
 
 		if(lst == null) {
 			return null;

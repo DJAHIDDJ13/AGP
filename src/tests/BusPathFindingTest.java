@@ -98,8 +98,8 @@ public class BusPathFindingTest {
 		assertTrue(routes.getSize() == expectedResult.size());
 		
 		for(int i = 0; i < routes.getSize(); i++) {
-	    	assertTrue(expectedResult.get(i).x == routes.getEntry(i).x);
-	    	assertTrue(expectedResult.get(i).y == routes.getEntry(i).y);
+	    	assertTrue(expectedResult.get(i).x == routes.getEntry(i).getStation());
+	    	assertTrue(expectedResult.get(i).y == routes.getEntry(i).getRoute());
 		}
 	}
 	
