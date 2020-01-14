@@ -2,8 +2,8 @@ package bde.persistence.jdbc;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-class JdbcConnection 
-{
+public class JdbcConnection {
+	
 	private static String host = "localhost";
 	private static String base = "voyagedb";
 	private static String user = "root";
