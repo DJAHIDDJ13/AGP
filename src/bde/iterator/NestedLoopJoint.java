@@ -58,7 +58,7 @@ public class NestedLoopJoint implements Iterator{
 
 
 	private void fusion(OperatorSQL sQLIterator, Node node) {
-		int size = sQLIterator.getColumnCount() + 1;
+		int size = sQLIterator.getColumnCount() + 2;
 		String[] data = new String[size];
 		head = new Node(size);
 		

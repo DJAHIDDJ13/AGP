@@ -6,6 +6,7 @@ import bde.iterator.Iterator;
 public class BDEClient {
 
 	public static void main(String[] args) {
+		
 		String table = "site";
 		String cle = "id_site";
 		String dataDir = "src/luceneSRC/data/";
@@ -44,7 +45,8 @@ public class BDEClient {
 		
 		System.out.println("-----------------------------\n");
 		
-		query = "SELECT * FROM site WHERE type_site = 'historic' with baie OR culture";
+		//query = "SELECT * FROM site WHERE type_site = 'historic' with baie OR culture";
+		query = "SELECT type_site FROM site WHERE type_site = 'historic' with baie OR culture";
 		Iterator iterator3 = clientFacadeAPI.MixedQuery(query);
 		
 		try {

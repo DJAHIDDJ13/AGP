@@ -26,7 +26,8 @@ public class IndexedJoint implements Iterator{
 	@Override
 	public boolean next() {
 		boolean next = false;
-
+		
+		
 		
 		return next;
 	}

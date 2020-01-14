@@ -104,11 +104,40 @@ public class APIFacade {
 	}
 	
 	public NestedLoopJoint MixedQuery(String Mixedquery) {
-		String[] query = Mixedquery.split(" with ");
-		NestedLoopJoint iterator = new NestedLoopJoint(query[0], query[1]);
+		String[] query = Mixedquery.split(" with ");		
+		NestedLoopJoint iterator = new NestedLoopJoint();
 		
-		iterator.init();
+		String queryModified = checkSyntax(query[0]);
+		if(!queryModified.isEmpty()) {
+			iterator = new NestedLoopJoint(queryModified, query[1]);
+			iterator.init();
+		}
+		else {
+			System.err.println("Syntax error please give the right table !");
+		}
 		
 		return iterator;
+	}
+
+	private String checkSyntax(String string) {
+		String check = "";
+		
+		string = string.toLowerCase();
+		String[] data = string.split(" from ");
+		
+		if(data[1].contains(tableName)) {
+			String tmp = string.replace("select", "");
+			tmp = string.replace(" ", "");
+			
+			if(!tmp.equals("*") && !tmp.contains(tableKey)) {
+				string = string.replace("select", "");
+				check = "select " + tableKey + "," + string;
+			}
+			else {
+				check = string;
+			}
+		}
+		
+		return check;
 	}
 }
