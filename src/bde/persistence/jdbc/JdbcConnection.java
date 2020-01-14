@@ -14,23 +14,17 @@ public class JdbcConnection {
 	private static Connection connection;
 
 
-	public static Connection getConnection() 
-	{
-		if (connection == null) 
-		{
-			try 
-			{
+	public static Connection getConnection() {
+		if (connection == null) {
+			try {
 				DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 				connection = DriverManager.getConnection(url, user, password);
 			} 
-			catch (Exception e) 
-			{
+			catch (Exception e) {
 				System.err.println("Connection failed : " + e.getMessage());
 			}
 		}
 
 		return connection;
 	}
-
-	
 }

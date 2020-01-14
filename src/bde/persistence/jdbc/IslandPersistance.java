@@ -7,16 +7,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import bde.dao.Persistence;
 import business.island.ActivitySite;
 import business.island.HistoricSite;
 import business.island.Hotel;
 import business.island.Island;
 import business.island.Position;
 import business.island.Site;
-import business.transport.Route;
 import business.transport.Station;
 
-public class IslandPersistance {
+public class IslandPersistance implements Persistence{
 	
 	public void dataInit() {
 		System.err.println("Please don't forget to create tables manually by importing creation.sql in your database !");
