@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import bde.dao.IslandPersistence;
 import bde.iterator.NestedLoopJoin;
 import bde.iterator.OperatorSQL;
 import business.island.ActivitySite;
@@ -19,7 +18,7 @@ import business.transport.BusRoute;
 import business.transport.Route;
 import business.transport.Station;
 
-public class Persistance implements IslandPersistence{
+public class Persistance{
 	
 	private OperatorSQL sqlIterator;
 	private NestedLoopJoin mixedIterator;
