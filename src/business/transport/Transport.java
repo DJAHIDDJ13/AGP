@@ -11,10 +11,14 @@ public class Transport {
 	
 	private HashMap<Integer, Station> stations;
 	private HashMap<Integer, Route> routes;
+	private HashMap<Station, List<Route>> routesByStation;
+	private int numberStationInRoutes;
 	
 	private Transport() {
-		stations = new HashMap<Integer, Station>();
-		routes = new HashMap<Integer, Route>();
+		this.stations = new HashMap<Integer, Station>();
+		this.routes = new HashMap<Integer, Route>();
+		this.numberStationInRoutes = calculateNumStationsInRoutes();
+		buildRoutesByStation();
 	}
 	
 	private Transport(HashMap<Integer, Station> stations, HashMap<Integer, Route> routes) {
@@ -33,21 +37,11 @@ public class Transport {
 	public Collection<Station> getStations() {
 		return stations.values();
 	}
-	/*
-	public void setStations(HashMap<Integer, Station> stations) {
-		this.stations = stations;
-	}
-	*/
+
 	public Collection<Route> getRoutes() {
 		return routes.values();
 	}
 	
-	/*
-	public void setRoutes(HashMap<Integer, Route> routes) {
-		this.routes = routes;
-	}
-	*/
-
 	public static Transport getTransport() {
 		return transport;
 	}
@@ -64,11 +58,8 @@ public class Transport {
 		return routes.get(id);
 	}
 	
-	/*
-	 * TODO: put this in transport
-	 */
 	// calculate all stations with repetition 
-	/*
+
 	private int calculateNumStationsInRoutes() {
 		int n = 0;
 		Collection<Route> routes = transport.getRoutes();
@@ -77,31 +68,30 @@ public class Transport {
 		}
 		return n;
 	}
-	*/
-	
-	/*
-	 * TODO: put this in transport
-	 */
-	// get all route by station 
-	/*
-	private void buildBuckets() {
+		
+	private void buildRoutesByStation() {
 		Collection<Route> routes = transport.getRoutes();
 		Collection<Station> stations = transport.getStations();
-		buckets = new HashMap<Station, List<Route>>(); 
-
+		routesByStation = new HashMap<Station, List<Route>>(); 
 	    for	(Route route: routes) {
 	    	for(Station station: stations) {
 	    		// TODO: Do this better
 	    		try {
-	    			buckets.get(station).add(route);
+	    			routesByStation.get(station).add(route);
 	    		} catch (NullPointerException e) {
 	    			List<Route> routeList = new ArrayList<Route>();
 	    			routeList.add(route);
-	    			buckets.put(station, routeList);
+	    			routesByStation.put(station, routeList);
 	    		}
 	    	}
 	    }
 	}
-	*/
 	
+	public List<Route> getRoutesByStation(Station s) {
+		return routesByStation.get(s);
+	}
+
+	public int getNumberStationInRoutes() {
+		return numberStationInRoutes;
+	}
 }

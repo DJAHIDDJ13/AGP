@@ -8,13 +8,12 @@ import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TopDocs;
 
-import bde.dao.Persistence;
 import bde.iterator.Node;
 import bde.iterator.OperatorLucene;
 import bde.lucene.core.Indexer;
 import bde.lucene.core.Searcher;
 
-public class LucenePersistence implements Persistence{
+public class LucenePersistence {
 
 	private static String indexDir;
 	private String dataDir;
@@ -31,7 +30,6 @@ public class LucenePersistence implements Persistence{
 		this.dataDir = dataDir;
 	}
 	
-	@Override
 	public void dataInit() {
 		try {
 			indexer = new Indexer(indexDir);

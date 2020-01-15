@@ -1,23 +1,17 @@
 package beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import bde.persistence.jdbc.IslandPersistance;
-import business.island.ActivitySite;
-import business.island.HistoricSite;
-import  business.island.Hotel;
-import business.island.Site;
+import bde.dao.IslandPersistence;
+import bde.persistence.jdbc.JdbcPersistance;
+
 @ManagedBean
 @SessionScoped
-
-public class SearchBean implements Serializable 
-{
+public class SearchBean implements Serializable {
 
 	private static final long serialVersionUID = -426721429642192283L;
 	
@@ -32,7 +26,7 @@ public class SearchBean implements Serializable
 	private String siteType;
 
 	//TODO to inject later
-	IslandPersistance iper   = new IslandPersistance();
+	IslandPersistence iper   = new JdbcPersistance();
 			
 	public SearchBean()
 	{
