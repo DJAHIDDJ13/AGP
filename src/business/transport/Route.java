@@ -8,6 +8,8 @@ public abstract class Route {
 	private float ticketPrice;
 	private float routeLength;
 	private List<Station> stations;
+	private float averageSpeed = 50; // km/h 
+
 	
 	public Route() {
 		
@@ -73,5 +75,13 @@ public abstract class Route {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+	
+	public float getAverageSpeed() {
+		return averageSpeed;
+	}
+	
+	public String toString() {
+		return "" + id + ";" + ticketPrice + "$";
 	}
 }

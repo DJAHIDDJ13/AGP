@@ -13,11 +13,13 @@ public class Station {
 	
 	public Station(int id, Position position) {
 		this.id = id;
+		this.name = String.valueOf(id);
 		this.setPosition(position);
 	}
 	public Station(int id, String name, Position position) {
 		this.id = id;
 		this.name = name;
+		
 		this.setPosition(position);
 	}
 
@@ -33,7 +35,7 @@ public class Station {
 		return name;
 	}
 	
-	public float distanceFrom(Station v) {	    
+	public float distanceFrom(Station v) {
 		double lon1 = position.getLongitude();
 		double lat1 = position.getLatitude();
 		double lon2 = v.getPosition().getLongitude();
@@ -65,5 +67,10 @@ public class Station {
 
 	public void setPosition(Position position) {
 		this.position = position;
+	}
+	
+	@Override
+	public String toString() {
+		return name;
 	}
 }

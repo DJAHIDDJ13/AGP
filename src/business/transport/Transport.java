@@ -7,19 +7,17 @@ import java.util.List;
 
 public class Transport {
 
-	private static Transport transport = new Transport();
+//	private static Transport transport = new Transport();
 	
 	private HashMap<Integer, Station> stations;
 	private HashMap<Integer, Route> routes;
-	private HashMap<Station, List<Route>> routesByStation;
 	
-	private Transport() {
+	public Transport() {
 		this.stations = new HashMap<Integer, Station>();
 		this.routes = new HashMap<Integer, Route>();
-		buildRoutesByStation();
 	}
 	
-	private Transport(HashMap<Integer, Station> stations, HashMap<Integer, Route> routes) {
+	public Transport(HashMap<Integer, Station> stations, HashMap<Integer, Route> routes) {
 		this.stations = stations;
 		this.routes = routes;
 	}
@@ -35,27 +33,9 @@ public class Transport {
 	public Collection<Station> getStations() {
 		return stations.values();
 	}
-	/*
-	public void setStations(HashMap<Integer, Station> stations) {
-		this.stations = stations;
-	}
-	*/
+
 	public Collection<Route> getRoutes() {
 		return routes.values();
-	}
-	
-	/*
-	public void setRoutes(HashMap<Integer, Route> routes) {
-		this.routes = routes;
-	}
-	*/
-
-	public static Transport getTransport() {
-		return transport;
-	}
-
-	public static void setTransport(Transport transport) {
-		Transport.transport = transport;
 	}
 
 	public Station getStationById(int curId) {
@@ -66,12 +46,23 @@ public class Transport {
 		return routes.get(id);
 	}
 
-	private void buildRoutesByStation() {
-		Collection<Route> routes = transport.getRoutes();
-		Collection<Station> stations = transport.getStations();
-		routesByStation = new HashMap<Station, List<Route>>(); 
-	    for	(Route route: routes) {
-	    	for(Station station: stations) {
+	private int calculateNumStationsInRoutes() {
+		int n = 0;
+		Collection<Route> routesCollection = routes.values();
+		for(Route r: routesCollection) {
+			n += r.getStations().size();
+		}
+		return n;
+	}
+		
+	public HashMap<Station, List<Route>> buildRoutesByStation() {
+		Collection<Route> routesCollection = routes.values();
+		Collection<Station> stationsCollection = stations.values();
+		
+		HashMap<Station, List<Route>> routesByStation = new HashMap<Station, List<Route>>(); 
+		
+	    for	(Route route: routesCollection) {
+	    	for(Station station: stationsCollection) {
 	    		// TODO: Do this better
 	    		try {
 	    			routesByStation.get(station).add(route);
@@ -82,9 +73,11 @@ public class Transport {
 	    		}
 	    	}
 	    }
+	    
+	    return routesByStation;
 	}
-	
-	public List<Route> getRoutesByStation(Station s) {
-		return routesByStation.get(s);
+
+	public int getNumberStationInRoutes() {
+		return calculateNumStationsInRoutes();
 	}
 }

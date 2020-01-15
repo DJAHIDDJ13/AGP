@@ -42,4 +42,19 @@ public class PathEntry {
 	public Route getRoute() {
 		return route;
 	}
+	
+	public float getDistanceFrom(PathEntry other) {
+		if(this.route != other.getRoute() && this.station != other.getStation())
+			return -1;
+		return this.station.distanceFrom(other.getStation());
+	}
+	
+	public int getDurationFrom(PathEntry other) {
+		// if not in the same route and station, shouldn't be possible 
+		if(this.route != other.getRoute() && this.station != other.getStation())
+			return -1;
+		
+		return (int)(getDistanceFrom(other) / this.route.getAverageSpeed() * 3600);
+	}
+	
 }
