@@ -1,18 +1,12 @@
 package beans;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import bde.persistence.jdbc.IslandPersistance;
-import business.island.ActivitySite;
-import business.island.HistoricSite;
-import  business.island.Hotel;
-import business.island.Site;
 @ManagedBean
 @SessionScoped
 
