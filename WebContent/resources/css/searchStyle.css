@@ -35,3 +35,10 @@ width : 50%;
 	  padding: 10px;
 	  border-radius : 3px;
 }
+
+
+select{
+	 border-radius:15px;
+	 background-color:#9ec3ff;
+ 	 padding:4px;
+}

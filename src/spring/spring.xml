@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd"
+	xmlns:context="http://www.springframework.org/schema/context">
+
+	<bean id="tripSimulation" class="business.trip.TripSimulation">
+		<property name="builder" ref="lucenBuilder" />
+		<property name="lucene" ref="lucenePersistence" />
+		<property name="persister" ref="p" />
+		
+	</bean>
+
+
+	<bean id="lucenBuilder" class="bde.lucene.core.LuceneBuilder"/>
+	<bean id="lucenePersistence" class="bde.lucene.persistence.LucenePersistence"/>
+	<bean id="p" class="bde.persistence.jdbc.Persistance"/>
+
+
+
+</beans>

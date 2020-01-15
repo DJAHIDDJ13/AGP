@@ -1,10 +1,8 @@
 package business.trip;
 
-import java.io.IOException;
 import java.util.List;
 
 import bde.lucene.core.LuceneBuilder;
-import bde.lucene.persistence.LuceneConstants;
 import bde.lucene.persistence.LucenePersistence;
 import bde.persistence.jdbc.Persistance;
 
@@ -17,23 +15,7 @@ public class TripSimulation {
 	private LuceneBuilder builder;
 	
 	public TripSimulation() {
-		
-		builder = new LuceneBuilder(LuceneConstants.DATA_FILE);
-		try {
-			builder.createFiles();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		lucene = new LucenePersistence(LuceneConstants.INDEX_FILE, LuceneConstants.DATA_FILE);
-		
-		try {
-			lucene.createIndex();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		persister = new Persistance();
+				
 	}
 	
 	public List<String> getHotelsNamesByRating(String rating){
@@ -49,4 +31,29 @@ public class TripSimulation {
 		
 		return trip;
 	}
+
+	public LuceneBuilder getBuilder() {
+		return builder;
+	}
+
+	public void setBuilder(LuceneBuilder builder) {
+		this.builder = builder;
+	}
+
+	public LucenePersistence getLucene() {
+		return lucene;
+	}
+
+	public void setLucene(LucenePersistence lucene) {
+		this.lucene = lucene;
+	}
+	
+	public Persistance getPersister() {
+		return persister;
+	}
+
+	public void setPersister(Persistance persister) {
+		this.persister = persister;
+	}
+
 }

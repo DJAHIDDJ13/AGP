@@ -11,21 +11,19 @@ import bde.lucene.persistence.LuceneConstants;
 
 public class LuceneBuilder {
 	
-	public String FilePathLuceneData;
+	private static final String filePathLuceneData = LuceneConstants.DATA_FILE;
 	
-	public LuceneBuilder(String filePathLuceneData) {
-		FilePathLuceneData = filePathLuceneData;
+	public LuceneBuilder() {
+		
+		try {
+			this.createFiles();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
 
-	public String getFilePathLuceneData() {
-		return FilePathLuceneData;
-	}
-
-	public void setFilePathLuceneData(String filePathLuceneData) {
-		FilePathLuceneData = filePathLuceneData;
-	}
-
-// Prends le fichier description.csv, et retourne son contenu en un seul String
+	// Prends le fichier description.csv, et retourne son contenu en un seul String
 	private String readFileDescription() throws IOException {
 		String line = null;
 		InputStream is =  new FileInputStream(LuceneConstants.DESCRIPTION_FILE);
@@ -58,7 +56,7 @@ public class LuceneBuilder {
 
 	// Prends un content et son id, ecrit le fichier du nom id avec le contenu content
 	private void EcritureFichierId(String content, int id) throws IOException {
-	    String PathWriteFiles = FilePathLuceneData+id+".txt";
+	    String PathWriteFiles = filePathLuceneData+id+".txt";
 	    BufferedWriter writer = new BufferedWriter(new FileWriter(PathWriteFiles));
 	    writer.write(content);
 	    writer.close();

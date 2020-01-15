@@ -15,8 +15,8 @@ import bde.lucene.core.Searcher;
 
 public class LucenePersistence {
 
-	private static String indexDir;
-	private String dataDir;
+	private static final String indexDir = LuceneConstants.INDEX_FILE;
+	private static final String dataDir = LuceneConstants.DATA_FILE;
 	
 	private Indexer indexer;
 	private static Searcher searcher;
@@ -26,8 +26,12 @@ public class LucenePersistence {
 	}
 	
 	public LucenePersistence(String indexDir, String dataDir) {
-		LucenePersistence.indexDir = indexDir;
-		this.dataDir = dataDir;
+		
+		try {
+			this.createIndex();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void dataInit() {
@@ -94,22 +98,6 @@ public class LucenePersistence {
 		for(File file : listFiles){
 			file.delete();
 		}		
-	}
-
-	public String getIndexDir() {
-		return indexDir;
-	}
-
-	public void setIndexDir(String indexDir) {
-		LucenePersistence.indexDir = indexDir;
-	}
-
-	public String getDataDir() {
-		return dataDir;
-	}
-
-	public void setDataDir(String dataDir) {
-		this.dataDir = dataDir;
 	}
 
 	public Indexer getIndexer() {
