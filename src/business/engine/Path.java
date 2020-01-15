@@ -94,19 +94,20 @@ public class Path {
 		if(!iter.hasNext()) return "Path only has one station\n";
 		next = iter.next();
 		
+		boolean routeChanged = true;
 		LocalTime cur_time = start_time;
 		while(iter.hasNext()) {
-			boolean routeChanged = cur.getRoute() != next.getRoute();
 			res += "[" + cur_time + "] ";
 			res += "Station: " + cur.getStation();
 			if(routeChanged) {
-				res += "; Line change " + cur.getRoute();
+				res += "; Take line " + cur.getRoute();
 			}
 			res += "\n";
 			cur_time = cur_time.plusSeconds(cur.getDurationFrom(next));
 			
 			cur = next;
 			next = iter.next();
+			routeChanged = cur.getRoute() != next.getRoute();
 		}
 		res += "[" + cur_time + "] " + "Station: " + cur.getStation() + " Arrival";
 		return res;

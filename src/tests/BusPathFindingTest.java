@@ -105,7 +105,7 @@ public class BusPathFindingTest {
 		PathFinding pf = new PathFinding(transport);
 
 		Path path = pf.findCheapestPath(transport.getStationById(1),
-				                                 transport.getStationById(0));
+				                        transport.getStationById(0));
     	assertNotNull(path);
     	
     	path = pf.findCheapestPath(transport.getStationById(0),
@@ -115,7 +115,9 @@ public class BusPathFindingTest {
 	
 	@Test
 	public void testExcursionCreation() {
-		
+		initTransport();
+		initStations();
+		initRoutes();
 	}
 	
 }

@@ -106,7 +106,10 @@ public class PathFinding {
 		for (Route r: endStation) {
 			PathEntry entry = PathEntry.getEntry(B, r);
 			List<Node> endLst = adj.get(entry);
-			endLst.remove(endLst.size() - 1); 
+			endLst.remove(endLst.size() - 1);
+			if(endLst.size() == 0) { // to save space 
+				adj.remove(entry);
+			}
 			// remove last item added (which is the "E" node)
 		}
 		

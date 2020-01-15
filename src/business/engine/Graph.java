@@ -19,16 +19,22 @@ public class Graph {
     
     // TODO: remove V
     public Graph() {
+    	resetGraph();
+    	this.adj = new HashMap<PathEntry, List<Node>>();
+    }
+
+    private void resetGraph() {
 		dist = new HashMap<PathEntry, Float>();
     	prev = new HashMap<PathEntry, Node>();
 
     	settled = new HashSet<PathEntry>(); 
     	pq = new PriorityQueue<Node>(defaultPriorityQueueSize, new Node()); 
-    	this.adj = new HashMap<PathEntry, List<Node>>();
+
     }
     
     // Function for Dijkstra's Algorithm 
     public void dijkstra(PathEntry src) {
+    	resetGraph();
         // Add source Node to the priority queue 
         pq.add(new Node(src, 0)); 
   
@@ -109,11 +115,6 @@ public class Graph {
 		adj.remove(src);
 	}
 	
-	/*
-	public HashMap<pathEntry, Node> getPrev() {
-		return prev;
-	}
-	*/
     public List<PathEntry> getPath(PathEntry src, PathEntry dst) {
     	List<PathEntry> res = new ArrayList<PathEntry>();
     	
