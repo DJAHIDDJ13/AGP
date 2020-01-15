@@ -5,23 +5,52 @@
 	  xmlns:f="http://java.sun.com/jsf/core"
 	  xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
-
-	<title>Travel Agency</title>
+	     <h:outputStylesheet library="css" name="style.css"/>
 </h:head>
 <h:body>
+	<title>Travel Agency</title>
 
  	<ui:insert name="header" >
 		  <ui:include src="/navbar.xhtml" />
 		</ui:insert>
-     <h:outputStylesheet library="css" name="homeStyle.css"/>
   
- <h2> Bienvenue dans notre agence de voyage</h2>
+ 
+ <!-- start header -->
+ 	<div class="header">
+ 		<div class="overlay">
+ 		</div>
+ 	</div>
+ <!-- end header -->
+ 
+ <div class=" container">
+ 			<div class="welcome">
+ 				<p>Bienvenue Dans Notre Agence De Voyage</p>
+ 			</div>
+		</div>
+<!-- 
+	<h:graphicImage id="homeImage" value="resources/images/homeImage2.jpg" />
+ -->
 
-
-	<h:graphicImage id="homeImage" value="resources/images/homeImage.jpg" />
-					   <br />
 	
-
+<h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />	
+<h:outputScript target="head">
+    $ = jQuery;
+    // Then you can use it
+    $(document).ready(function() {
+        'use strict'; 
+        $('.header').height($(window).height());
+        $('.header').width($(window).width()); 
+        
+        $('.welcome').css("margin-top",-  2* $('.header').height()/3); 
+        
+        
+       
+        $(window).resize(function(){
+        	$('.header').height($(window).height()); 
+        }); 
+     
+    });
+</h:outputScript>
 
 
 </h:body>
