@@ -12,12 +12,10 @@ public class Transport {
 	private HashMap<Integer, Station> stations;
 	private HashMap<Integer, Route> routes;
 	private HashMap<Station, List<Route>> routesByStation;
-	private int numberStationInRoutes;
 	
 	private Transport() {
 		this.stations = new HashMap<Integer, Station>();
 		this.routes = new HashMap<Integer, Route>();
-		this.numberStationInRoutes = calculateNumStationsInRoutes();
 		buildRoutesByStation();
 	}
 	
@@ -57,18 +55,7 @@ public class Transport {
 	public Route getRouteById(int id) {
 		return routes.get(id);
 	}
-	
-	// calculate all stations with repetition 
 
-	private int calculateNumStationsInRoutes() {
-		int n = 0;
-		Collection<Route> routes = transport.getRoutes();
-		for(Route r: routes) {
-			n += r.getStations().size();
-		}
-		return n;
-	}
-		
 	private void buildRoutesByStation() {
 		Collection<Route> routes = transport.getRoutes();
 		Collection<Station> stations = transport.getStations();
@@ -89,9 +76,5 @@ public class Transport {
 	
 	public List<Route> getRoutesByStation(Station s) {
 		return routesByStation.get(s);
-	}
-
-	public int getNumberStationInRoutes() {
-		return numberStationInRoutes;
 	}
 }

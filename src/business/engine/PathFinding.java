@@ -20,7 +20,7 @@ public class PathFinding {
 	private Transport transport;
 
 	//Graph<Station> transport_graph; // path graph
-	Graph<PathEntry> transport_graph;
+	Graph transport_graph;
 	
 	// routes graph 
 	public PathFinding() {
@@ -30,7 +30,7 @@ public class PathFinding {
 	
 	// TODO: This needs to change; not good
 	private void buildTransportGraph() {
-		 transport_graph = new Graph<PathEntry>(transport.getNumberStationInRoutes());
+		 transport_graph = new Graph();
 
 		Collection<Route> routes = transport.getRoutes();
 	    Collection<Station> stations = transport.getStations();
@@ -48,7 +48,7 @@ public class PathFinding {
 	        	PathEntry srcEntry = PathEntry.getEntry(src, route);
 	        	PathEntry dstEntry = PathEntry.getEntry(dst, route);
 	        	
-    	    	transport_graph.addAdjacencyEntry(srcEntry, new Node<PathEntry>(dstEntry, 0));
+    	    	transport_graph.addAdjacencyEntry(srcEntry, new Node(dstEntry, 0));
     	    	src = dst;
 	        }
 	    }
@@ -66,7 +66,7 @@ public class PathFinding {
 	    	    	PathEntry srcEntry = PathEntry.getEntry(station, srcRoute);
 	    	    	PathEntry dstEntry = PathEntry.getEntry(station, dstRoute);
 
-	    	    	transport_graph.addAdjacencyEntry(srcEntry, new Node<PathEntry>(dstEntry, dstRoute.getTicketPrice()));
+	    	    	transport_graph.addAdjacencyEntry(srcEntry, new Node(dstEntry, dstRoute.getTicketPrice()));
 	    	    }
 	    	}
 	    }
@@ -85,13 +85,13 @@ public class PathFinding {
 			// String key = String.valueOf(A.getId())+";"+String.valueOf(r.getId());
 			PathEntry entry = PathEntry.getEntry(A, r);
 			
-			transport_graph.addAdjacencyEntry(S, new Node<PathEntry>(entry, r.getTicketPrice()));
+			transport_graph.addAdjacencyEntry(S, new Node(entry, r.getTicketPrice()));
 		}
 		
 		// Adding the "E" node
 		for (Route r: endStation) {
 			PathEntry entry = PathEntry.getEntry(B, r);
-			transport_graph.addAdjacencyEntry(entry, new Node<PathEntry>(E, 0));
+			transport_graph.addAdjacencyEntry(entry, new Node(E, 0));
 		}
 		
 		transport_graph.dijkstra(S);
@@ -101,10 +101,10 @@ public class PathFinding {
 		
 		// removing the E node
 		// Undo nodes to last station
-		HashMap<PathEntry, List<Node<PathEntry>>> adj = transport_graph.getAdj();
+		HashMap<PathEntry, List<Node>> adj = transport_graph.getAdj();
 		for (Route r: endStation) {
 			PathEntry entry = PathEntry.getEntry(B, r);
-			List<Node<PathEntry>> endLst = adj.get(entry);
+			List<Node> endLst = adj.get(entry);
 			endLst.remove(endLst.size() - 1); 
 			// remove last item added (which is the "E" node)
 		}
