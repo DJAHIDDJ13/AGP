@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import business.trip.TripSimulation;
+import spring.SpringIoC;
 
 @ManagedBean
 @SessionScoped
@@ -24,8 +25,8 @@ public class SearchBean implements Serializable {
 
 	private String siteType;
 	
-	private TripSimulation trip = new TripSimulation();
- 
+	private TripSimulation trip = (TripSimulation) SpringIoC.getBean("tripSimulation");
+	
 	public SearchBean()
 	{
 		
@@ -90,4 +91,5 @@ public class SearchBean implements Serializable {
 	{
 		return rating;
 	}
+
 }
