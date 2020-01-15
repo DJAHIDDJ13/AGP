@@ -113,8 +113,8 @@ public class Graph {
 		return prev;
 	}
 	*/
-    public List<Object> getPath(PathEntry src, PathEntry dst) {
-    	List<Object> res = new ArrayList<Object>();
+    public List<PathEntry> getPath(PathEntry src, PathEntry dst) {
+    	List<PathEntry> res = new ArrayList<PathEntry>();
     	
 		while(!dst.equals(src)) {
 			res.add(dst); 
@@ -131,5 +131,4 @@ public class Graph {
 		Collections.reverse(res);
 		return res;
     }
-
 }

@@ -35,11 +35,21 @@ public class Transport {
 	public Collection<Station> getStations() {
 		return stations.values();
 	}
-
+	/*
+	public void setStations(HashMap<Integer, Station> stations) {
+		this.stations = stations;
+	}
+	*/
 	public Collection<Route> getRoutes() {
 		return routes.values();
 	}
 	
+	/*
+	public void setRoutes(HashMap<Integer, Route> routes) {
+		this.routes = routes;
+	}
+	*/
+
 	public static Transport getTransport() {
 		return transport;
 	}

@@ -18,6 +18,10 @@ public class OperatorSQL implements Iterator{
 		this.query = query;
 	}
 	
+	public OperatorSQL() {
+
+	}
+
 	@Override
 	public void init() {
 		PreparedStatement preparedStatement;
@@ -74,5 +78,25 @@ public class OperatorSQL implements Iterator{
 	@Override
 	public String getString(int columnIndex) throws SQLException {
 		return head.getString(columnIndex);
-	}	
+	}
+	
+	public String getString(String columnName) throws SQLException {
+		return head.getString(columnName);
+	}
+	
+	public int getInt(int columnIndex) throws SQLException {
+		return head.getInt(columnIndex);
+	}
+	
+	public int getInt(String columnName) throws SQLException {
+		return head.getInt(columnName);
+	}
+	
+	public float getFloat(int columnIndex) throws SQLException {
+		return head.getFloat(columnIndex);
+	}
+	
+	public float getFloat(String columnName) throws SQLException {
+		return head.getFloat(columnName);
+	}
 }

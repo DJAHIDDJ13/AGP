@@ -1,9 +1,9 @@
 package tests;
 
-import bde.api.APIFacade;
+import bde.api.ExtendedDB;
 import bde.iterator.Iterator;
 
-public class BDEClient {
+public class ExtendedDBTest {
 
 	public static void main(String[] args) {
 		
@@ -11,13 +11,13 @@ public class BDEClient {
 		String cle = "id_site";
 		String dataDir = "src/luceneSRC/data/";
 		
-		APIFacade clientFacadeAPI = new APIFacade(table, cle, dataDir);
+		ExtendedDB bde = new ExtendedDB(table, cle, dataDir);
 		
-		clientFacadeAPI.createIndexDir();
+		bde.createIndexDir();
 		
 		System.out.println("\nQUERY : ");
 		String query = "baie OR culture";
-		Iterator iterator = clientFacadeAPI.luceneQuery(query);
+		Iterator iterator = bde.luceneQuery(query);
 		
 		System.out.println("\n-------- Lucene Iterator result --------");
 		try {
@@ -31,7 +31,7 @@ public class BDEClient {
 		System.out.println("\n-------- SQL JDBC Iterator result --------");
 		
 		query = "SELECT * FROM site WHERE type_site = 'historic'";
-		iterator = clientFacadeAPI.SQLQuery(query);
+		iterator = bde.SQLQuery(query);
 		
 		try {
 			while(iterator.next()) {
@@ -48,8 +48,9 @@ public class BDEClient {
 		
 		//query = "SELECT * FROM site WHERE type_site = 'historic' with baie OR culture";
 		query = "SELECT type_site FROM site WHERE type_site = 'historic' with baie OR culture";
-		iterator = clientFacadeAPI.MixedQuery(query);
+		iterator = bde.MixedQuery(query);
 		
+		long startTime = System.nanoTime();
 		try {
 			while(iterator.next()) {
 				for(int i = 1; i < iterator.getColumnCount(); i++) {
@@ -60,13 +61,14 @@ public class BDEClient {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		long stopTime = System.nanoTime();
 		
-		System.out.println("\n-------- Plan 1 Indexed join Iterator result --------");
+		System.err.println("the time for the first plane is : " + (stopTime-startTime));
 		
-		//query = "SELECT * FROM site WHERE type_site = 'historic' with baie OR culture";
-		query = "SELECT type_site FROM site WHERE type_site = 'historic' with baie OR culture";
-		iterator = clientFacadeAPI.MixedIndexedQuery(query);
+		System.out.println("\n-------- Plan 2 Indexed join Iterator result --------");
+		iterator = bde.MixedIndexedQuery(query);
 		
+		startTime = System.nanoTime();
 		try {
 			while(iterator.next()) {
 				for(int i = 1; i < iterator.getColumnCount(); i++) {
@@ -77,7 +79,10 @@ public class BDEClient {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	
+		stopTime = System.nanoTime();
+
+		System.err.println("the time for the first plane is : " + (stopTime-startTime));
 		
-		clientFacadeAPI.close();
+		bde.close();
 	}
 }

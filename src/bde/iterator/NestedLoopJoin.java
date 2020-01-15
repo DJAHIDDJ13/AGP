@@ -2,7 +2,9 @@ package bde.iterator;
 
 import java.sql.SQLException;
 
-public class NestedLoopJoint implements Iterator{
+import bde.lucene.persistence.LuceneConstants;
+
+public class NestedLoopJoin implements Iterator{
 	
 	private Node head;
 	
@@ -12,11 +14,11 @@ public class NestedLoopJoint implements Iterator{
 	private String SQLQuery;
 	private String LuceneQuery;
 	
-	public NestedLoopJoint() {
+	public NestedLoopJoin() {
 		
 	}
 	
-	public NestedLoopJoint(String sQLQuery, String luceneQuery) {
+	public NestedLoopJoin(String sQLQuery, String luceneQuery) {
 		SQLQuery = sQLQuery;
 		LuceneQuery = luceneQuery;
 	}
@@ -56,7 +58,6 @@ public class NestedLoopJoint implements Iterator{
 		return next;
 	}
 
-
 	private void fusion(OperatorSQL sQLIterator, Node node) {
 		int size = sQLIterator.getColumnCount() + 2;
 		String[] data = new String[size];
@@ -74,6 +75,41 @@ public class NestedLoopJoint implements Iterator{
 		head.setData(data);
 	}
 
+	public void setQuery(String Mixedquery) {
+		String[] query = Mixedquery.split(" with ");		
+		
+		String queryModified = checkSyntax(query[0]);
+		if(!queryModified.isEmpty()) {
+			this.SQLQuery = queryModified;
+			this.LuceneQuery = query[1];
+		}
+		else {
+			System.err.println("Syntax error please give the right table !");
+		}		
+	}
+	
+	private String checkSyntax(String string) {
+		String check = "";
+		
+		string = string.toLowerCase();
+		String[] data = string.split(" from ");
+		
+		if(data[1].contains(LuceneConstants.TABLEDB_NAME)) {
+			String tmp = string.replace("select", "");
+			tmp = string.replace(" ", "");
+			
+			if(!tmp.equals("*") && !tmp.contains(LuceneConstants.KEY_NAME)) {
+				string = string.replace("select", "");
+				check = "select " + LuceneConstants.KEY_NAME + "," + string;
+			}
+			else {
+				check = string;
+			}
+		}
+		
+		return check;
+	}
+	
 	@Override
 	public void add(Node node) {
 		

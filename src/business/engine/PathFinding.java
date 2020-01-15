@@ -2,18 +2,13 @@ package business.engine;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-import business.island.Hotel;
-import business.island.Site;
 import business.transport.Route;
 import business.transport.Station;
 import business.transport.Transport;
-import business.trip.Excursion;
 
 public class PathFinding {
 
@@ -21,11 +16,47 @@ public class PathFinding {
 
 	//Graph<Station> transport_graph; // path graph
 	Graph transport_graph;
+	HashMap<Station, List<Route>> buckets;
 	
 	// routes graph 
 	public PathFinding() {
 		this.transport = Transport.getTransport();
 		buildTransportGraph();
+		buildBuckets(); // TODO: remove
+	}
+
+	/*
+	 * TODO: put this in transport
+	 */
+	private int calculateNumStationsInRoutes() {
+		int n = 0;
+		Collection<Route> routes = transport.getRoutes();
+		for(Route r: routes) {
+			n += r.getStations().size();
+		}
+		return n;
+	}
+	
+	/*
+	 * TODO: put this in transport
+	 */
+	private void buildBuckets() {
+		Collection<Route> routes = transport.getRoutes();
+		Collection<Station> stations = transport.getStations();
+		buckets = new HashMap<Station, List<Route>>(); 
+
+	    for	(Route route: routes) {
+	    	for(Station station: stations) {
+	    		// TODO: Do this better
+	    		try {
+	    			buckets.get(station).add(route);
+	    		} catch (NullPointerException e) {
+	    			List<Route> routeList = new ArrayList<Route>();
+	    			routeList.add(route);
+	    			buckets.put(station, routeList);
+	    		}
+	    	}
+	    }
 	}
 	
 	// TODO: This needs to change; not good
@@ -54,10 +85,9 @@ public class PathFinding {
 	    }
 	    
 		for(Station station: stations) {
-	    	List<Route> lst = transport.getRoutesByStation(station); 
+	    	List<Route> lst = buckets.get(station); // shouldn't be too big, probably less than 10
 	    	
-	    	// get all the possible pairs of routes in the same station
-	    	// shouldn't be too big, probably less than 10
+	    	// get all the possible pairs of stations
 	    	for (int i = 0; i < lst.size(); i++) {
 	    	    for (int j = i + 1; j < lst.size(); j++) {
 	    	    	Route srcRoute = lst.get(i);
@@ -77,8 +107,8 @@ public class PathFinding {
 		PathEntry S = PathEntry.getEntry(new Station(-1, null), null); // dummy entry 
 		PathEntry E = PathEntry.getEntry(new Station(-2, null), null); // dummy entry
 		
-		List<Route> strtStation = transport.getRoutesByStation(A); // get all the lines that pass by the start Station
-		List<Route> endStation = transport.getRoutesByStation(B); // get all the lines that pass by the end Station
+		List<Route> strtStation = buckets.get(A); // get all the lines that pass by the start Station
+		List<Route> endStation = buckets.get(B); // get all the lines that pass by the end Station
 		
 		// Adding the "S" node
 		for	(Route r: strtStation) {
@@ -109,7 +139,9 @@ public class PathFinding {
 			// remove last item added (which is the "E" node)
 		}
 		
-		List<PathEntry> lst = (List<PathEntry>) (Object) transport_graph.getPath(S, E);
+		// TODO: Use this on the resulting path
+		// TODO: change AbstractMap.SimpleEntry to something better
+		List<PathEntry> lst = transport_graph.getPath(S, E);
 
 		if(lst == null) {
 			return null;
@@ -120,49 +152,5 @@ public class PathFinding {
 		Path path = new Path(lst);
 		
 		return path;
-	}
-	 Excursion getExcursion(Hotel hotel, LinkedList<Site> sites) {
-		List<Site> res = new ArrayList<Site>();
-		int time = 8 * 3600;
-		final int threshold = 18 * 3600;
-		// start at hotel
-		Station hotelStation = hotel.getStation();
-
-		// randomly select a site
-		Collections.shuffle(sites);
-		Site cur = sites.pop();
-
-		// find sites to visit today
-		do {
-			Site minSite = null;
-			int min = Integer.MAX_VALUE;
-			// go through all the sites and find which one has the fastest route to:
-			for(Site next: sites) {
-				// spend time at site
-				int totalTime = next.getDuration();
-				// go to the site
-				Path away = findCheapestPath(cur.getStation(), next.getStation());
-				// go back to hotel
-				Path back = findCheapestPath(next.getStation(), hotelStation);
-				totalTime += away.getPathDuration();
-				totalTime += back.getPathDuration();
-				
-				if(time + totalTime < threshold && min > totalTime) {
-					min = totalTime;
-					minSite = next;
-				}
-			}
-			
-			// if the time found + current time < threshold for the day
-			// add to the excursion
-			// otherwise finish up the excursion go back to the hotel
-			if(minSite == null) {
-				break;
-			} else {
-				res.add(minSite);
-				time += min;
-			}
-		} while(time < threshold);
-		return new Excursion(1, res);
 	}
 }

@@ -58,6 +58,24 @@ public class BusPathFindingTest {
 			 					 transport.getStationById(0)))));
 	}
 	
+	@Test
+	public void testShortestPathResult()
+	{
+		initStations();
+		initRoutes();
+		
+		PathFinding pf = new PathFinding();
+		
+    	Path path = pf.findCheapestPath(transport.getStationById(0), transport.getStationById(3));
+    	assertNotNull(path);
+    	
+		List<Station> expectedResult = new ArrayList<Station>(
+    			Arrays.asList(transport.getStationById(0),
+		    				  transport.getStationById(1),
+		    				  transport.getStationById(2),
+		    			      transport.getStationById(3)));
+		assertTrue(path.equals(expectedResult));
+	}
 
 	@Test
 	public void testCheapestPathResult()
@@ -68,8 +86,6 @@ public class BusPathFindingTest {
 		
 		Path routes = pf.findCheapestPath(transport.getStationById(0), transport.getStationById(3));
 		assertNotNull(routes);
-		System.out.println(routes.getPathLength() + "km");
-		System.out.println(routes.getPathDuration() + "s");
     	
 		List<PathEntry> expectedResult = new ArrayList<PathEntry>(
 				Arrays.asList(PathEntry.getEntry(transport.getStationById(0), transport.getRouteById(1)),
