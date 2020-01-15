@@ -58,24 +58,6 @@ public class BusPathFindingTest {
 			 					 transport.getStationById(0)))));
 	}
 	
-	@Test
-	public void testShortestPathResult()
-	{
-		initStations();
-		initRoutes();
-		
-		PathFinding pf = new PathFinding();
-		
-    	List<Station> path = pf.findShortestPath(transport.getStationById(0), transport.getStationById(3));
-    	assertNotNull(path);
-    	
-		List<Station> expectedResult = new ArrayList<Station>(
-    			Arrays.asList(transport.getStationById(0),
-		    				  transport.getStationById(1),
-		    				  transport.getStationById(2),
-		    			      transport.getStationById(3)));
-		assertTrue(path.equals(expectedResult));
-	}
 
 	@Test
 	public void testCheapestPathResult()
@@ -122,7 +104,7 @@ public class BusPathFindingTest {
 	
 		PathFinding pf = new PathFinding();
 
-		List<Station> path = pf.findShortestPath(transport.getStationById(0), transport.getStationById(1)); 
+		Path path = pf.findCheapestPath(transport.getStationById(0), transport.getStationById(1)); 
     	assertNull(path);	
 	}
 	
@@ -138,11 +120,11 @@ public class BusPathFindingTest {
 		
 		PathFinding pf = new PathFinding();
 
-		List<Station> path = pf.findShortestPath(transport.getStationById(1),
+		Path path = pf.findCheapestPath(transport.getStationById(1),
 				                                 transport.getStationById(0));
     	assertNotNull(path);
     	
-    	path = pf.findShortestPath(transport.getStationById(0),
+    	path = pf.findCheapestPath(transport.getStationById(0),
     							   transport.getStationById(1));
     	assertNull(path);
 	}
