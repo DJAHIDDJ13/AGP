@@ -2,7 +2,9 @@ package bde.iterator;
 
 import java.sql.SQLException;
 
-public class IndexedJoint implements Iterator{
+import bde.lucene.persistence.LuceneConstants;
+
+public class IndexedJoin implements Iterator{
 	
 	private Node head;
 	
@@ -14,13 +16,12 @@ public class IndexedJoint implements Iterator{
 	
 	private boolean containsWHERE;
 	
-	public IndexedJoint() {
+	public IndexedJoin() {
 		
 	}
 	
-	public IndexedJoint(String sQLQuery, String luceneQuery, String key) {
-		LuceneQuery = luceneQuery;
-		SQLQuery = sQLQuery.toLowerCase();
+	public IndexedJoin(String query, String key) {
+		setQuery(query);
 		this.key = key;
 		containsWHERE = SQLQuery.contains(" where ");
 	}
@@ -81,9 +82,44 @@ public class IndexedJoint implements Iterator{
 			query += " AND " + key +" = " + id;
 		else
 			query += " WHERE " + key +" = " + id;
-		
+
 		return query;
 	}
+	
+	public void setQuery(String Mixedquery) {
+		String[] query = Mixedquery.split(" with ");		
+		
+		String queryModified = checkSyntax(query[0]);
+		if(!queryModified.isEmpty()) {
+			this.SQLQuery = queryModified;
+			this.LuceneQuery = query[1];
+		}
+		else {
+			System.err.println("Syntax error please give the right table !");
+		}		
+	}
+	
+	private String checkSyntax(String string) {
+		String check = "";
+		
+		string = string.toLowerCase();
+		String[] data = string.split(" from ");
+		
+		if(data[1].contains(LuceneConstants.TABLEDB_NAME)) {
+			String tmp = string.replace("select", "");
+			tmp = string.replace(" ", "");
+			
+			if(!tmp.equals("*") && !tmp.contains(LuceneConstants.KEY_NAME)) {
+				string = string.replace("select", "");
+				check = "select " + LuceneConstants.KEY_NAME + "," + string;
+			}
+			else {
+				check = string;
+			}
+		}
+		
+		return check;
+	}	
 
 	@Override
 	public void add(Node node) {

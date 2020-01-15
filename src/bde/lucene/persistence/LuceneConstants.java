@@ -11,8 +11,12 @@ public class LuceneConstants {
 	//maximum number of responses returned
 	public static final int MAX_SEARCH = 10;
 	
-	public static String DESCRIPTION_FILE ="src/bde/persistence/jdbc/description.csv";
+	public static String DESCRIPTION_FILE ="C:\\Users\\ayadi\\eclipse-workspace\\AGP\\src\\bde\\persistence\\jdbc\\description.csv";
 	
-	public static String INDEX_FILE ="src/luceneSRC/index/";	
-
+	//Configure Lucene
+	public static String INDEX_FILE ="C:\\Users\\ayadi\\eclipse-workspace\\AGP\\src\\luceneSRC\\index\\";
+	public static String DATA_FILE ="C:\\Users\\ayadi\\eclipse-workspace\\AGP\\src\\luceneSRC\\data\\";
+	
+	public static String TABLEDB_NAME ="site";
+	public static String KEY_NAME ="id_site";
 }

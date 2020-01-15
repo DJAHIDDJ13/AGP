@@ -6,8 +6,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
-import bde.dao.IslandPersistence;
-import bde.persistence.jdbc.JdbcPersistance;
+import business.trip.TripSimulation;
 
 @ManagedBean
 @SessionScoped
@@ -24,18 +23,17 @@ public class SearchBean implements Serializable {
 	private String searchQuery;
 
 	private String siteType;
-
-	//TODO to inject later
-	IslandPersistence iper   = new JdbcPersistance();
-			
+	
+	private TripSimulation trip = new TripSimulation();
+ 
 	public SearchBean()
 	{
-	
+		
 	}
 
 	public String findHotelsByRating()
 	{		
-		List<String> hotelsName =  iper.getHotelNamesByRating(rating);
+		List<String> hotelsName =  trip.getHotelsNamesByRating(rating);
 				
 		this.setHotelsName(hotelsName);
 		return "hotelResult";
@@ -44,7 +42,7 @@ public class SearchBean implements Serializable {
 	
 	public String findSitesNames()
 	{	
-		List<String> sitesNames =  iper.fetchSites(siteType,searchQuery);
+		List<String> sitesNames = trip.fetchSites(siteType, searchQuery);
 	
 		this.setSitesName(sitesNames);
 		

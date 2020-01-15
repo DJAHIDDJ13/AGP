@@ -36,12 +36,13 @@ public interface IslandPersistence {
 	public List<Station> getStationsByRooteId(int routeId);
 	
 	public HashMap<Integer, Site> getSitesByIslandId(int islandId) ;
-	
+
 	public Site getSiteById(int siteId);
 	
 	public Station getStationById(int stationId);
 
 	public Position getPositionById(int positionId);
 	
-	public List<String> fetchSites(String siteType, String searchQuery);
+	public List<String> fetchSites(String siteType, String key);
+	
 }

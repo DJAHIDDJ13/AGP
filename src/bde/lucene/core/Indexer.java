@@ -65,6 +65,7 @@ public class Indexer {
 	
 	public int createIndex(String dataDirPath, FileFilter filter) throws IOException {
 		File[] files = new File(dataDirPath).listFiles();
+		
 		for (File file : files) {
 			if(!file.isDirectory()
 				&& !file.isHidden()
