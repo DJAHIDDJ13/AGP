@@ -1,7 +1,9 @@
 package business.transport;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 
 public class Transport {
 
@@ -61,4 +63,45 @@ public class Transport {
 	public Route getRouteById(int id) {
 		return routes.get(id);
 	}
+	
+	/*
+	 * TODO: put this in transport
+	 */
+	// calculate all stations with repetition 
+	/*
+	private int calculateNumStationsInRoutes() {
+		int n = 0;
+		Collection<Route> routes = transport.getRoutes();
+		for(Route r: routes) {
+			n += r.getStations().size();
+		}
+		return n;
+	}
+	*/
+	
+	/*
+	 * TODO: put this in transport
+	 */
+	// get all route by station 
+	/*
+	private void buildBuckets() {
+		Collection<Route> routes = transport.getRoutes();
+		Collection<Station> stations = transport.getStations();
+		buckets = new HashMap<Station, List<Route>>(); 
+
+	    for	(Route route: routes) {
+	    	for(Station station: stations) {
+	    		// TODO: Do this better
+	    		try {
+	    			buckets.get(station).add(route);
+	    		} catch (NullPointerException e) {
+	    			List<Route> routeList = new ArrayList<Route>();
+	    			routeList.add(route);
+	    			buckets.put(station, routeList);
+	    		}
+	    	}
+	    }
+	}
+	*/
+	
 }
