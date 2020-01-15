@@ -12,6 +12,8 @@ public abstract class Site {
 	
 	private Station station;
 	
+	private int duration; // in seconds
+	
 	public Site() {
 		
 	}
@@ -51,10 +53,15 @@ public abstract class Site {
 		return station;
 	}
 
+	public int getDuration() {
+		return duration;
+	}
+
 	public void setStation(Station station) {
 		this.station = station;
 	}
 
 	public abstract boolean isHistoricSite();
 	public abstract boolean isActivitySite();
+
 }
