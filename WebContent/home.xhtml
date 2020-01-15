@@ -5,14 +5,14 @@
 	  xmlns:f="http://java.sun.com/jsf/core"
 	  xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
+		<title>Travel Agency</title>
 	     <h:outputStylesheet library="css" name="style.css"/>
 </h:head>
 <h:body>
-	<title>Travel Agency</title>
 
  	<ui:insert name="header" >
 		  <ui:include src="/navbar.xhtml" />
-		</ui:insert>
+	</ui:insert>
   
  
  <!-- start header -->
@@ -42,9 +42,7 @@
         $('.header').width($(window).width()); 
         
         $('.welcome').css("margin-top",-  2* $('.header').height()/3); 
-        
-        
-       
+  
         $(window).resize(function(){
         	$('.header').height($(window).height()); 
         }); 
@@ -52,6 +50,6 @@
     });
 </h:outputScript>
 
-
+<h:outputScript name="js/script.js" />
 </h:body>
 </html>

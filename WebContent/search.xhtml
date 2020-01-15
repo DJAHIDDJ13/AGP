@@ -8,15 +8,27 @@
       
     <h:head>
         <title>Search Page</title>
+          <h:outputStylesheet library="css" name="style.css"/>
+          <h:outputStylesheet library="css" name="searchStyle.css"/>
+          <style>
+          	.navbar{
+				height: 100px
+			}
+			.navbar .links li a {
+			    color: black;
+			}
+			.container .brand{
+				color: black;
+			}	
+          </style>
     </h:head>
     <h:body>
  
 
  	<ui:insert name="header" >
 		  <ui:include src="/navbar.xhtml" />
-		</ui:insert>
+	</ui:insert>
  
-  <h:outputStylesheet library="css" name="searchStyle.css"/>
  
  
   <h2>Trouver des informations :</h2>
@@ -52,7 +64,7 @@
  </h:form>
  
   <hr/>
- 
- 
     </h:body>
+    <h:outputScript name="js/script.js" />
+    
  </html>

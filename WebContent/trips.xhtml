@@ -8,6 +8,19 @@
       
     <h:head>
         <title>Offers Page</title>
+         <h:outputStylesheet library="css" name="style.css"/>
+          <h:outputStylesheet library="css" name="searchStyle.css"/>
+          <style>
+          	.navbar{
+				height: 100px
+			}
+			.navbar .links li a {
+			    color: black;
+			}
+			.container .brand{
+				color: black;
+			}	
+          </style>
     </h:head>
     <h:body>
  
@@ -18,9 +31,7 @@
 
 
  <h:outputStylesheet library="css" name="resultStyle.css"/>
- <h:outputStylesheet library="css" name="searchStyle.css"/>
  
-
   
 	<fieldset>
 	
@@ -80,9 +91,7 @@
 		     	</h:panelGroup>
 			     		
     	 </h:panelGroup>
+    	 <h:outputScript name="js/script.js" />
+    	 
     </h:body>
-    
-    
-    
-  
 </html>
