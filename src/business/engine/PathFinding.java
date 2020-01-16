@@ -148,11 +148,13 @@ public class PathFinding {
 
 			// path to the site
 			Path awayPath = findCheapestPath(cur.getStation(), site.getStation());
+			// int awayPathDuration = (int) cur.getStation().distanceFrom(site.getStation());
 			int awayPathDuration = awayPath.getPathDuration(LocalTime.NOON);
 			totalTime = totalTime + awayPathDuration;
 
 			// path back to hotel
 			Path backPath = findCheapestPath(site.getStation(), hotelStation);
+			//int backPathDuration = (int) site.getStation().distanceFrom(hotelStation);
 			int backPathDuration = backPath.getPathDuration(LocalTime.NOON);
 			totalTime = totalTime + backPathDuration;
 			
