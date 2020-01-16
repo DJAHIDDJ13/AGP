@@ -88,6 +88,7 @@ public class Persistance{
 		OperatorSQL sqlIterator = new OperatorSQL();
 		
 		sqlIterator.setQuery("select * from  hotel where id_hotel=" + hotelId);
+		
 		try {
 			if(!sqlIterator.next()) {
 				return null;
