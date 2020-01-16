@@ -315,6 +315,23 @@ INSERT INTO line VALUES (14, 'boat', 25, 4);
 INSERT INTO line VALUES (15, 'boat', 25, 5);
 INSERT INTO line VALUES (16, 'boat', 25, 6);
 INSERT INTO line VALUES (17, 'boat', 25, 7);
+INSERT INTO line VALUES (18, 'bus', 2.5, 1);
+INSERT INTO line VALUES (19, 'bus', 2.5, 2);
+INSERT INTO line VALUES (20, 'bus', 2.5, 3);
+INSERT INTO line VALUES (21, 'bus', 2.5, 4);
+INSERT INTO line VALUES (22, 'bus', 5, 5);
+INSERT INTO line VALUES (23, 'bus', 5, 6);
+INSERT INTO line VALUES (24, 'bus', 5, 7);
+INSERT INTO line VALUES (25, 'bus', 7.5, 8);
+INSERT INTO line VALUES (26, 'bus', 7.5, 9);
+INSERT INTO line VALUES (27, 'bus', 7.5, 10);
+INSERT INTO line VALUES (28, 'boat', 25, 1);
+INSERT INTO line VALUES (29, 'boat', 25, 2);
+INSERT INTO line VALUES (30, 'boat', 25, 3);
+INSERT INTO line VALUES (31, 'boat', 25, 4);
+INSERT INTO line VALUES (32, 'boat', 25, 5);
+INSERT INTO line VALUES (33, 'boat', 25, 6);
+INSERT INTO line VALUES (34, 'boat', 25, 7);
 
 /*----------   Table s_belongs_to_l  --------
 -- id, id_station, id_line, station_order, -- 
