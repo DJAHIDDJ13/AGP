@@ -36,8 +36,7 @@ public class BusPathFindingTest {
 		transport = new Transport();
 	}
  	
-	public void initStations()
-	{
+	public void initStations() {
 		// TODO: The id shouldn't be in the Station constructor ??
 		
 		transport.addStation(0, new Station(0, new Position(0, 0)));
@@ -61,8 +60,7 @@ public class BusPathFindingTest {
 	}
 	
 	@Test
-	public void testCheapestPathResult()
-	{
+	public void testCheapestPathResult() {
 		initTransport();
 		initStations();
 		initRoutes();
@@ -128,7 +126,10 @@ public class BusPathFindingTest {
 		Site site1 = new ActivitySite(1, "Site1", new Position(0, 2), transport.getStationById(2));
 		Site site2 = new ActivitySite(2, "Site2", new Position(1, 3), transport.getStationById(3));
 		Site site3 = new ActivitySite(3, "Site3", new Position(0, 1), transport.getStationById(1));
-
+		site1.setDuration(3600);
+		site2.setDuration(3600);
+		site3.setDuration(3600);
+		
 		LinkedList<Site> sites = new LinkedList<Site>(Arrays.asList(site1, site2, site3));
 
 		PathFinding pf = new PathFinding(transport);

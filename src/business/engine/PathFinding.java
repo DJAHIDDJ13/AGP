@@ -172,7 +172,7 @@ public class PathFinding {
 
 		LocalTime start_time = LocalTime.of(8, 0);
 		Duration time = Duration.ZERO;
-		Duration threshold = Duration.ofSeconds(1 * 3600);
+		Duration threshold = Duration.ofSeconds(3 * 3600);
 
 		// start at hotel
 		Station hotelStation = hotel.getStation();
