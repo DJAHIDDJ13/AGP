@@ -16,7 +16,7 @@
 
 	<bean id="lucenBuilder" class="bde.lucene.core.LuceneBuilder">
 		<property name="filePathLuceneData" value="C:\Users\ayadi\eclipse-workspace\AGP\src\luceneSRC\data\"/>
-		<property name="fileDescription" value="C:\Users\ayadi\eclipse-workspace\AGP\src\bde\persistence\jdbc\description.csv"/>
+		<property name="fileDescription" value="C:\Users\Hakim\git\AGP\src\bde\persistence\jdbc\description.csv"/>
 	</bean>
 	
 	<bean id="lucenePersistence" class="bde.lucene.persistence.LucenePersistence">

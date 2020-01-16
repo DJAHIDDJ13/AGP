@@ -2,7 +2,6 @@ package business.trip;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -37,8 +36,8 @@ public class TripSimulation {
 		pathFinding = new PathFinding(simulationTransport);
 	}
 	
-	public List<String> getHotelsNamesByRating(String rating){
-		return persister.getHotelNamesByRating(rating);
+	public List<String> getHotelsNamesByRating(String rating, String beach){
+		return persister.getHotelNamesByRating(rating, beach);
 	}
 	
 	public List<String> fetchSites(String siteType, String key){

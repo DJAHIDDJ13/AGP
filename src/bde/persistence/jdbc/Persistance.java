@@ -170,12 +170,22 @@ public class Persistance{
 		return hotels; 
 	}
 	
-	public List<String> getHotelNamesByRating(String ranting) {
+	public List<String> getHotelNamesByRating(String ranting, String beach) {
 		List<String> hotels = new ArrayList<String>();
 		
 		OperatorSQL sqlIterator = new OperatorSQL();
+		String sqlQuery = "select * from hotel";
 		
-		String sqlQuery = "Select * from hotel where stars="+ranting;
+		if(!beach.isEmpty() && !ranting.isEmpty()) {
+			sqlQuery = "select * from hotel where stars=" + ranting + " and beach = '" + beach + "'";
+		}
+		else if(beach.isEmpty() && !ranting.isEmpty()){
+			sqlQuery = "select * from hotel where stars=" + ranting;
+		}
+		else if(!beach.isEmpty() && ranting.isEmpty()) {
+			sqlQuery = "select * from hotel where beach = '" + beach + "'";
+		}
+		System.out.println(sqlQuery);
 		sqlIterator.setQuery(sqlQuery);
 		sqlIterator.init();
 		

@@ -38,18 +38,22 @@
 				<h:panelGroup>
 					<legend>Veuillez saisir vos  critères de voyage:</legend>
 					<h:form>
-					 		<h:outputLabel class="text" for="hotelName"> Nom d'hotel</h:outputLabel>
-					        <h:inputText  id="hotelName" class="champ" value="#{tripsBean.hotelName}" />  <br/>        
+					 		<h:outputLabel class="text" for="searchKeyword">Mot cle :</h:outputLabel>
+					        <h:inputText  id="searchKeyword" class="champ" value="#{tripsBean.searchKeyword}" />  <br/>        
 					        
-					 		<h:outputLabel class="text" for="density">Densité:</h:outputLabel>
-					        <h:inputText  id="density" class="champ" value="#{tripsBean.density}" />  <br/>
+					 		<h:outputLabel class="text" for="intensite">Intensité:</h:outputLabel>
+					        <h:inputText  id="intensite" class="champ" value="#{tripsBean.intensite}" />  <br/>
 					        
 					    
-					 		<h:outputLabel class="text" for="maxPrice">Maximum Prix:</h:outputLabel>
-					        <h:inputText  id="maxPrice" class="champ" value="#{tripsBean.maximumPrice}" />  <br/>
+					 	
+							<h:outputLabel class="text" for="daysCount">Nombre de jours:</h:outputLabel>
+					        <h:inputText  id="daysCount" class="champ" value="#{tripsBean.daysCount}" />  <br/>
+						
+							<h:outputLabel class="text" for="maximumPrice">Maximum Prix:</h:outputLabel>
+					        <h:inputText  id="maximumPrice" class="champ" value="#{tripsBean.maximumPrice}" />  <br/>
 			
-					 		<h:outputLabel class="text" for="daysCount">Nombre de jours : </h:outputLabel>
-					        <h:inputText  id="daysCount" class="champ" value="#{tripsBean.daysCount}" />  <br/>		
+					 		<h:outputLabel class="text" for="offersCount">Nombre d'offres : </h:outputLabel>
+					        <h:inputText  id="offersCount" class="champ" value="#{tripsBean.offersCount}" />  <br/>		
 					        <br/> <br />
 					     
 					        <h:commandLink class="action-button" action="#{tripsBean.fetchOffers}"  value="Trouver l'hotel"/> 
@@ -59,6 +63,7 @@
 			</fieldset>
 		</div>
 	</div> 
+
 
  
  		<h:panelGroup rendered="#{tripsBean.trips == null}" >
