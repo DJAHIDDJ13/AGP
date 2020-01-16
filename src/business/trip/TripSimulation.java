@@ -22,9 +22,14 @@ public class TripSimulation {
 	private LuceneBuilder builder;
 	
 	private Transport transport;
+	
 	private PathFinding pathFinding;
 	
 	public TripSimulation() {
+
+	}
+	
+	public void init() {
 		transport = persister.getTransport();
 		pathFinding = new PathFinding(transport);
 	}
