@@ -11,4 +11,6 @@ public interface Iterator {
 	public int getColumnCount();
 	
 	public String getString(int columnIndex) throws Exception;
+	
+	public void setQuery(String Mixedquery);
 }

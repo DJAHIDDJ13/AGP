@@ -4,48 +4,65 @@
 	  xmlns:h="http://java.sun.com/jsf/html" 
 	  xmlns:f="http://java.sun.com/jsf/core"
 	  xmlns:ui="http://java.sun.com/jsf/facelets">
-	<h:head>
+<h:head>
 		<title>Travel Agency</title>
-		<h:outputStylesheet library="css" name="style.css"/>
-	</h:head>
-	<h:body>
-		<ui:insert name="header" >
-			<ui:include src="/navbar.xhtml" />
-		</ui:insert>
+	     <h:outputStylesheet library="css" name="style.css"/>
+	     <style>
+	     	.welcome{
+				color: white;
+				text-align: center; 
+				width: 100%
+			}
+			.welcome span{
+			font-weight: bold; 
+			color:#1abc9c; 
+			}
+	     </style>
+</h:head>
+<h:body>
 
-		<!-- start header -->
-		<div class="header">
-			<div class="overlay">
-			</div>
+ 	<ui:insert name="header" >
+		  <ui:include src="/navbar.xhtml" />
+	</ui:insert>
+  
+ 
+ <!-- start header -->
+ 	<div class="header">
+ 		<div class="overlay">
+ 		</div>
+ 	</div>
+ <!-- end header -->
+ 
+ <div class=" container">
+ 			<div class="welcome">
+ 				<p>Bienvenue Dans <span>Ile De Seychelle</span></p>
+ 			</div>
 		</div>
-		<!-- end header -->
+<!-- 
+	<h:graphicImage id="homeImage" value="resources/images/homeImage2.jpg" />
+ -->
+
 	
-		<div class=" container">
-			<div class="welcome">
-				<p>Agence de voyage Seychellois</p>
-			</div>
-		</div>
-	<!-- 
-		<h:graphicImage id="homeImage" value="resources/images/homeImage2.jpg" />
-	-->
+<h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />	
+<h:outputScript name="js/script.js" />
 
-		<h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />	
-			<h:outputScript target="head">
-				$ = jQuery;
-				// Then you can use it
-				$(document).ready(function() {
-					'use strict'; 
-					$('.header').height($(window).height());
-					$('.header').width($(window).width()); 
+<h:outputScript target="head">
+    $ = jQuery;
+    // Then you can use it
+    $(document).ready(function() {
 
-					$('.welcome').css("margin-top",-  2* $('.header').height()/3); 
+        'use strict'; 
+        $('.header').height($(window).height());
+        $('.header').width($(window).width()); 
+        
+        $('.welcome').css("margin-top",-  2* $('.header').height()/3); 
+  
+        $(window).resize(function(){
+        	$('.header').height($(window).height()); 
+        }); 
+     
+    });
+</h:outputScript>
 
-					$(window).resize(function(){
-						$('.header').height($(window).height()); 
-					}); 
-
-				});
-			</h:outputScript>
-		<h:outputScript name="js/script.js" />
-	</h:body>
+</h:body>
 </html>

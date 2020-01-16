@@ -3,29 +3,35 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-	<h:head>
-		<title>Search Result</title>
-		<h:outputStylesheet library="css" name="style.css"/>
-	</h:head>
+<h:head>
+	<title>Search Result</title>
+	    <h:outputStylesheet library="css" name="style.css"/>
+</h:head>
 
-	<h:body>
-		<ui:insert name="header" >
-			<ui:include src="/navbar.xhtml" />
+<h:body>
+
+
+ 	<ui:insert name="header" >
+		  <ui:include src="/navbar.xhtml" />
 		</ui:insert>
+   <h:outputStylesheet library="css" name="style.css"/>
+  
+  
+	<fieldset>
+	
 
-		<h:outputStylesheet library="css" name="style.css"/>
+		<h:panelGroup  class="result-container" rendered="#{searchBean.sitesName != null}">
+		<legend>Sites Result :</legend>
 
-		<fieldset>
-			<h:panelGroup  class="result-container" rendered="#{searchBean.sitesName != null}">
-				<legend>Résultat de la recherche :</legend>
-
-				<ul>
-					<ui:repeat var="site" value="#{searchBean.sitesName}" >
-						<li> #{site} </li>  
-						<br/>
-					</ui:repeat>
-				</ul>
-			</h:panelGroup>
-		</fieldset>
-	</h:body>
+			<ul>
+				<ui:repeat var="site" value="#{searchBean.sitesName}" >
+				  <li> #{site} </li>  
+				   <br />
+				</ui:repeat>
+			</ul>
+		</h:panelGroup>
+		
+		
+	</fieldset>
+</h:body>
 </html>

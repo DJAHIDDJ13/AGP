@@ -1,28 +1,59 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
-	<h:head>
-		<title>Search Result</title>
-		<h:outputStylesheet library="css" name="style.css"/>
-	</h:head>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Search Result</title>
+    <h:outputStylesheet library="css" name="style.css"/>
+           <!-- <h:outputStylesheet library="fontawesome" name="css/fontawesome.css"/> -->
+                <h:outputStylesheet library="font-awesome" name="css/font-awesome.css"/>
+            
+    
+     <style>
+          	.navbar{
+				height: 100px
+			}
+			.navbar .links li a {
+			    color: black;
+			}
+			.container .brand{
+				color: black;
+			}	
+			    i {
+        margin-right: 10px;
+    }
+ 
+    .ui-grid-col-3 {
+        padding: 4px 10px;
+    }
+          </style>
 
-	<h:body>
+</h:head>
 
-		<ui:insert name="header" >
-			<ui:include src="/navbar.xhtml"/>
+<h:body>
+
+  	 	<ui:insert name="header" >
+		  <ui:include src="/navbar.xhtml" />
 		</ui:insert>
-
-		<fieldset>
-			<h:panelGroup  class="result-container" rendered="#{searchBean.hotelsName != null}">
-				<legend>Résultat de la recherche d'hotel pour la gamme à #{searchBean.rating} étoile(s).</legend>
-
-				<ul>
+  
+  <div class="result-hotel">
+      <div class="container">
+          <fieldset>
+			<h:panelGroup  rendered="#{searchBean.hotelsName != null}">
+			<legend>Résultats de la recherche des hôtels</legend>
+        <div class="ui-grid-col-3"><i class="fa fa-fw fa-venus"></i>fa-venus</div>
+				<ol>
 					<ui:repeat var="hn" value="#{searchBean.hotelsName}" >
-						<li> #{hn} </li>   <br />
+					   #{hn} <br />
 					</ui:repeat>
-				</ul>
+				</ol>
 			</h:panelGroup>
-		</fieldset>
-	</h:body>
+	     </fieldset>
+      </div>
+  </div>
+	
+</h:body>
 </html>

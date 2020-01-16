@@ -4,26 +4,36 @@ xmlns="http://www.w3.org/1999/xhtml"
 	  xmlns:h="http://java.sun.com/jsf/html" 
 	  xmlns:f="http://java.sun.com/jsf/core"
 	  xmlns:ui="http://java.sun.com/jsf/facelets">
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		</meta>
-	</head>
-	<body>
-		<h:outputStylesheet library="css" name="font-awesome.min.css"/>
-		<div class="navbar">
-			<div class="container">
-				<div class="brand">
-					<h2>AGP VOYAGE</h2>
-				</div>
-				<h:form>
-					<ul class="links">
-						<li><h:commandLink  action="#{navigationBarBean.homePage}">Accueil</h:commandLink></li>
-						<li><h:commandLink  action="#{navigationBarBean.search}">Recherche de lieux touristiques</h:commandLink></li>
-						<li><h:commandLink action="#{navigationBarBean.generateOffers}">Recherche d'offres d'excursion</h:commandLink></li>
-					</ul>
-				</h:form>
-				<div class="clearfix"/>
-			</div>
-		</div>
-	</body>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</meta>
+
+</head>
+<body>
+
+ <h:outputStylesheet library="css" name="font-awesome.min.css"/>
+ <div class="navbar">
+            <div class="container">
+                <div class="brand">
+                    <h2>AGP VOYAGE</h2>
+                </div>
+                 <h:form>
+	                <ul class="links">
+	                    <li>	 
+	                    	 <h:commandLink  action="#{navigationBarBean.homePage}"  >Accueil</h:commandLink>
+	                    </li>
+	                    <li>
+	                    	  <h:commandLink  action="#{navigationBarBean.search}"> Recherche Simple  </h:commandLink>
+	                    </li>
+	                    <li>    
+	                    	<h:commandLink action="#{navigationBarBean.generateOffers}">Construction d'Offres</h:commandLink>
+	                    </li>
+	                </ul>
+                </h:form>
+               
+                <div class="clearfix"></div>
+            </div>
+ </div>
+ 
+</body>
 </html>

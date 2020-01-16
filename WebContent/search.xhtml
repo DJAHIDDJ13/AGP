@@ -9,7 +9,7 @@
     <h:head>
         <title>Search Page</title>
           <h:outputStylesheet library="css" name="style.css"/>
-          <h:outputStylesheet library="css" name="searchStyle.css"/>
+        <!--    <h:outputStylesheet library="css" name="searchStyle.css"/> -->
           <style>
           	.navbar{
 				height: 100px
@@ -29,42 +29,47 @@
 		  <ui:include src="/navbar.xhtml" />
 	</ui:insert>
  
+ <div class ="search">
  
- 
-  <h2>Trouver des informations :</h2>
- 
- 
-<h3 >1 - Trouver des hotels par gamme :  </h3>  
- 
- <h:form>
-	<h:selectOneMenu value="#{searchBean.rating}">
-		<f:selectItem itemValue="1" itemLabel="1 étoile" />
-		<f:selectItem itemValue="2" itemLabel="2 étoiles" />
-		<f:selectItem itemValue="3" itemLabel="3 étoiles" />
-		<f:selectItem itemValue="4" itemLabel="4 étoiles" />
-		<f:selectItem itemValue="5" itemLabel="5 étoiles" />
-	</h:selectOneMenu>     
-	<h:commandLink  class="action-button" action="#{searchBean.findHotelsByRating}"  value="Trouver un hotel"/>
- </h:form>
- 
- <hr/>
- 
- <h3 >2 - Trouver des sites :  </h3>  
- 
- <h:form>
-	<h:selectOneMenu value="#{searchBean.siteType}">
-		<f:selectItem itemValue="" itemLabel="Choisir une catégorie" />
-		<f:selectItem itemValue="historic" itemLabel="Sites historiques" />
-		<f:selectItem itemValue="activity" itemLabel="Sites d'activité" />
-	</h:selectOneMenu>
-		
-	<h:inputText class="search-bar" value="#{searchBean.searchQuery}" /> 
-	
-	<h:commandLink  class="action-button" action="#{searchBean.findSitesNames}"  value="Trouver des lieux touristiques"/>
- </h:form>
- 
-  <hr/>
-    </h:body>
-    <h:outputScript name="js/script.js" />
+  <div class="container">
+      <div class="panel panel-default panel-table">
+	      <div class="panel-heading">
+	          <div class="tr">
+	             <div class="td">Recherche d'informations </div>
+	          </div>
+	      </div>
+	      <div class="panel-body">
+	          <div class="tr">
+	              <div class="form-search">
+			          <h3 >Recherche d'hôtels :  </h3>  
+			          <h:form>
+		                  <h:selectOneMenu  class="custom-select" style="width:200px;" value="#{searchBean.rating}">
+		     	   		      <f:selectItem itemValue="1" itemLabel="1 etoile" />
+					   	      <f:selectItem itemValue="2" itemLabel="2 etoile" />
+				              <f:selectItem itemValue="3" itemLabel="3 etoile" />
+	     	                  <f:selectItem itemValue="4" itemLabel="4 etoile" />			   	                
+	     	                  <f:selectItem itemValue="5" itemLabel="5 etoile" />
+					      </h:selectOneMenu>     
+						  <h:commandLink  class="action-button" action="#{searchBean.findHotelsByRating}"  value="Trouver l'hotel"/>
+			          </h:form>
+			          <h3 >Recherche de sites touristiques :  </h3>  
+			          <h:form>
+				   	      <h:selectOneMenu value="#{searchBean.siteType}">
+					   	      <f:selectItem itemValue="" itemLabel="Type de site" />
+					   	      <f:selectItem itemValue="historic" itemLabel="Monument historique" />
+					   	      <f:selectItem itemValue="activity" itemLabel="Activité" />
+					      </h:selectOneMenu>
+					      <h:inputText class="search-bar" placeholder="mots-clés" value="#{searchBean.searchQuery}" /> 
+						  <h:commandLink  class="action-button" action="#{searchBean.findSitesNames}"  value="Trouver des sites"/>
+			         </h:form>
+	              </div>	     
+	          </div>
+	      </div>
+	  </div>
+  </div>
+</div>
+
+<h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />	
+<h:outputScript name="js/script.js" />    </h:body>
     
  </html>

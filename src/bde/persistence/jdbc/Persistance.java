@@ -415,4 +415,46 @@ public class Persistance{
 		} 
 		return position; 
 	}
+
+	public List<String> getSiteByType(String siteType) {
+		List<String> sites = new ArrayList<String>();
+		
+		OperatorSQL sqlIterator = new OperatorSQL();
+		
+		String sqlQuery = "Select * from site where type_site='" + siteType + "'";
+		sqlIterator.setQuery(sqlQuery);
+		sqlIterator.init();
+		
+		try {
+			while(sqlIterator.next()) {
+				sites.add(sqlIterator.getString("name_site"));
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return sites;
+	}
+
+	public List<String> getAllSitesName() {
+		List<String> sites = new ArrayList<String>();
+		
+		OperatorSQL sqlIterator = new OperatorSQL();
+		
+		String sqlQuery = "Select * from site";
+		sqlIterator.setQuery(sqlQuery);
+		sqlIterator.init();
+		
+		try {
+			while(sqlIterator.next()) {
+				sites.add(sqlIterator.getString("name_site"));
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return sites;
+	}
 }
