@@ -77,7 +77,7 @@
 		     	
 		     	<ui:repeat var="trip" value="#{tripsBean.trips}" >
 							  <li> Hotel  : #{trip.hotel.name}</li>   <br />
-							  <li> Price  : #{trip.price}</li>   <br />
+							  <li> Prix  : #{trip.price}</li>   <br />
 							  <li> Nombre  de jours  : #{trip.daysCount}</li>   <br />
 							  <li> Sites inclus  :</li>   <br />
 							       		<ui:repeat var="excur" value="#{trip.excursion}" >  
@@ -91,7 +91,6 @@
 		     	</h:panelGroup>
 			     		
     	 </h:panelGroup>
-    	 <h:outputScript name="js/script.js" />
-    	 
-    </h:body>
+<h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />	
+<h:outputScript name="js/script.js" />    </h:body>
 </html>

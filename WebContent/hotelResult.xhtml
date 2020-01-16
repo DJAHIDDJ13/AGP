@@ -4,7 +4,19 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 <h:head>
 	<title>Search Result</title>
+	<h:outputStylesheet library="font-awesome" name="css/font-awesome.min.css" />
     <h:outputStylesheet library="css" name="style.css"/>
+     <style>
+          	.navbar{
+				height: 100px
+			}
+			.navbar .links li a {
+			    color: black;
+			}
+			.container .brand{
+				color: black;
+			}	
+          </style>
 </h:head>
 
 <h:body>
@@ -13,21 +25,21 @@
 		  <ui:include src="/navbar.xhtml" />
 		</ui:insert>
   
-	<fieldset>
+  <div class="result-hotel">
+      <div class="container">
+          <fieldset>
+			<h:panelGroup  rendered="#{searchBean.hotelsName != null}">
+			<legend>Résultats de la recherche des hôtels</legend>
+				<ol>
+					<ui:repeat var="hn" value="#{searchBean.hotelsName}" >
+					  <li> #{hn} </li><br />
+					  <i class="fas fa-star"></i>
+					</ui:repeat>
+				</ol>
+			</h:panelGroup>
+	     </fieldset>
+      </div>
+  </div>
 	
-
-		<h:panelGroup  class="result-container" rendered="#{searchBean.hotelsName != null}">
-		<legend>Hotels Result For Gamme of #{searchBean.rating} stars</legend>
-
-			<ul>
-				<ui:repeat var="hn" value="#{searchBean.hotelsName}" >
-				  <li> #{hn} </li>   <br />
-				</ui:repeat>
-			</ul>
-			
-		</h:panelGroup>
-		
-		
-	</fieldset>
 </h:body>
 </html>

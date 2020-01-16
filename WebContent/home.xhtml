@@ -33,10 +33,13 @@
 
 	
 <h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />	
+      <h:outputScript name="js/script.js" />
+
 <h:outputScript target="head">
     $ = jQuery;
     // Then you can use it
     $(document).ready(function() {
+
         'use strict'; 
         $('.header').height($(window).height());
         $('.header').width($(window).width()); 
@@ -50,6 +53,5 @@
     });
 </h:outputScript>
 
-<h:outputScript name="js/script.js" />
 </h:body>
 </html>

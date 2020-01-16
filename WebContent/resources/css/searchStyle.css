@@ -1,14 +1,14 @@
-h2 {
+.search h2 {
 	  margin-left: 100px;
 }	
-h3 {
+.search h3 {
 	  margin-left: 137px;
 }	
-select {
+.search select {
 	  margin-left: 137px;
 }
 
-.action-button {
+.search .action-button {
   background-color: #4CAF50; /* Green */
   border: none;
   color: white;
@@ -24,12 +24,12 @@ select {
 }
 
 
-hr {
+.search hr {
 width : 50%;	
   border-top: 1px solid black;
 }
 
-.search-bar{
+.search .search-bar{
 	  margin-left: 10px;
 	  margin-top: 10px;
 	  padding: 10px;
@@ -37,7 +37,7 @@ width : 50%;
 }
 
 
-select{
+.search select{
 	 border-radius:15px;
 	 background-color:#9ec3ff;
  	 padding:4px;
