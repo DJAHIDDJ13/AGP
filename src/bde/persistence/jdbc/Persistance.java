@@ -109,7 +109,8 @@ public class Persistance{
 		
 		OperatorSQL sqlIterator = new OperatorSQL();
 		
-		sqlIterator.setQuery("select * from  hotel where id_hotel=" + hotelId);
+		sqlIterator.setQuery("select * from hotel where id_hotel = " + hotelId);
+		sqlIterator.init();
 		
 		try {
 			if(!sqlIterator.next()) {
@@ -283,8 +284,8 @@ public class Persistance{
 		HashMap<Integer, Site> sites = new HashMap<Integer, Site>();
 		
 		OperatorSQL sqlIterator = new OperatorSQL();
-		
 		sqlIterator.setQuery("select * from  site where id_island=" + islandId);
+		sqlIterator.init();
 		try {
 			while(sqlIterator.next() == true) {
 				Site site = getSiteById(sqlIterator.getInt("id_site")); 
@@ -303,6 +304,7 @@ public class Persistance{
 		OperatorSQL sqlIterator = new OperatorSQL();
 		
 		sqlIterator.setQuery("select * from  site where id_site=" + siteId);
+		sqlIterator.init();
 		try {
 			if(!sqlIterator.next()) {
 				return null;

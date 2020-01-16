@@ -61,19 +61,6 @@ public class TripSimulation {
 		List<Excursion> excursions = pathFinding.getExcursions(hotel, sites);
 		Trip trip = new Trip(hotel, excursions);
 
-/*
-		List<Hotel> hotels = hotelsToVisit(intensity, budget, duration, n);
-		for(Hotel hotel: hotels) {
-			List<Site> bdSites = persister.getSitesByKeyWord(null, keyWords);
-			float budgetLeft = budget - hotel.getPricePerDay() * duration;
-			Collections.sort(bdSites, new SiteComparator(hotel));
-			LinkedList<Site> sites = sitesToVisit(budgetLeft, bdSites);
-			
-			List<Excursion> excursions = pathFinding.getExcursions(hotel, sites);
-			Trip trip = new Trip(hotel, excursions);
-			trips.add(trip);
-		}
-*/
 		trips.add(trip);
 		return trips;
 	}

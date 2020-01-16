@@ -30,7 +30,7 @@ public class TripsBean implements Serializable{
 	private TripSimulation trip = (TripSimulation) SpringIoC.getBean("tripSimulation");
  
 	public TripsBean() {
-		
+		trip.init();		
 	}
 
 	public List<Trip> getTrips() {

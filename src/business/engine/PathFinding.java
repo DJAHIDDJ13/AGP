@@ -87,19 +87,22 @@ public class PathFinding {
 		HashMap<Station, List<Route>> routesByStation = transport.buildRoutesByStation();
 		List<Route> strtStation = routesByStation.get(A); // get all the lines that pass by the start Station
 		List<Route> endStation = routesByStation.get(B); // get all the lines that pass by the end Station
-		
 		// Adding the "S" node
-		for	(Route r: strtStation) {
-			// String key = String.valueOf(A.getId())+";"+String.valueOf(r.getId());
-			PathEntry entry = PathEntry.getEntry(A, r);
-			
-			transport_graph.addAdjacencyEntry(S, new Node(entry, r.getTicketPrice()));
+		if(strtStation != null) {
+			for	(Route r: strtStation) {
+				// String key = String.valueOf(A.getId())+";"+String.valueOf(r.getId());
+				PathEntry entry = PathEntry.getEntry(A, r);
+				
+				transport_graph.addAdjacencyEntry(S, new Node(entry, r.getTicketPrice()));
+			}
 		}
 		
 		// Adding the "E" node
-		for (Route r: endStation) {
-			PathEntry entry = PathEntry.getEntry(B, r);
-			transport_graph.addAdjacencyEntry(entry, new Node(E, 0));
+		if(endStation != null) {
+			for (Route r: endStation) {
+				PathEntry entry = PathEntry.getEntry(B, r);
+				transport_graph.addAdjacencyEntry(entry, new Node(E, 0));
+			}
 		}
 		
 		transport_graph.dijkstra(S);
@@ -110,14 +113,16 @@ public class PathFinding {
 		// removing the E node
 		// Undo nodes to last station
 		HashMap<PathEntry, List<Node>> adj = transport_graph.getAdj();
-		for (Route r: endStation) {
-			PathEntry entry = PathEntry.getEntry(B, r);
-			List<Node> endLst = adj.get(entry);
-			endLst.remove(endLst.size() - 1);
-			if(endLst.size() == 0) { // to save space 
-				adj.remove(entry);
+		if(endStation != null) {
+			for (Route r: endStation) {
+				PathEntry entry = PathEntry.getEntry(B, r);
+				List<Node> endLst = adj.get(entry);
+				endLst.remove(endLst.size() - 1);
+				if(endLst.size() == 0) { // to save space 
+					adj.remove(entry);
+				}
+				// remove last item added (which is the "E" node)
 			}
-			// remove last item added (which is the "E" node)
 		}
 		
 		List<PathEntry> lst = transport_graph.getPath(S, E);
