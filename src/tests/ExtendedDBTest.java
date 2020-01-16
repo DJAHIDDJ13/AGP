@@ -63,7 +63,7 @@ public class ExtendedDBTest {
 		}
 		long stopTime = System.nanoTime();
 		
-		System.err.println("the time for the first plane is : " + (stopTime-startTime));
+		System.out.println("the time for the first plane is : " + (stopTime-startTime));
 		
 		System.out.println("\n-------- Plan 2 Indexed join Iterator result --------");
 		iterator = bde.MixedIndexedQuery(query);
@@ -81,7 +81,7 @@ public class ExtendedDBTest {
 		}	
 		stopTime = System.nanoTime();
 
-		System.err.println("the time for the first plane is : " + (stopTime-startTime));
+		System.out.println("the time for the first plane is : " + (stopTime-startTime));
 		
 		bde.close();
 	}

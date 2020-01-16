@@ -10,15 +10,21 @@
 	<bean id="tripSimulation" class="business.trip.TripSimulation">
 		<property name="builder" ref="lucenBuilder" />
 		<property name="lucene" ref="lucenePersistence" />
-		<property name="persister" ref="p" />
-		
+		<property name="persister" ref="persistence" />
+		<property name="simulationTransport" ref="transport" />
 	</bean>
 
-
-	<bean id="lucenBuilder" class="bde.lucene.core.LuceneBuilder"/>
-	<bean id="lucenePersistence" class="bde.lucene.persistence.LucenePersistence"/>
-	<bean id="p" class="bde.persistence.jdbc.Persistance"/>
-
-
+	<bean id="lucenBuilder" class="bde.lucene.core.LuceneBuilder">
+		<property name="filePathLuceneData" value="C:\Users\ayadi\eclipse-workspace\AGP\src\luceneSRC\data\"/>
+		<property name="fileDescription" value="C:\Users\ayadi\eclipse-workspace\AGP\src\bde\persistence\jdbc\description.csv"/>
+	</bean>
+	
+	<bean id="lucenePersistence" class="bde.lucene.persistence.LucenePersistence">
+		<property name="indexDir" value="C:\Users\ayadi\eclipse-workspace\AGP\src\luceneSRC\index\"/>
+		<property name="dataDir" value="C:\Users\ayadi\eclipse-workspace\AGP\src\luceneSRC\data\"/>
+	</bean>
+	
+	<bean id="persistence" class="bde.persistence.jdbc.Persistance"/>
+	<bean id="transport" class="business.transport.Transport"/>
 
 </beans>

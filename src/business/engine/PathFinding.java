@@ -1,8 +1,9 @@
 package business.engine;
 
+import java.time.Duration;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,12 +20,20 @@ public class PathFinding {
 
 	private Transport transport;
 
-	Graph transport_graph;
+	private Graph transport_graph;
 	
 	// routes graph 
 	public PathFinding(Transport transport) {
 		this.transport = transport;
 		buildTransportGraph();
+	}
+	
+	public Transport getTransport() {
+		return transport;
+	}
+
+	public void setTransport(Transport transport) {
+		this.transport = transport;
 	}
 
 	// TODO: This needs to change; not good
@@ -128,67 +137,108 @@ public class PathFinding {
 		return path;
 	}
 	
-	Excursion getExcursion(Hotel hotel, LinkedList<Site> sites) {
+	public Site getMinSite(Site cur, Station hotelStation, List<Site> sites) {
+		Site min = null;
+		int minDuration = Integer.MAX_VALUE;
+
+		for(Site site: sites) {
+			// spend time at site
+			int siteDuration = site.getDuration();
+			int totalTime = siteDuration;
+
+			// path to the site
+			Path awayPath = findCheapestPath(cur.getStation(), site.getStation());
+			// int awayPathDuration = (int) cur.getStation().distanceFrom(site.getStation());
+			int awayPathDuration = awayPath.getPathDuration(LocalTime.NOON);
+			totalTime = totalTime + awayPathDuration;
+
+			// path back to hotel
+			Path backPath = findCheapestPath(site.getStation(), hotelStation);
+			//int backPathDuration = (int) site.getStation().distanceFrom(hotelStation);
+			int backPathDuration = backPath.getPathDuration(LocalTime.NOON);
+			totalTime = totalTime + backPathDuration;
+			
+			// If new minimum found
+			if(totalTime < minDuration) {
+				minDuration = totalTime;
+				min = site;
+			}
+		}
+		
+		return min;
+	}
+	
+	public Excursion getExcursion(Hotel hotel, LinkedList<Site> sites) {
 		List<Site> res = new ArrayList<Site>();
 		List<Path> paths = new ArrayList<Path>();
-		int time = 8 * 3600;
-		final int threshold = 18 * 3600;
+
+		LocalTime start_time = LocalTime.of(8, 0);
+		Duration time = Duration.ZERO;
+		Duration threshold = Duration.ofSeconds(3 * 3600);
+
 		// start at hotel
 		Station hotelStation = hotel.getStation();
 
-		// randomly select a site
-		Collections.shuffle(sites);
 		Site cur = sites.pop();
-
-		// find sites to visit today
-		do {
-			Path prevBack = null;
-			Path away = null, back;
-			
-			Site minSite = null;
-			int min = Integer.MAX_VALUE;
-			
-			// go through all the sites and find which one has the fastest route to:
-			for(Site next: sites) {
-				// spend time at site
-				int totalTime = next.getDuration();
-				
-				// go to the site
-				away = findCheapestPath(cur.getStation(), next.getStation());
-				
-				// go back to hotel
-				back = findCheapestPath(next.getStation(), hotelStation);
-			
-				totalTime += away.getPathDuration();
-				totalTime += back.getPathDuration();
-				
-				// If new min found and not over the threshold
-				if(time + totalTime < threshold && min > totalTime) {
-					min = totalTime;
-					minSite = next;
-					prevBack = back;
-				}
+		// hotel to site path
+		
+		Path firstPath = findCheapestPath(hotelStation, cur.getStation());
+		int dur = firstPath.getPathDuration(start_time);
+		time = time.plus(Duration.ofSeconds(dur + cur.getDuration()));
+		paths.add(firstPath);
+		res.add(cur);
+		
+		Path prevBackPath = findCheapestPath(cur.getStation(), hotelStation);	
+		prevBackPath.getPathDuration(start_time.plus(time));
+		
+		while(time.compareTo(threshold) < 0) {
+			// sanity check
+			if(sites == null || sites.size() == 0) {
+				paths.add(prevBackPath);
+				break;
 			}
-			
+
+			// Find the minimum site to go to and back to hotel
+			Site next = getMinSite(cur, hotelStation, sites);
+
+			Path awayPath = findCheapestPath(cur.getStation(), next.getStation());
+			Path backPath = findCheapestPath(next.getStation(), hotelStation);
+
+			// Duration to go to site
+			LocalTime awayTime = start_time.plus(time);
+			int awayDuration = awayPath.getPathDuration(awayTime);
+			// to spend time at site
+			int siteDuration = next.getDuration();
+			// to go back to hotel
+			LocalTime backTime = awayTime.plus(Duration.ofSeconds(siteDuration + awayDuration));
+			int backDuration = backPath.getPathDuration(backTime);
+
 			// if a site was found
 			// add to the excursion
 			// otherwise finish up the excursion go back to the hotel
-			if(minSite == null) {
-				if(prevBack != null) {
-					paths.add(prevBack); // add the path back to hotel
-				}
-				break;
+			if(time.plusSeconds(awayDuration + siteDuration + backDuration).compareTo(threshold) < 0) {
+				paths.add(awayPath); // add the path back to hotel
+				res.add(next); // add to the excursion
+				sites.remove(next); // remove from list of sites to visit
+
+				cur = next;
 			} else {
-				if(away != null) {
-					paths.add(away); // add away path to the list of paths to follow
-				}
-				res.add(minSite); // add to the excursion
-				sites.remove(minSite); // remove from list of sites to visit
-				
-				time += min; // advance the time
+				paths.add(prevBackPath);
+				break;
 			}
-		} while(time < threshold); 
-		
+
+			time = time.plusSeconds(awayDuration + siteDuration);	
+			prevBackPath = backPath;
+		}
+
 		return new Excursion(1, res, paths);
+	}
+	
+	public ArrayList<Excursion> getExcursions(Hotel hotel, LinkedList<Site> sites) {
+		ArrayList<Excursion> res = new ArrayList<Excursion>();
+		while(sites.size() != 0) {
+			res.add(getExcursion(hotel, sites));
+		}
+		return res;
 	}
 }

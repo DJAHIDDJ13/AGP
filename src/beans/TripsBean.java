@@ -1,17 +1,14 @@
 package beans;
 
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import business.island.ActivitySite;
-import business.island.Hotel;
-import business.island.Site;
-import business.trip.Excursion;
 import business.trip.Trip;
+import business.trip.TripSimulation;
+import spring.SpringIoC;
 
 
 @ManagedBean
@@ -30,6 +27,8 @@ public class TripsBean implements Serializable{
 	
 	private float density;
 	
+	private TripSimulation trip = (TripSimulation) SpringIoC.getBean("tripSimulation");
+ 
 	public TripsBean() {
 		
 	}
@@ -78,24 +77,7 @@ public class TripsBean implements Serializable{
 	
 	public String fetchOffers()
 	{
-		Trip t1 = new Trip();
-		Hotel h1 = new Hotel();
-		h1.setName("Hotel Royale");
-		t1.setHotel(h1);
-		t1.setDaysCount(6);
-		
-		Excursion e1 = new Excursion();
-		Site a1  = new ActivitySite();
-		a1.setName("ski");
-		
-		e1.setSite(Arrays.asList(a1,a1,a1));
-		
-		
-		t1.setExcursion(Arrays.asList(e1,e1,e1));
-		
-		t1.setPrice(120);
-		
-		this.trips = Arrays.asList(t1,t1,t1);
+		this.trips = trip.generateTrips(1, "plage", 1000, 10, 1);
 		
 		return "trips";
 	}

@@ -6,8 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Transport {
-
-//	private static Transport transport = new Transport();
 	
 	private HashMap<Integer, Station> stations;
 	private HashMap<Integer, Route> routes;
@@ -79,5 +77,13 @@ public class Transport {
 
 	public int getNumberStationInRoutes() {
 		return calculateNumStationsInRoutes();
+	}
+
+	public void setStations(HashMap<Integer, Station> stations) {
+		this.stations = stations;
+	}
+
+	public void setRoutes(HashMap<Integer, Route> routes) {
+		this.routes = routes;
 	}
 }
