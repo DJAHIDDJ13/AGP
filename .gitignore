@@ -66,3 +66,4 @@ WebContent/META-INF/MANIFEST.MF
 #WEB-INF
 WebContent/WEB-INF/faces-config.xml
 WebContent/WEB-INF/web.xml
+src/luceneSRC/index/*

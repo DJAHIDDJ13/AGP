@@ -55,5 +55,4 @@ public class TripSimulation {
 	public void setPersister(Persistance persister) {
 		this.persister = persister;
 	}
-
 }

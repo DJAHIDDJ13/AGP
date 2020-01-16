@@ -11,14 +11,10 @@
 		<property name="builder" ref="lucenBuilder" />
 		<property name="lucene" ref="lucenePersistence" />
 		<property name="persister" ref="p" />
-		
 	</bean>
-
 
 	<bean id="lucenBuilder" class="bde.lucene.core.LuceneBuilder"/>
 	<bean id="lucenePersistence" class="bde.lucene.persistence.LucenePersistence"/>
 	<bean id="p" class="bde.persistence.jdbc.Persistance"/>
-
-
 
 </beans>
