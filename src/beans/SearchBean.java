@@ -28,7 +28,7 @@ public class SearchBean implements Serializable {
 	private TripSimulation trip = (TripSimulation) SpringIoC.getBean("tripSimulation");
 	
 	public SearchBean() {
-		
+		trip.init();
 	}
 
 	public String findHotelsByRating() {		

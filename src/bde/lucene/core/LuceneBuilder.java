@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import bde.lucene.persistence.LuceneConstants;
-
 public class LuceneBuilder {
 	
 	private String filePathLuceneData;

@@ -24,12 +24,6 @@
 	</bean>
 	
 	
-	<bean id="p" class="bde.persistence.jdbc.Persistance">
-		<property name="sqlIterator" ref="sqlIterator"/>
-		<property name="mixedIterator" ref="mixedIterator"/>
-	</bean>
-	
-	<bean id="sqlIterator" class="bde.iterator.OperatorSQL"/>
-	<bean id="mixedIterator" class="bde.iterator.NestedLoopJoin"/>
+	<bean id="p" class="bde.persistence.jdbc.Persistance"/>
 
 </beans>
