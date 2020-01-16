@@ -97,7 +97,6 @@ public class TripSimulation {
 			builder.createFiles();
 			lucene.createIndex();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

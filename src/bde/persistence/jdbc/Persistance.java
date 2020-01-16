@@ -358,12 +358,32 @@ public class Persistance{
 		return result;
 	}
 	
-	public List<Site> getSitesByKeyWord(String siteType, String key){
+	public List<Site> fetchSitesType(String siteType){
+		List<Site> sites = new ArrayList<Site>();
+		
+		OperatorSQL sqlIterator = new OperatorSQL();
+		
+		String sqlQuery = "Select * from site where type_site='" + siteType + "'";
+		sqlIterator.setQuery(sqlQuery);
+		sqlIterator.init();
+		
+		try {
+			while(sqlIterator.next()) {
+				Site site = getSiteById(Integer.parseInt(sqlIterator.getString("id_site")));
+				sites.add(site);
+			}
+		
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}	
+		
+		return sites;
+	}
+	
+	public List<Site> fetchSitesMixed(String siteType, String key){
 		List<Site> result = new ArrayList<Site>();
 		
-		String query = (siteType == null || siteType.isEmpty()) ? 
-					   "select name_site from site with " + key :
-					   "select name_site from site where type_site = '" + siteType + "' with " + key;
+		String query = "select name_site from site where type_site = '" + siteType + "' with " + key;
 		
 		NestedLoopJoin mixedIterator = new NestedLoopJoin();
 		
@@ -381,6 +401,17 @@ public class Persistance{
 		}
 		
 		return result;
+	}
+	
+	public List<Site> getSitesByKeyWord(String siteType, String key){
+		if(!key.isEmpty()) {
+			return fetchSitesMixed(siteType, key);
+		} else {
+			if(!siteType.isEmpty())
+				return fetchSitesType(siteType);
+			else
+				return getAllSites();
+		}
 	}
 	
 	public Station getStationById(int stationId){
