@@ -8,7 +8,7 @@ public class LuceneConstants {
 	
 	public static final String FILE_PATH = "filepath";
 	
-	private static final String PROJECT_LOCAL_PATH = "C:\\Users\\hakim\\git\\AGP";
+	private static final String PROJECT_LOCAL_PATH = "C:\\Users\\ayadi\\eclipse-workspace\\AGP";
 	
 	//maximum number of responses returned
 	public static final int MAX_SEARCH = 10;

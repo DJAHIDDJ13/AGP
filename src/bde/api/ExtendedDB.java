@@ -12,7 +12,6 @@ import bde.lucene.persistence.TextFileFilter;
 
 public class ExtendedDB {
 	
-	//TODO injection here
 	private String tableName;
 	private String tableKey;
 	private String dataDirectory;
@@ -46,6 +45,7 @@ public class ExtendedDB {
 	
 	public OperatorSQL SQLQuery(String query) {
 		OperatorSQL sqlIterator = new OperatorSQL();
+		
 		sqlIterator.setQuery(query);
 		sqlIterator.init();
 		

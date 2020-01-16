@@ -21,17 +21,13 @@ public class LucenePersistence {
 	private Indexer indexer;
 	private static Searcher searcher;
 	
+	public LucenePersistence() {
+		
+	}
+	
 	public LucenePersistence(String indexDir, String dataDir) {
 		LucenePersistence.indexDir = indexDir;
 		this.dataDir = dataDir;
-		
-		deletIndexFile();
-		
-		try {
-			this.createIndex();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 	
 	public void dataInit() {
@@ -44,7 +40,6 @@ public class LucenePersistence {
 	}
 	
 	public void createIndex() throws IOException {
-		System.out.println(indexDir);
 		indexer = new Indexer(indexDir);
 		
 		int numIndexed;
@@ -111,5 +106,21 @@ public class LucenePersistence {
 
 	public void setSearcher(Searcher searcher) {
 		LucenePersistence.searcher = searcher;
+	}
+
+	public static String getIndexDir() {
+		return indexDir;
+	}
+
+	public static void setIndexDir(String indexDir) {
+		LucenePersistence.indexDir = indexDir;
+	}
+
+	public String getDataDir() {
+		return dataDir;
+	}
+
+	public void setDataDir(String dataDir) {
+		this.dataDir = dataDir;
 	}
 }
