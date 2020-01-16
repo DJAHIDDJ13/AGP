@@ -14,6 +14,8 @@ public abstract class Site {
 	
 	private int duration; // in seconds
 	
+	private float pertinance;
+	
 	public Site() {
 		
 	}
@@ -61,7 +63,22 @@ public abstract class Site {
 		this.station = station;
 	}
 
+	public float getPertinance() {
+		return pertinance;
+	}
+	
+	public void setPertinance(float pertinance) {
+		this.pertinance = pertinance;
+	}
+
+	public void setPosition(Position position) {
+		this.position = position;
+	}
+
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
+
 	public abstract boolean isHistoricSite();
 	public abstract boolean isActivitySite();
-
 }

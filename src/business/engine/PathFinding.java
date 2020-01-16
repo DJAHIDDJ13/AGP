@@ -19,12 +19,20 @@ public class PathFinding {
 
 	private Transport transport;
 
-	Graph transport_graph;
+	private Graph transport_graph;
 	
 	// routes graph 
 	public PathFinding(Transport transport) {
 		this.transport = transport;
 		buildTransportGraph();
+	}
+	
+	public Transport getTransport() {
+		return transport;
+	}
+
+	public void setTransport(Transport transport) {
+		this.transport = transport;
 	}
 
 	// TODO: This needs to change; not good
