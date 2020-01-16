@@ -136,6 +136,7 @@ public class BusPathFindingTest {
 		
 		ArrayList<Excursion> e = pf.getExcursions(hotel, sites);
 		System.out.print(e);
+		assertNotNull(e);
 	}
 	
 }
