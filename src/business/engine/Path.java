@@ -1,6 +1,7 @@
 package business.engine;
 
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ListIterator;
@@ -10,7 +11,7 @@ import business.transport.Station;
 
 public class Path {
 	private List<PathEntry> path;
-	private LocalTime start_time = LocalTime.parse("08:00:00");
+	private LocalTime start_time;
 	
 	public Path() {
 		path = new ArrayList<PathEntry>();
@@ -57,13 +58,14 @@ public class Path {
 	}
 
 	// in seconds
-	public int getPathDuration() {
+	public int getPathDuration(LocalTime start_time2) {
+		this.start_time = start_time2;
 		int duration = 0;
 		ListIterator<PathEntry> iter = path.listIterator();
 		
 		if(!iter.hasNext()) return 0;
 		PathEntry prev = iter.next();
-		
+
 		if(!iter.hasNext()) return 0;
 		PathEntry cur = iter.next();
 		
@@ -87,29 +89,30 @@ public class Path {
 		
 		ListIterator<PathEntry> iter = path.listIterator();
 		PathEntry cur, next;
-		
+
 		if(!iter.hasNext()) return "Empty path!\n";
 		cur = iter.next();
 
 		if(!iter.hasNext()) return "Path only has one station\n";
 		next = iter.next();
-		
-		boolean routeChanged = true;
+
 		LocalTime cur_time = start_time;
+		res += "START TIME: "+ start_time + "\n";
+		res += "[" + cur_time.format(DateTimeFormatter.ofPattern("HH:mm")) + "] ";
+		res += "Station " + cur.getStation();
+		res += ": line " + cur.getRoute();
+		res += "\n";
 		while(iter.hasNext()) {
-			res += "[" + cur_time + "] ";
-			res += "Station: " + cur.getStation();
-			if(routeChanged) {
-				res += "; Take line " + cur.getRoute();
-			}
-			res += "\n";
 			cur_time = cur_time.plusSeconds(cur.getDurationFrom(next));
-			
+			res += "[" + cur_time.format(DateTimeFormatter.ofPattern("HH:mm")) + "] ";
+			res += "Station " + next.getStation();
+			res += ": line " + next.getRoute();
+			res += "\n";
+
 			cur = next;
 			next = iter.next();
-			routeChanged = cur.getRoute() != next.getRoute();
 		}
-		res += "[" + cur_time + "] " + "Station: " + cur.getStation() + " Arrival";
+		res += "[" + cur_time + "] " + "Station " + next.getStation() + ": You have arrived!\n";
 		return res;
 	}
 
