@@ -27,26 +27,20 @@ public class SearchBean implements Serializable {
 	
 	private TripSimulation trip = (TripSimulation) SpringIoC.getBean("tripSimulation");
 	
-	public SearchBean()
-	{
+	public SearchBean() {
 		
 	}
 
-	public String findHotelsByRating()
-	{		
-		List<String> hotelsName =  trip.getHotelsNamesByRating(rating);
-				
+	public String findHotelsByRating() {		
+		List<String> hotelsName =  trip.getHotelsNamesByRating(rating);	
 		this.setHotelsName(hotelsName);
 		return "hotelResult";
 	}
 	
 	
-	public String findSitesNames()
-	{	
+	public String findSitesNames() {	
 		List<String> sitesNames = trip.fetchSites(siteType, searchQuery);
-	
 		this.setSitesName(sitesNames);
-		
 		return "sitesResult";
 	}
 
@@ -82,13 +76,11 @@ public class SearchBean implements Serializable {
 		this.sitesName = sitesName;
 	}
 
-	public void setRating(String r)
-	{
+	public void setRating(String r) {
 		this.rating = r;
 	}
 
-	public String getRating()
-	{
+	public String getRating() {
 		return rating;
 	}
 
