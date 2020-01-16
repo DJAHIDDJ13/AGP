@@ -17,6 +17,7 @@ import business.transport.BoatRoute;
 import business.transport.BusRoute;
 import business.transport.Route;
 import business.transport.Station;
+import business.transport.Transport;
 
 public class Persistance{
 	
@@ -32,6 +33,15 @@ public class Persistance{
 		
 	}
 	
+	public Transport getTransport() {
+		HashMap<Integer, Station> stations = getAllStations();
+		HashMap<Integer, Route> routes = getAllRoutes();
+
+		Transport transport = new Transport(stations, routes);
+		
+		return transport;
+	}
+	
 	public List<Island> getAllIsland() {
 		List<Island> islands = new ArrayList<Island>();
 		
@@ -44,16 +54,16 @@ public class Persistance{
 				Island island = getIslandById(islandId); 
 				islands.add(island);
 			}
-			return islands; 
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
 		
-		return null; 
+		return islands;  
 	}
 	
 	public Island getIslandById(int islandId) {
+		Island island = null;
 		sqlIterator.setQuery("select * from  island where id_island=" + islandId);
 		sqlIterator.init();
 		
@@ -64,12 +74,12 @@ public class Persistance{
 			
 			HashMap<Integer, Hotel> hotels = getHotelsByIslandId(islandId); 
 			HashMap<Integer, Site> sites = getSitesByIslandId(islandId); 
-			return new Island(islandId, sqlIterator.getString("name_island"),hotels, sites ); 
+			island = new Island(islandId, sqlIterator.getString("name_island"),hotels, sites); 
 				
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
-		return null; 
+		return island; 
 	}
 	
 	public Hotel getHotelById(int hotelId) {		
@@ -92,6 +102,24 @@ public class Persistance{
 		return hotel; 
 	}
 	
+	public List<Hotel> getAllHotels() {		
+		List<Hotel> hotels = new ArrayList<Hotel>();
+		
+		sqlIterator.setQuery("select id_hotel from hotel");
+		sqlIterator.init();
+		
+		try {
+			while(sqlIterator.next()) {
+				int hotelId = sqlIterator.getInt("id_hotel"); 
+				Hotel hotel = getHotelById(hotelId); 
+				hotels.add(hotel);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return hotels; 
+	}
 	
 	public HashMap<Integer, Hotel> getHotelsByIslandId(int islandId){
 		HashMap<Integer, Hotel> hotels = new HashMap<Integer, Hotel>();
@@ -271,6 +299,29 @@ public class Persistance{
 				e.printStackTrace();
 			}
 		}	
+		return result;
+	}
+	
+	public List<Site> getSitesByKeyWord(String siteType, String key){
+		List<Site> result = new ArrayList<Site>();
+		
+		String query = (siteType == null || siteType.isEmpty()) ? 
+					   "select name_site from site with " + key :
+					   "select name_site from site where type_site = '" + siteType + "' with " + key;
+		
+		mixedIterator.setQuery(query);
+		mixedIterator.init();
+		
+		while(mixedIterator.next()) {
+			try {
+				Site site = getSiteById(Integer.parseInt(mixedIterator.getString(1)));
+				site.setPertinance(Float.parseFloat(mixedIterator.getString(2)));
+				result.add(site);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		
 		return result;
 	}
 	
