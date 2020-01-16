@@ -185,7 +185,7 @@ public class Persistance{
 		else if(!beach.isEmpty() && ranting.isEmpty()) {
 			sqlQuery = "select * from hotel where beach = '" + beach + "'";
 		}
-		System.out.println(sqlQuery);
+
 		sqlIterator.setQuery(sqlQuery);
 		sqlIterator.init();
 		

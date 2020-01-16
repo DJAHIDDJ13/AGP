@@ -1,4 +1,4 @@
-package tests;
+package tests.test;
 
 import bde.api.ExtendedDB;
 import bde.iterator.Iterator;

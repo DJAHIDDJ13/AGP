@@ -1,4 +1,4 @@
-package tests;
+package tests.test;
 
 import java.io.*;
 import java.nio.file.*;
