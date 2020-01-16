@@ -43,7 +43,8 @@ public class IndexedJoin implements Iterator{
 				String id = LuceneIterator.getString(0);
 				String query = injectIdToQuery(id);
 				
-				OperatorSQL SQLIterator = new OperatorSQL(query);
+				OperatorSQL SQLIterator = new OperatorSQL();
+				SQLIterator.setQuery(query);
 				SQLIterator.init();
 				if(SQLIterator.next()) {
 					pertinance = LuceneIterator.getString(1);

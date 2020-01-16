@@ -23,9 +23,8 @@ public class Persistance{
 	private OperatorSQL sqlIterator;
 	private NestedLoopJoin mixedIterator;
 	
+
 	public Persistance() {
-		sqlIterator = new OperatorSQL();
-		mixedIterator = new NestedLoopJoin();
 	}
 	
 	public void dataInit() {
@@ -311,4 +310,21 @@ public class Persistance{
 		} 
 		return position; 
 	}
+
+	public OperatorSQL getSqlIterator() {
+		return sqlIterator;
+	}
+
+	public void setSqlIterator(OperatorSQL sqlIterator) {
+		this.sqlIterator = sqlIterator;
+	}
+	
+	public NestedLoopJoin getMixedIterator() {
+		return mixedIterator;
+	}
+
+	public void setMixedIterator(NestedLoopJoin mixedIterator) {
+		this.mixedIterator = mixedIterator;
+	}
+
 }

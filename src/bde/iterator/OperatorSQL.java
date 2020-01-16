@@ -13,10 +13,7 @@ public class OperatorSQL implements Iterator{
 	private ResultSet head;
 	
 	private String query;
-	
-	public OperatorSQL(String query) {
-		this.query = query;
-	}
+
 	
 	public OperatorSQL() {
 

@@ -12,20 +12,18 @@ public class NestedLoopJoin implements Iterator{
 	private OperatorLucene LuceneIterator;
 	
 	private String SQLQuery;
+
 	private String LuceneQuery;
+	
 	
 	public NestedLoopJoin() {
 		
 	}
-	
-	public NestedLoopJoin(String sQLQuery, String luceneQuery) {
-		SQLQuery = sQLQuery;
-		LuceneQuery = luceneQuery;
-	}
 
 	@Override
 	public void init() {
-		SQLIterator = new OperatorSQL(SQLQuery);
+		SQLIterator = new OperatorSQL();
+		SQLIterator.setQuery(SQLQuery);
 		LuceneIterator = new OperatorLucene(LuceneQuery);
 		
 		SQLIterator.init();
@@ -124,4 +122,21 @@ public class NestedLoopJoin implements Iterator{
 	public String getString(int columnIndex) throws Exception {
 		return head.getColumnAt(columnIndex);
 	}
+	
+	public String getSQLQuery() {
+		return SQLQuery;
+	}
+
+	public void setSQLQuery(String sQLQuery) {
+		SQLQuery = sQLQuery;
+	}
+
+	public String getLuceneQuery() {
+		return LuceneQuery;
+	}
+
+	public void setLuceneQuery(String luceneQuery) {
+		LuceneQuery = luceneQuery;
+	}
+
 }

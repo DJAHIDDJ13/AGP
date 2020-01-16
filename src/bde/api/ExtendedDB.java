@@ -45,8 +45,8 @@ public class ExtendedDB {
 	}
 	
 	public OperatorSQL SQLQuery(String query) {
-		OperatorSQL sqlIterator = new OperatorSQL(query);
-		
+		OperatorSQL sqlIterator = new OperatorSQL();
+		sqlIterator.setQuery(query);
 		sqlIterator.init();
 		
 		return sqlIterator;
