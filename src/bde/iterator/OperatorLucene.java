@@ -35,13 +35,17 @@ public class OperatorLucene implements Iterator{
 
 	@Override
 	public boolean next() {
-		Node next = head.getNext();
-		if(next == null) {
+		if (head != null) {
+			Node next = head.getNext();
+			if(next == null) {
+				return false;
+			}
+			else {
+				head = next;
+				return true;
+			}
+		} else {
 			return false;
-		}
-		else {
-			head = next;
-			return true;
 		}
 	}
 
@@ -72,13 +76,14 @@ public class OperatorLucene implements Iterator{
 	
 	public Node exists(String id) {
 		Node exists = null;
-		Node current = head.getNext();
-		
-		while(current != null && exists == null) {
-			exists = (current.getData()[0].equals(id)) ? current : null;
-			current = current.getNext();
+		if (head != null) {
+			Node current = head.getNext();
+			
+			while(current != null && exists == null) {
+				exists = (current.getData()[0].equals(id)) ? current : null;
+				current = current.getNext();
+			}			
 		}
-		
 		return exists;
 	}
 }
