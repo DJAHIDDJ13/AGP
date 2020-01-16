@@ -15,23 +15,23 @@ import bde.lucene.core.Searcher;
 
 public class LucenePersistence {
 
-	private static final String indexDir = LuceneConstants.INDEX_FILE;
-	private static final String dataDir = LuceneConstants.DATA_FILE;
+	private static String indexDir = LuceneConstants.INDEX_FILE;
+	private String dataDir = LuceneConstants.DATA_FILE;
 	
 	private Indexer indexer;
 	private static Searcher searcher;
 	
 	public LucenePersistence() {
-		
-	}
-	
-	public LucenePersistence(String indexDir, String dataDir) {
-		
 		try {
 			this.createIndex();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}	
+	}
+	
+	public LucenePersistence(String indexDir, String dataDir) {
+		LucenePersistence.indexDir = indexDir;
+		this.dataDir = dataDir;
 	}
 	
 	public void dataInit() {
@@ -44,6 +44,7 @@ public class LucenePersistence {
 	}
 	
 	public void createIndex() throws IOException {
+		System.out.println(indexDir);
 		indexer = new Indexer(indexDir);
 		
 		int numIndexed;

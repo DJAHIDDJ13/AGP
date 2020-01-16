@@ -82,6 +82,6 @@ public abstract class Route {
 	}
 	
 	public String toString() {
-		return "" + id + " prix " + ticketPrice + "$";
+		return "" + id + " (ticket price " + ticketPrice + "$)";
 	}
 }

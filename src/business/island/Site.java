@@ -63,5 +63,9 @@ public abstract class Site {
 
 	public abstract boolean isHistoricSite();
 	public abstract boolean isActivitySite();
+	@Override
+	public String toString() {
+		return name;
+	}
 
 }
