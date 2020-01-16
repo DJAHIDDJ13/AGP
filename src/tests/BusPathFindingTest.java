@@ -6,7 +6,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Test;
@@ -128,7 +127,7 @@ public class BusPathFindingTest {
 		Site site1 = new ActivitySite(1, "Site1", new Position(0, 2), transport.getStationById(2));
 		Site site2 = new ActivitySite(2, "Site2", new Position(1, 3), transport.getStationById(3));
 
-		LinkedList<Site> sites = new LinkedList<Site>(Arrays.asList(site1, site2));
+		List<Site> sites = new ArrayList<Site>(Arrays.asList(site1, site2));
 
 		PathFinding pf = new PathFinding(transport);
 		

@@ -37,13 +37,16 @@ public class TripSimulation {
 		return persister.fetchSites(siteType, key);
 	}
 	
-	public Trip generateTrips(int n, String keyWords, float budget, int duration, int intensity) {
-		Trip trip = null;
+	public List<Trip> generateTrips(int n, String keyWords, float budget, int duration, int intensity) {
+		List<Trip> trips = new ArrayList<Trip>();
 		List<Hotel> hotels = hotelsToVisit(intensity, budget, duration, n);
 		for(Hotel hotel: hotels) {
 			List<Site> sites = sitesToVisitByHotel(hotel, budget, duration, keyWords);
+			List<Excursion> excursions = pathFinding.getExcursions(hotel, sites);
+			Trip trip = new Trip(hotel, excursions);
+			trips.add(trip);
 		}
-		return trip;
+		return trips;
 	}
 		
 	public List<Site> sitesToVisitByHotel(Hotel hotel, float budget, int duration, String keyWords) {

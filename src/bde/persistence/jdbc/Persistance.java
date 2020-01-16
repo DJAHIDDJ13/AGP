@@ -7,7 +7,6 @@ import java.util.List;
 
 import bde.iterator.NestedLoopJoin;
 import bde.iterator.OperatorSQL;
-import business.engine.PathFinding;
 import business.island.ActivitySite;
 import business.island.HistoricSite;
 import business.island.Hotel;

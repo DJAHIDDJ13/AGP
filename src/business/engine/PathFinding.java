@@ -5,7 +5,6 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -139,7 +138,7 @@ public class PathFinding {
 	
 
 	// TODO: move this somewhere else;  divide this into multiple methods
-	public Excursion getExcursion(Hotel hotel, LinkedList<Site> sites) {
+	public Excursion getExcursion(Hotel hotel, List<Site> sites) {
 		List<Site> res = new ArrayList<Site>();
 		List<Path> paths = new ArrayList<Path>();
 
@@ -153,7 +152,7 @@ public class PathFinding {
 
 		// randomly select a site
 		// Collections.shuffle(sites);
-		Site cur = sites.pop();
+		Site cur = sites.get(0);
 
 		//res.add(cur);
 		Path p = findCheapestPath(hotelStation, cur.getStation());
@@ -222,7 +221,7 @@ public class PathFinding {
 		return new Excursion(1, res, paths);
 	}
 	
-	public ArrayList<Excursion> getExcursions(Hotel hotel, LinkedList<Site> sites) {
+	public ArrayList<Excursion> getExcursions(Hotel hotel, List<Site> sites) {
 		ArrayList<Excursion> res = new ArrayList<Excursion>();
 		while(sites.size() != 0) {
 			res.add(getExcursion(hotel, sites));

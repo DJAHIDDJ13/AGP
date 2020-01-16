@@ -13,9 +13,10 @@ class SiteComparator implements Comparator<Site> {
 	}
     
 	public int compare(Site a, Site b) {
-		float value1 = a.getStation().distanceFrom(hotel.getStation());
-		float value2 = b.getStation().distanceFrom(hotel.getStation());
+		int l = 100;
+		float score1 = (l * a.getPertinance()) / a.getStation().distanceFrom(hotel.getStation());
+		float score2 = (l * b.getPertinance()) / b.getStation().distanceFrom(hotel.getStation());
 		
-		return value1 < value2 ? 1 : -1;
+		return score1 > score2 ? 1: -1;
     }
 }
