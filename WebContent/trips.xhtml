@@ -9,7 +9,6 @@
     <h:head>
         <title>Offers Page</title>
          <h:outputStylesheet library="css" name="style.css"/>
-          <h:outputStylesheet library="css" name="searchStyle.css"/>
           <style>
           	.navbar{
 				height: 100px
@@ -20,6 +19,12 @@
 			.container .brand{
 				color: black;
 			}	
+			ul {
+			    list-style: square;
+			}
+			.welcome{
+				color: black;
+			}
           </style>
     </h:head>
     <h:body>
@@ -29,68 +34,60 @@
 		  <ui:include src="/navbar.xhtml" />
 		</ui:insert>
 
+	<div class="trip">
+		<div class="container">
+			<fieldset class="field">
+				<h:panelGroup>
+					<legend>Veuillez saisir vos  critères de voyage:</legend>
+					<h:form>
+					 		<h:outputLabel class="text" for="hotelName"> Nom d'hotel</h:outputLabel>
+					        <h:inputText  id="hotelName" class="champ" value="#{tripsBean.hotelName}" />  <br/>        
+					        
+					 		<h:outputLabel class="text" for="density">Densité:</h:outputLabel>
+					        <h:inputText  id="density" class="champ" value="#{tripsBean.density}" />  <br/>
+					        
+					    
+					 		<h:outputLabel class="text" for="maxPrice">Maximum Prix:</h:outputLabel>
+					        <h:inputText  id="maxPrice" class="champ" value="#{tripsBean.maximumPrice}" />  <br/>
+			
+					 		<h:outputLabel class="text" for="daysCount">Nombre de jours : </h:outputLabel>
+					        <h:inputText  id="daysCount" class="champ" value="#{tripsBean.daysCount}" />  <br/>		
+					        <br/> <br />
+					     
+					        <h:commandLink class="action-button" action="#{tripsBean.fetchOffers}"  value="Trouver l'hotel"/> 
+					        					        
+					</h:form>			
+					</h:panelGroup>
+			</fieldset>
+		</div>
+	</div> 
 
- <h:outputStylesheet library="css" name="resultStyle.css"/>
- 
-  
-	<fieldset>
-	
-
-		<h:panelGroup  class="result-container">
-		<legend>Veuillez saisir vos  critères de voyage svp  :</legend>
-	<h:form>
-
-		 		<h:outputLabel for="hotelName"> Nom d'hotel</h:outputLabel>
-		        <h:inputText  id="hotelName" class="search-bar" value="#{tripsBean.hotelName}" />  <br/>
-		        
-		        
-		 		<h:outputLabel for="density">Densité:</h:outputLabel>
-		        <h:inputText  id="density" class="search-bar" value="#{tripsBean.density}" />  <br/>
-		        
-		        
-		 		<h:outputLabel for="maxPrice">Maximum Prix:</h:outputLabel>
-		        <h:inputText  id="maxPrice" class="search-bar" value="#{tripsBean.maximumPrice}" />  <br/>
-
-		 		<h:outputLabel for="daysCount">Nombre de jours : </h:outputLabel>
-		        <h:inputText  id="daysCount" class="search-bar" value="#{tripsBean.daysCount}" />  <br/>		
-		        
-		        <h:commandLink  class="action-button" action="#{tripsBean.fetchOffers}"  value="Trouver l'hotel"/>
-		        
-	</h:form>			
-		</h:panelGroup>
-		
-		
-	</fieldset>
-	
-	
-  
-  <h2>Voyages suggérer : </h2>
  
  		<h:panelGroup rendered="#{tripsBean.trips == null}" >
- 		     	<h2  > Malheureusement , Aucun offre trouvé! merci de modifier votre crritere </h2>
+ 		     	<h2> Malheureusement , Aucun offre trouvée ! merci de modifier vos critères </h2>
  		</h:panelGroup>
-     	
- 		<h:panelGroup rendered="#{tripsBean.trips != null }" >
- 		
-		     	<h:panelGroup  class="trip-container" layout="block"> 
-		     	
-		     	
-		     	<ui:repeat var="trip" value="#{tripsBean.trips}" >
-							  <li> Hotel  : #{trip.hotel.name}</li>   <br />
-							  <li> Prix  : #{trip.price}</li>   <br />
-							  <li> Nombre  de jours  : #{trip.daysCount}</li>   <br />
-							  <li> Sites inclus  :</li>   <br />
-							       		<ui:repeat var="excur" value="#{trip.excursion}" >  
-							       				<ui:repeat var="site" value="#{excur.site}" >#{site.name}, </ui:repeat>
-							       		</ui:repeat>
-							       		<br />
-						  <hr/>
-
-						</ui:repeat>
-						  
-		     	</h:panelGroup>
-			     		
-    	 </h:panelGroup>
+     	 <div class="container">
+		          <h:panelGroup rendered="#{tripsBean.trips != null }" >
+		          			<h2>Les offres suggérées</h2>
+							<h:panelGroup> 
+								 <hr/>
+						     	<ui:repeat var="trip" value="#{tripsBean.trips}" >
+						     	<div>
+						     	</div>
+											  <li> Hotel  : #{trip.hotel.name}</li>   <br />
+											  <li> Prix  : #{trip.price}</li>   <br />
+											  <li> Nombre  de jours  : #{trip.daysCount}</li>   <br />
+											  <li> Sites inclus  :</li>   <br />
+											       		<ui:repeat var="excur" value="#{trip.excursion}" >  
+											       				<ui:repeat var="site" value="#{excur.site}" >#{site.name}, </ui:repeat>
+											       		</ui:repeat>
+											       		<br />
+										  <hr/>
+								</ui:repeat>	  
+						     	</h:panelGroup>	
+				    </h:panelGroup>	   
+	       </div>
+    	 	   	 
 <h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />	
 <h:outputScript name="js/script.js" />    </h:body>
 </html>

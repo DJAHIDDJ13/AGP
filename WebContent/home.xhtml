@@ -7,6 +7,17 @@
 <h:head>
 		<title>Travel Agency</title>
 	     <h:outputStylesheet library="css" name="style.css"/>
+	     <style>
+	     	.welcome{
+				color: white;
+				text-align: center; 
+				width: 100%
+			}
+			.welcome span{
+			font-weight: bold; 
+			color:#1abc9c; 
+			}
+	     </style>
 </h:head>
 <h:body>
 
@@ -24,7 +35,7 @@
  
  <div class=" container">
  			<div class="welcome">
- 				<p>Bienvenue Dans Notre Agence De Voyage</p>
+ 				<p>Bienvenue Dans <span>Ile De Seychelle</span></p>
  			</div>
 		</div>
 <!-- 
@@ -33,7 +44,7 @@
 
 	
 <h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />	
-      <h:outputScript name="js/script.js" />
+<h:outputScript name="js/script.js" />
 
 <h:outputScript target="head">
     $ = jQuery;

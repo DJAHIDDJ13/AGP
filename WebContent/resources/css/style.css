@@ -213,7 +213,7 @@ select{
 }
 
 
-.search .form-search .action-button  {
+.action-button  {
     padding: 10px;
     width: 200px;
     border: 1px s;
@@ -233,3 +233,32 @@ select{
     padding: 20px 30px;
 }
 /* End search  */
+
+
+/* start page trip page*/ 
+.trip .champ{
+	margin-left: 10px;
+	margin-top: 10px;
+    border-radius : 3px;
+    width: 100px;
+    font-size: 20px;
+    border-radius: 10px;
+    position: relative;
+    top: 2px;
+    height: 20px;
+    line-height: 35px
+}
+
+.trip .text{
+	width: 150px; 
+	display:inline-block;
+}
+.trip .field{
+	width: 40%; 
+	height:250px;
+	padding:30px;
+	padding-top: 20px;
+	margin: 0 auto; 
+	margin-top:40px;
+	text-align: center;
+}

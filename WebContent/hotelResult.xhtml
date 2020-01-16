@@ -1,11 +1,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:ui="http://java.sun.com/jsf/facelets">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<title>Search Result</title>
-	<h:outputStylesheet library="font-awesome" name="css/font-awesome.min.css" />
     <h:outputStylesheet library="css" name="style.css"/>
+           <!-- <h:outputStylesheet library="fontawesome" name="css/fontawesome.css"/> -->
+                <h:outputStylesheet library="font-awesome" name="css/font-awesome.css"/>
+            
+    
      <style>
           	.navbar{
 				height: 100px
@@ -16,7 +22,15 @@
 			.container .brand{
 				color: black;
 			}	
+			    i {
+        margin-right: 10px;
+    }
+ 
+    .ui-grid-col-3 {
+        padding: 4px 10px;
+    }
           </style>
+
 </h:head>
 
 <h:body>
@@ -30,10 +44,10 @@
           <fieldset>
 			<h:panelGroup  rendered="#{searchBean.hotelsName != null}">
 			<legend>Résultats de la recherche des hôtels</legend>
+        <div class="ui-grid-col-3"><i class="fa fa-fw fa-venus"></i>fa-venus</div>
 				<ol>
 					<ui:repeat var="hn" value="#{searchBean.hotelsName}" >
-					  <li> #{hn} </li><br />
-					  <i class="fas fa-star"></i>
+					   #{hn} <br />
 					</ui:repeat>
 				</ol>
 			</h:panelGroup>
