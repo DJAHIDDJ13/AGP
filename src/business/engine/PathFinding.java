@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+import java.util.Map;
 
 import business.island.Hotel;
 import business.island.Site;
@@ -85,8 +86,21 @@ public class PathFinding {
 		PathEntry E = PathEntry.getEntry(new Station(-2, null), null); // dummy entry
 		
 		HashMap<Station, List<Route>> routesByStation = transport.buildRoutesByStation();
-		List<Route> strtStation = routesByStation.get(A); // get all the lines that pass by the start Station
-		List<Route> endStation = routesByStation.get(B); // get all the lines that pass by the end Station
+		List<Route> strtStation = null;
+		List<Route> endStation = null;
+		
+		for(Map.Entry<Station, List<Route>> entry : routesByStation.entrySet()) {
+		    Station key = entry.getKey();
+		    List<Route> value = entry.getValue();
+		    
+		    // get all the lines that pass by the start Station
+		    if (key.getId() == A.getId())
+		    	strtStation = value;
+		 // get all the lines that pass by the end Station
+		    if (key.getId() == B.getId())
+		    	endStation = value;
+		}
+		
 		// Adding the "S" node
 		if(strtStation != null) {
 			for	(Route r: strtStation) {

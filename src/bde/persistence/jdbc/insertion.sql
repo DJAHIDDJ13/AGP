@@ -492,22 +492,24 @@ INSERT INTO s_belongs_to_l VALUES (163, 76, 23, 0);
 
 # LINE BUS(8)
 INSERT INTO s_belongs_to_l VALUES (64, 1, 8, 0);
-INSERT INTO s_belongs_to_l VALUES (65, 24, 8, 1);
-INSERT INTO s_belongs_to_l VALUES (66, 25, 8, 2);
-INSERT INTO s_belongs_to_l VALUES (67, 26, 8, 3);
-INSERT INTO s_belongs_to_l VALUES (68, 32, 8, 4);
-INSERT INTO s_belongs_to_l VALUES (69, 31, 8, 5);
-INSERT INTO s_belongs_to_l VALUES (70, 2, 8, 6);
-INSERT INTO s_belongs_to_l VALUES (71, 17, 8, 7);
-INSERT INTO s_belongs_to_l VALUES (72, 29, 8, 8);
-INSERT INTO s_belongs_to_l VALUES (73, 19, 8, 9);
-INSERT INTO s_belongs_to_l VALUES (74, 21, 8, 10);
-INSERT INTO s_belongs_to_l VALUES (75, 18, 8, 11);
-INSERT INTO s_belongs_to_l VALUES (76, 22, 8, 12);
-INSERT INTO s_belongs_to_l VALUES (77, 20, 8, 13);
+INSERT INTO s_belongs_to_l VALUES (201, 23, 8, 1);
+INSERT INTO s_belongs_to_l VALUES (65, 24, 8, 2);
+INSERT INTO s_belongs_to_l VALUES (66, 25, 8, 3);
+INSERT INTO s_belongs_to_l VALUES (67, 26, 8, 4);
+INSERT INTO s_belongs_to_l VALUES (68, 32, 8, 5);
+INSERT INTO s_belongs_to_l VALUES (69, 31, 8, 6);
+INSERT INTO s_belongs_to_l VALUES (70, 2, 8, 7);
+INSERT INTO s_belongs_to_l VALUES (71, 17, 8, 8);
+INSERT INTO s_belongs_to_l VALUES (72, 29, 8, 9);
+INSERT INTO s_belongs_to_l VALUES (73, 19, 8, 10);
+INSERT INTO s_belongs_to_l VALUES (74, 21, 8, 11);
+INSERT INTO s_belongs_to_l VALUES (75, 18, 8, 12);
+INSERT INTO s_belongs_to_l VALUES (76, 22, 8, 13);
+INSERT INTO s_belongs_to_l VALUES (77, 20, 8, 14);
 
 # LINE BUS(8bis) (24)
-INSERT INTO s_belongs_to_l VALUES (164, 1, 24, 13);
+INSERT INTO s_belongs_to_l VALUES (164, 1, 24, 14);
+INSERT INTO s_belongs_to_l VALUES (202, 23, 24, 13);
 INSERT INTO s_belongs_to_l VALUES (165, 24, 24, 12);
 INSERT INTO s_belongs_to_l VALUES (166, 25, 24, 11);
 INSERT INTO s_belongs_to_l VALUES (167, 26, 24, 10);
