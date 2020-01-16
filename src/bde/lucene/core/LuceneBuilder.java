@@ -11,10 +11,10 @@ import bde.lucene.persistence.LuceneConstants;
 
 public class LuceneBuilder {
 	
-	private static final String filePathLuceneData = LuceneConstants.DATA_FILE;
+	private String filePathLuceneData;
 	
-	public LuceneBuilder() {
-		
+	public LuceneBuilder(String filePath) {
+		this.filePathLuceneData = filePath;
 		try {
 			this.createFiles();
 		} catch (IOException e) {
@@ -66,4 +66,13 @@ public class LuceneBuilder {
 		String FileStringContent = readFileDescription();
 		WriteFiles(FileStringContent);
 	}
+
+	public String getFilePathLuceneData() {
+		return filePathLuceneData;
+	}
+
+	public void setFilePathLuceneData(String filePathLuceneData) {
+		this.filePathLuceneData = filePathLuceneData;
+	}
+
 }

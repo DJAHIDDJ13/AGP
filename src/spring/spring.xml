@@ -15,7 +15,9 @@
 	</bean>
 
 
-	<bean id="lucenBuilder" class="bde.lucene.core.LuceneBuilder"/>
+	<bean id="lucenBuilder" class="bde.lucene.core.LuceneBuilder">
+		<constructor-arg name="filePath" value="C:\Users\Hakim\git\AGP\src\luceneSRC\data\"/>
+	</bean>
 	<bean id="lucenePersistence" class="bde.lucene.persistence.LucenePersistence"/>
 	<bean id="p" class="bde.persistence.jdbc.Persistance"/>
 
