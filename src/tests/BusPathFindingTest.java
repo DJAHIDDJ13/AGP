@@ -36,9 +36,7 @@ public class BusPathFindingTest {
 		transport = new Transport();
 	}
  	
-	public void initStations() {
-		// TODO: The id shouldn't be in the Station constructor ??
-		
+	public void initStations() {		
 		transport.addStation(0, new Station(0, new Position(0, 0)));
 		transport.addStation(1, new Station(1, new Position(0, (float)0.1)));
 		transport.addStation(2, new Station(2, new Position(0, (float)0.2)));

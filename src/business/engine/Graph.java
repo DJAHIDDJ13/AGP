@@ -17,7 +17,6 @@ public class Graph {
     private HashMap<PathEntry, List<Node>> adj;
     private int defaultPriorityQueueSize = 30;
     
-    // TODO: remove V
     public Graph() {
     	resetGraph();
     	this.adj = new HashMap<PathEntry, List<Node>>();

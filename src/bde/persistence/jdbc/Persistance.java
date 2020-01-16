@@ -60,6 +60,27 @@ public class Persistance{
 		return islands;  
 	}
 	
+	public List<Site> getAllSites() {
+		List<Site> sites = new ArrayList<Site>();
+		
+		OperatorSQL sqlIterator = new OperatorSQL();
+		sqlIterator.setQuery("select id_site from  site");
+		sqlIterator.init();
+		
+		try {
+			while(sqlIterator.next()) {
+				int siteID = sqlIterator.getInt("id_site"); 
+				Site site = getSiteById(siteID); 
+				sites.add(site);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		
+		return sites;  
+	}
+	
 	public Island getIslandById(int islandId) {
 		Island island = null;
 		

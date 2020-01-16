@@ -48,7 +48,6 @@ public class Path {
 		PathEntry cur = iter.next();
 		
 		while(iter.hasNext()) {
-			// TODO: check err
 			len += prev.getDistanceFrom(cur);
 			
 			prev = cur;

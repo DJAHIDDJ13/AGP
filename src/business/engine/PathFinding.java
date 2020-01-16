@@ -36,7 +36,6 @@ public class PathFinding {
 		this.transport = transport;
 	}
 
-	// TODO: This needs to change; not good
 	private void buildTransportGraph() {
 		 transport_graph = new Graph();
 
@@ -46,9 +45,8 @@ public class PathFinding {
 	    // connect all the consecutive route stations with a 0 weight node
 	    for	(Route route: routes) {
 	    	ListIterator<Station> stationRoutes = route.getStations().listIterator();
-	        if(!stationRoutes.hasNext()) continue;
-
-	        // TODO: sanity check
+	        
+	    	if(!stationRoutes.hasNext()) continue;
 	        Station src = stationRoutes.next();
 	        while(stationRoutes.hasNext()) {
 	            Station dst = stationRoutes.next();
@@ -122,8 +120,6 @@ public class PathFinding {
 			// remove last item added (which is the "E" node)
 		}
 		
-		// TODO: Use this on the resulting path
-		// TODO: change AbstractMap.SimpleEntry to something better
 		List<PathEntry> lst = transport_graph.getPath(S, E);
 
 		if(lst == null) {

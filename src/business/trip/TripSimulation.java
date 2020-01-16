@@ -2,6 +2,7 @@ package business.trip;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -46,6 +47,13 @@ public class TripSimulation {
 	
 	public List<Trip> generateTrips(int n, String keyWords, float budget, int duration, int intensity) {
 		List<Trip> trips = new ArrayList<Trip>();
+		Hotel hotel = persister.getHotelById(1);
+		LinkedList<Site> sites = new LinkedList<Site>(persister.getAllSites());
+		
+		List<Excursion> excursions = pathFinding.getExcursions(hotel, sites);
+		Trip trip = new Trip(hotel, excursions);
+
+/*
 		List<Hotel> hotels = hotelsToVisit(intensity, budget, duration, n);
 		for(Hotel hotel: hotels) {
 			List<Site> bdSites = persister.getSitesByKeyWord(null, keyWords);
@@ -57,6 +65,8 @@ public class TripSimulation {
 			Trip trip = new Trip(hotel, excursions);
 			trips.add(trip);
 		}
+*/
+		trips.add(trip);
 		return trips;
 	}
 	
