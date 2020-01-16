@@ -47,7 +47,6 @@ public class TripSimulation {
 		List<Trip> trips = new ArrayList<Trip>();
 		List<Hotel> hotels = hotelsToVisit(intensity, budget, duration, n);
 		for(Hotel hotel: hotels) {
-//			List<Site> sites = sitesToVisitByHotel(hotel, budget, duration, keyWords);
 			List<Site> bdSites = persister.getSitesByKeyWord(null, keyWords);
 			float budgetLeft = budget - hotel.getPricePerDay() * duration;
 			Collections.sort(bdSites, new SiteComparator(hotel));
@@ -59,15 +58,7 @@ public class TripSimulation {
 		}
 		return trips;
 	}
-		/*
-	public List<Site> sitesToVisitByHotel(Hotel hotel, float budget, int duration, String keyWords) {
-		List<Site> bdSites = persister.getSitesByKeyWord(null, keyWords);
-		float leftBudget = budget - hotel.getPricePerDay() * duration;
-		Collections.sort(bdSites, new SiteComparator(hotel));
-		
-		return sitesToVisit(leftBudget, bdSites);
-	}
-	*/
+	
 	public List<Hotel> hotelsToVisit(float intensity, float budget, int duration, int k){
 		List<Hotel> bdHotels = persister.getAllHotels();
 		
