@@ -22,6 +22,8 @@ public class SearchBean implements Serializable {
 	private List<String> sitesName;
 
 	private String searchQuery;
+	
+	private String searchBeach;
 
 	private String siteType;
 	
@@ -34,7 +36,7 @@ public class SearchBean implements Serializable {
 	}
 
 	public String findHotelsByRating() {		
-		List<String> hotelsName =  trip.getHotelsNamesByRating(rating);	
+		List<String> hotelsName =  trip.getHotelsNamesByRating(rating, searchBeach);	
 		this.setHotelsName(hotelsName);
 		return "hotelResult";
 	}
@@ -60,6 +62,14 @@ public class SearchBean implements Serializable {
 
 	public void setSiteType(String siteType) {
 		this.siteType = siteType;
+	}
+
+	public String getSearchBeach() {
+		return searchBeach;
+	}
+
+	public void setSearchBeach(String searchBeach) {
+		this.searchBeach = searchBeach;
 	}
 
 	public List<String> getHotelsName() {

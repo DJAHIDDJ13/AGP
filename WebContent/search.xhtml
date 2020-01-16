@@ -49,7 +49,8 @@
 				              <f:selectItem itemValue="3" itemLabel="3 etoile" />
 	     	                  <f:selectItem itemValue="4" itemLabel="4 etoile" />			   	                
 	     	                  <f:selectItem itemValue="5" itemLabel="5 etoile" />
-					      </h:selectOneMenu>     
+					      </h:selectOneMenu>
+						  <h:inputText class="search-bar" placeholder="mots-clés" value="#{searchBean.searchBeach}" /> 
 						  <h:commandLink  class="action-button" action="#{searchBean.findHotelsByRating}"  value="Trouver l'hotel"/>
 			          </h:form>
 			          <h3 >Recherche de sites touristiques :  </h3>  
