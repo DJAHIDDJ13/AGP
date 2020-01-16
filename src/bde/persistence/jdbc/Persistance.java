@@ -22,6 +22,7 @@ import business.transport.Transport;
 public class Persistance{
 	
 	public Persistance() {
+	
 	}
 	
 	public void dataInit() {

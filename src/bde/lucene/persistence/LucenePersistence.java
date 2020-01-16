@@ -25,6 +25,8 @@ public class LucenePersistence {
 		LucenePersistence.indexDir = indexDir;
 		this.dataDir = dataDir;
 		
+		deletIndexFile();
+		
 		try {
 			this.createIndex();
 		} catch (IOException e) {
@@ -53,10 +55,6 @@ public class LucenePersistence {
 		indexer.close();
 		
 		System.out.println(numIndexed+" File indexed, time taken: "+(endTime-startTime)+" ms");		
-	}
-	
-	public void createIndex(String data, String id) {
-		
 	}
 		   
 	public static OperatorLucene search(String searchQuery) throws IOException, ParseException {
