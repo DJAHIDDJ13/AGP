@@ -14,9 +14,16 @@
 	</bean>
 
 	<bean id="lucenBuilder" class="bde.lucene.core.LuceneBuilder">
-		<constructor-arg name="filePath" value="C:\Users\Hakim\git\AGP\src\luceneSRC\data"/>
+		<constructor-arg name="luceneDataPath" value="C:\Users\hakim\git\AGP\src\luceneSRC\data"/>
+		<constructor-arg name="descriptionPath" value="C:\Users\hakim\git\AGP\src\bde\persistence\jdbc\description.csv"/>
 	</bean>
-	<bean id="lucenePersistence" class="bde.lucene.persistence.LucenePersistence"/>
+	
+	<bean id="lucenePersistence" class="bde.lucene.persistence.LucenePersistence">
+		<constructor-arg name="indexDir" value="C:\Users\hakim\git\AGP\src\luceneSRC\index\"/>
+		<constructor-arg name="dataDir" value="C:\Users\hakim\git\AGP\src\luceneSRC\data\"/>
+	</bean>
+	
+	
 	<bean id="p" class="bde.persistence.jdbc.Persistance"/>
 
 </beans>

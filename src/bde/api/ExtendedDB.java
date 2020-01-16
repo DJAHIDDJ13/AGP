@@ -12,6 +12,7 @@ import bde.lucene.persistence.TextFileFilter;
 
 public class ExtendedDB {
 	
+	//TODO injection here
 	private String tableName;
 	private String tableKey;
 	private String dataDirectory;
@@ -25,7 +26,7 @@ public class ExtendedDB {
 		this.tableKey = tableKey;
 		this.dataDirectory = dataDirectory;
 		
-		builder = new LuceneBuilder(dataDirectory);
+		builder = new LuceneBuilder(LuceneConstants.DATA_FILE,LuceneConstants.DESCRIPTION_FILE);
 		try {
 			builder.createFiles();
 		} catch (IOException e) {
