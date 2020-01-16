@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -136,9 +137,9 @@ public class PathFinding {
 		return path;
 	}
 	
-
+/*
 	// TODO: move this somewhere else;  divide this into multiple methods
-	public Excursion getExcursion(Hotel hotel, List<Site> sites) {
+	public Excursion getExcursion(Hotel hotel, LinkedList<Site> sites) {
 		List<Site> res = new ArrayList<Site>();
 		List<Path> paths = new ArrayList<Path>();
 
@@ -152,7 +153,7 @@ public class PathFinding {
 
 		// randomly select a site
 		// Collections.shuffle(sites);
-		Site cur = sites.get(0);
+		Site cur = sites.pop();
 
 		//res.add(cur);
 		Path p = findCheapestPath(hotelStation, cur.getStation());
@@ -164,11 +165,11 @@ public class PathFinding {
 		Path prevBackPath = findCheapestPath(cur.getStation(), hotelStation);
 		prevBackPath.getPathDuration(start_time.plusSeconds(d));
 		do {
-			Path awayPath = null, backPath = null;
+			Path minAwayPath = null, minBackPath = null;
 			
 			Site minSite = null;
 			Duration minTime = Duration.ofSeconds(Long.MAX_VALUE);
-			
+			Duration minBackTime = Duration.ofSeconds(Long.MAX_VALUE);
 			// sanity check
 			if(sites.size() <= 0) {
 				paths.add(prevBackPath);
@@ -182,13 +183,13 @@ public class PathFinding {
 				Duration totalTime = Duration.ofSeconds(next.getDuration());
 
 				// path to the site
-				awayPath = findCheapestPath(cur.getStation(), next.getStation());
+				Path awayPath = findCheapestPath(cur.getStation(), next.getStation());
 				LocalTime newTime = start_time.plus(time);
 				int awayPathDuration = awayPath.getPathDuration(newTime);
 				totalTime = totalTime.plusSeconds(awayPathDuration);
 
 				// path back to hotel
-				backPath = findCheapestPath(next.getStation(), hotelStation);
+				Path backPath = findCheapestPath(next.getStation(), hotelStation);
 				newTime = start_time.plusSeconds(awayPathDuration).plus(time);
 				int backPathDuration = backPath.getPathDuration(newTime);
 				totalTime = totalTime.plusSeconds(backPathDuration);
@@ -196,7 +197,10 @@ public class PathFinding {
 				// If new minimum found
 				if(totalTime.compareTo(minTime) < 0) {
 					minTime = totalTime;
+					minBackTime = Duration.ofSeconds(backPathDuration);
 					minSite = next;
+					minAwayPath = awayPath;
+					minBackPath = backPath;
 				}
 			}
 
@@ -204,7 +208,7 @@ public class PathFinding {
 			// add to the excursion
 			// otherwise finish up the excursion go back to the hotel
 			if(time.plus(minTime).compareTo(threshold) < 0) {
-				paths.add(awayPath); // add the path back to hotel
+				paths.add(minAwayPath); // add the path back to hotel
 				res.add(cur); // add to the excursion
 				sites.remove(minSite); // remove from list of sites to visit
 				cur = minSite;
@@ -213,15 +217,109 @@ public class PathFinding {
 				res.add(cur);
 			}
 
-			prevBackPath = backPath;
-
-			time = time.plus(minTime); // advance the time
+			prevBackPath = minBackPath;
+			time = time.plus(minTime.minus(minBackTime)); // advance the time
 		} while(time.compareTo(threshold) < 0);
 
 		return new Excursion(1, res, paths);
 	}
+*/	
+	public Site getMinSite(Site cur, Station hotelStation, List<Site> sites) {
+		Site min = null;
+		int minDuration = Integer.MAX_VALUE;
+
+		for(Site site: sites) {
+			// spend time at site
+			int siteDuration = site.getDuration();
+			int totalTime = siteDuration;
+
+			// path to the site
+			Path awayPath = findCheapestPath(cur.getStation(), site.getStation());
+			int awayPathDuration = awayPath.getPathDuration(LocalTime.NOON);
+			totalTime = totalTime + awayPathDuration;
+
+			// path back to hotel
+			Path backPath = findCheapestPath(site.getStation(), hotelStation);
+			int backPathDuration = backPath.getPathDuration(LocalTime.NOON);
+			totalTime = totalTime + backPathDuration;
+			
+			// If new minimum found
+			if(totalTime < minDuration) {
+				minDuration = totalTime;
+				min = site;
+			}
+		}
+		
+		return min;
+	}
 	
-	public ArrayList<Excursion> getExcursions(Hotel hotel, List<Site> sites) {
+	public Excursion getExcursion(Hotel hotel, LinkedList<Site> sites) {
+		List<Site> res = new ArrayList<Site>();
+		List<Path> paths = new ArrayList<Path>();
+
+		LocalTime start_time = LocalTime.of(8, 0);
+		Duration time = Duration.ZERO;
+		Duration threshold = Duration.ofSeconds(8 * 3600);
+
+		// start at hotel
+		Station hotelStation = hotel.getStation();
+
+		Site cur = sites.pop();
+		// hotel to site path
+		
+		Path firstPath = findCheapestPath(hotelStation, cur.getStation());
+		int dur = firstPath.getPathDuration(start_time);
+		time = time.plus(Duration.ofSeconds(dur + cur.getDuration()));
+		paths.add(firstPath);
+		res.add(cur);
+		
+		Path prevBackPath = findCheapestPath(cur.getStation(), hotelStation);	
+		prevBackPath.getPathDuration(start_time.plus(time));
+		
+		while(time.compareTo(threshold) < 0) {
+			// sanity check
+			if(sites == null || sites.size() == 0) {
+				paths.add(prevBackPath);
+				break;
+			}
+
+			// Find the minimum site to go to and back to hotel
+			Site next = getMinSite(cur, hotelStation, sites);
+
+			Path awayPath = findCheapestPath(cur.getStation(), next.getStation());
+			Path backPath = findCheapestPath(next.getStation(), hotelStation);
+
+			// Duration to go to site
+			LocalTime awayTime = start_time.plus(time);
+			int awayDuration = awayPath.getPathDuration(awayTime);
+			// to spend time at site
+			int siteDuration = next.getDuration();
+			// to go back to hotel
+			LocalTime backTime = awayTime.plus(Duration.ofSeconds(siteDuration + awayDuration));
+			int backDuration = backPath.getPathDuration(backTime);
+
+			// if a site was found
+			// add to the excursion
+			// otherwise finish up the excursion go back to the hotel
+			if(time.plusSeconds(awayDuration + siteDuration + backDuration).compareTo(threshold) < 0) {
+				paths.add(awayPath); // add the path back to hotel
+				res.add(next); // add to the excursion
+				sites.remove(next); // remove from list of sites to visit
+
+				cur = next;
+			} else {
+				paths.add(prevBackPath);
+				break;
+			}
+
+			time = time.plusSeconds(awayDuration + siteDuration);	
+			prevBackPath = backPath;
+		}
+
+		return new Excursion(1, res, paths);
+	}
+	
+	public ArrayList<Excursion> getExcursions(Hotel hotel, LinkedList<Site> sites) {
 		ArrayList<Excursion> res = new ArrayList<Excursion>();
 		while(sites.size() != 0) {
 			res.add(getExcursion(hotel, sites));

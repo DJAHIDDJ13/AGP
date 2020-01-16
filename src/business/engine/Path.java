@@ -69,13 +69,17 @@ public class Path {
 		if(!iter.hasNext()) return 0;
 		PathEntry cur = iter.next();
 		
+//		if(!iter.hasNext()) return prev.getDurationFrom(cur);
+		
+		duration += prev.getDurationFrom(cur);
 		while(iter.hasNext()) {
 			// TODO: check err
-			duration += prev.getDurationFrom(cur);
-			
 			prev = cur;
 			cur = iter.next();
-		}		
+
+			duration += prev.getDurationFrom(cur);
+		}
+		
 		return duration;
 	}
 	
@@ -112,7 +116,7 @@ public class Path {
 			cur = next;
 			next = iter.next();
 		}
-		res += "[" + cur_time + "] " + "Station " + next.getStation() + ": You have arrived!\n";
+		res += "[" + cur_time.plusSeconds(cur.getDurationFrom(next)) + "] " + "Station " + next.getStation() + ": You have arrived!\n";
 		return res;
 	}
 
