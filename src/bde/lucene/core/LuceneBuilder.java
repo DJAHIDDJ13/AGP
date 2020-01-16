@@ -11,10 +11,12 @@ import bde.lucene.persistence.LuceneConstants;
 
 public class LuceneBuilder {
 	
-	private static final String filePathLuceneData = LuceneConstants.DATA_FILE;
+	private String filePathLuceneData;
+	private String fileDescription; 
 	
-	public LuceneBuilder() {
-		
+	public LuceneBuilder(String luceneDataPath,String descriptionPath) {
+		this.filePathLuceneData = luceneDataPath;
+		this.fileDescription = descriptionPath;	
 		try {
 			this.createFiles();
 		} catch (IOException e) {
@@ -26,7 +28,7 @@ public class LuceneBuilder {
 	// Prends le fichier description.csv, et retourne son contenu en un seul String
 	private String readFileDescription() throws IOException {
 		String line = null;
-		InputStream is =  new FileInputStream(LuceneConstants.DESCRIPTION_FILE);
+		InputStream is =  new FileInputStream(fileDescription);
 		@SuppressWarnings("resource")
 		BufferedReader buf = new BufferedReader(new InputStreamReader(is));
 		line = buf.readLine();
@@ -66,4 +68,21 @@ public class LuceneBuilder {
 		String FileStringContent = readFileDescription();
 		WriteFiles(FileStringContent);
 	}
+
+	public String getFilePathLuceneData() {
+		return filePathLuceneData;
+	}
+
+	public void setFilePathLuceneData(String filePathLuceneData) {
+		this.filePathLuceneData = filePathLuceneData;
+	}
+
+	public String getFileDescription() {
+		return fileDescription;
+	}
+
+	public void setFileDescription(String fileDescription) {
+		this.fileDescription = fileDescription;
+	}
+
 }
