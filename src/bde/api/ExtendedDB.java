@@ -25,7 +25,7 @@ public class ExtendedDB {
 		this.tableKey = tableKey;
 		this.dataDirectory = dataDirectory;
 		
-		builder = new LuceneBuilder(dataDirectory);
+		builder = new LuceneBuilder();
 		try {
 			builder.createFiles();
 		} catch (IOException e) {

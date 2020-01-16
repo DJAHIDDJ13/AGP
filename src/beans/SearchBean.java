@@ -7,6 +7,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 
 import business.trip.TripSimulation;
+import spring.SpringIoC;
 
 @ManagedBean
 @SessionScoped
@@ -24,28 +25,22 @@ public class SearchBean implements Serializable {
 
 	private String siteType;
 	
-	private TripSimulation trip = new TripSimulation();
- 
-	public SearchBean()
-	{
+	private TripSimulation trip = (TripSimulation) SpringIoC.getBean("tripSimulation");
+	
+	public SearchBean() {
 		
 	}
 
-	public String findHotelsByRating()
-	{		
-		List<String> hotelsName =  trip.getHotelsNamesByRating(rating);
-				
+	public String findHotelsByRating() {		
+		List<String> hotelsName =  trip.getHotelsNamesByRating(rating);	
 		this.setHotelsName(hotelsName);
 		return "hotelResult";
 	}
 	
 	
-	public String findSitesNames()
-	{	
+	public String findSitesNames() {	
 		List<String> sitesNames = trip.fetchSites(siteType, searchQuery);
-	
 		this.setSitesName(sitesNames);
-		
 		return "sitesResult";
 	}
 
@@ -81,13 +76,12 @@ public class SearchBean implements Serializable {
 		this.sitesName = sitesName;
 	}
 
-	public void setRating(String r)
-	{
+	public void setRating(String r) {
 		this.rating = r;
 	}
 
-	public String getRating()
-	{
+	public String getRating() {
 		return rating;
 	}
+
 }

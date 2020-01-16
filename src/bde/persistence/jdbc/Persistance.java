@@ -258,7 +258,9 @@ public class Persistance{
 	public List<String> fetchSites(String siteType, String key){
 		List<String> result = new ArrayList<String>();
 		
-		String query = "select name_site from site where type_site = '" + siteType + "' with " + key;
+		String query = (siteType.isEmpty()) ? 
+					   "select name_site from site with " + key :
+					   "select name_site from site where type_site = '" + siteType + "' with " + key;
 		
 		mixedIterator.setQuery(query);
 		mixedIterator.init();

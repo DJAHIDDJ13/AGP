@@ -6,83 +6,73 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
       
       
-    <h:head>
-        <title>Offers Page</title>
-    </h:head>
-    <h:body>
- 
+	<h:head>
+		<title>Offers Page</title>
+		<h:outputStylesheet library="css" name="style.css"/>
+		<h:outputStylesheet library="css" name="searchStyle.css"/>
+		<style>
+			.navbar {
+				height: 100px
+			}
+			.navbar .links li a {
+				color: black;
+			}
+			.container .brand {
+				color: black;
+			}	
+		</style>
+	</h:head>
 
- 	<ui:insert name="header" >
-		  <ui:include src="/navbar.xhtml" />
+	<h:body>
+		<ui:insert name="header" >
+			<ui:include src="/navbar.xhtml"/>
 		</ui:insert>
 
+		<h:outputStylesheet library="css" name="resultStyle.css"/>
 
- <h:outputStylesheet library="css" name="resultStyle.css"/>
- <h:outputStylesheet library="css" name="searchStyle.css"/>
- 
+		<fieldset>
+			<h:panelGroup  class="result-container">
+				<legend>Veuillez saisir vos critères de voyage :</legend>
+				<h:form>
+					<h:outputLabel for="hotelName"> Nom de l'hotel :</h:outputLabel>
+					<h:inputText  id="hotelName" class="search-bar" value="#{tripsBean.hotelName}" /> <br/>
 
-  
-	<fieldset>
-	
+					<h:outputLabel for="density">Densité :</h:outputLabel>
+					<h:inputText  id="density" class="search-bar" value="#{tripsBean.density}" />  <br/>
 
-		<h:panelGroup  class="result-container">
-		<legend>Veuillez saisir vos  critères de voyage svp  :</legend>
-	<h:form>
+					<h:outputLabel for="maxPrice">Budget :</h:outputLabel>
+					<h:inputText  id="maxPrice" class="search-bar" value="#{tripsBean.maximumPrice}" />  <br/>
 
-		 		<h:outputLabel for="hotelName"> Nom d'hotel</h:outputLabel>
-		        <h:inputText  id="hotelName" class="search-bar" value="#{tripsBean.hotelName}" />  <br/>
-		        
-		        
-		 		<h:outputLabel for="density">Densité:</h:outputLabel>
-		        <h:inputText  id="density" class="search-bar" value="#{tripsBean.density}" />  <br/>
-		        
-		        
-		 		<h:outputLabel for="maxPrice">Maximum Prix:</h:outputLabel>
-		        <h:inputText  id="maxPrice" class="search-bar" value="#{tripsBean.maximumPrice}" />  <br/>
+					<h:outputLabel for="daysCount">Durée du séjour (en jour(s)) :</h:outputLabel>
+					<h:inputText  id="daysCount" class="search-bar" value="#{tripsBean.daysCount}" />  <br/>		
 
-		 		<h:outputLabel for="daysCount">Nombre de jours : </h:outputLabel>
-		        <h:inputText  id="daysCount" class="search-bar" value="#{tripsBean.daysCount}" />  <br/>		
-		        
-		        <h:commandLink  class="action-button" action="#{tripsBean.fetchOffers}"  value="Trouver l'hotel"/>
-		        
-	</h:form>			
+					<h:commandLink  class="action-button" action="#{tripsBean.fetchOffers}"  value="Trouver l'hotel"/>
+				</h:form>			
+			</h:panelGroup>
+		</fieldset>
+
+		<h2>Excursions suggérées :</h2>
+
+		<h:panelGroup rendered="#{tripsBean.trips == null}" >
+			<h2>Malheureusement , Aucune offre d'excursion n'a été trouvée ! Veuillez réajuster vos critères.</h2>
 		</h:panelGroup>
-		
-		
-	</fieldset>
-	
-	
-  
-  <h2>Voyages suggérer : </h2>
- 
- 		<h:panelGroup rendered="#{tripsBean.trips == null}" >
- 		     	<h2  > Malheureusement , Aucun offre trouvé! merci de modifier votre crritere </h2>
- 		</h:panelGroup>
-     	
- 		<h:panelGroup rendered="#{tripsBean.trips != null }" >
- 		
-		     	<h:panelGroup  class="trip-container" layout="block"> 
-		     	
-		     	
-		     	<ui:repeat var="trip" value="#{tripsBean.trips}" >
-							  <li> Hotel  : #{trip.hotel.name}</li>   <br />
-							  <li> Price  : #{trip.price}</li>   <br />
-							  <li> Nombre  de jours  : #{trip.daysCount}</li>   <br />
-							  <li> Sites inclus  :</li>   <br />
-							       		<ui:repeat var="excur" value="#{trip.excursion}" >  
-							       				<ui:repeat var="site" value="#{excur.site}" >#{site.name}, </ui:repeat>
-							       		</ui:repeat>
-							       		<br />
-						  <hr/>
 
-						</ui:repeat>
-						  
-		     	</h:panelGroup>
-			     		
-    	 </h:panelGroup>
-    </h:body>
-    
-    
-    
-  
+		<h:panelGroup rendered="#{tripsBean.trips != null }" >
+			<h:panelGroup  class="trip-container" layout="block"> 
+				<ui:repeat var="trip" value="#{tripsBean.trips}" >
+					<li> Hotel  : #{trip.hotel.name}</li><br/>
+					<li> Price  : #{trip.price}</li><br/>
+					<li> Nombre  de jours  : #{trip.daysCount}</li><br/>
+					<li> Sites inclus  :</li><br/>
+					<ui:repeat var="excur" value="#{trip.excursion}" >  
+						<ui:repeat var="site" value="#{excur.site}" >#{site.name} </ui:repeat>
+					</ui:repeat><br/>
+					<hr/>
+				</ui:repeat>
+			</h:panelGroup>
+		</h:panelGroup>
+
+		<h:outputScript name="js/script.js" />
+
+	</h:body>
 </html>
