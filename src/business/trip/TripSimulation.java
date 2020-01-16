@@ -2,6 +2,7 @@ package business.trip;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
@@ -41,14 +42,19 @@ public class TripSimulation {
 		List<Trip> trips = new ArrayList<Trip>();
 		List<Hotel> hotels = hotelsToVisit(intensity, budget, duration, n);
 		for(Hotel hotel: hotels) {
-			List<Site> sites = sitesToVisitByHotel(hotel, budget, duration, keyWords);
+//			List<Site> sites = sitesToVisitByHotel(hotel, budget, duration, keyWords);
+			List<Site> bdSites = persister.getSitesByKeyWord(null, keyWords);
+			float budgetLeft = budget - hotel.getPricePerDay() * duration;
+			Collections.sort(bdSites, new SiteComparator(hotel));
+			LinkedList<Site> sites = sitesToVisit(budgetLeft, bdSites);
+			
 			List<Excursion> excursions = pathFinding.getExcursions(hotel, sites);
 			Trip trip = new Trip(hotel, excursions);
 			trips.add(trip);
 		}
 		return trips;
 	}
-		
+		/*
 	public List<Site> sitesToVisitByHotel(Hotel hotel, float budget, int duration, String keyWords) {
 		List<Site> bdSites = persister.getSitesByKeyWord(null, keyWords);
 		float leftBudget = budget - hotel.getPricePerDay() * duration;
@@ -56,7 +62,7 @@ public class TripSimulation {
 		
 		return sitesToVisit(leftBudget, bdSites);
 	}
-	
+	*/
 	public List<Hotel> hotelsToVisit(float intensity, float budget, int duration, int k){
 		List<Hotel> bdHotels = persister.getAllHotels();
 		
@@ -69,9 +75,9 @@ public class TripSimulation {
 		return bdHotels.subList(0, k);
 	}
 	
-	public List<Site> sitesToVisit(float budgetLeft, List<Site> sortedSiteList){
+	public LinkedList<Site> sitesToVisit(float budgetLeft, List<Site> sortedSiteList){
 		float curBudget = 0;
-		List<Site> sites = new ArrayList<Site>();
+		LinkedList<Site> sites = new LinkedList<Site>();
 		ListIterator<Site> siteIter = sortedSiteList.listIterator();
 		while(curBudget < budgetLeft) {
 			if(siteIter.hasNext()) {
