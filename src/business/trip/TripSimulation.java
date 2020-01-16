@@ -41,7 +41,15 @@ public class TripSimulation {
 	}
 	
 	public List<String> fetchSites(String siteType, String key){
-		return persister.fetchSites(siteType, key);
+		
+		if(!key.isEmpty()) {
+			return persister.fetchSites(siteType, key);
+		} else {
+			if(!siteType.isEmpty())
+				return persister.getSiteByType(siteType);
+			else
+				return persister.getAllSitesName();
+		}
 	}
 	
 	public List<Trip> generateTrips(int n, String keyWords, float budget, int duration, int intensity) {

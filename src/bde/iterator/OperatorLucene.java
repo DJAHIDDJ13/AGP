@@ -86,4 +86,9 @@ public class OperatorLucene implements Iterator{
 		}
 		return exists;
 	}
+
+	@Override
+	public void setQuery(String Mixedquery) {
+		this.query = Mixedquery;
+	}
 }
