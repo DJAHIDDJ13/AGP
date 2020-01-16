@@ -1,5 +1,6 @@
 package business.trip;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -22,7 +23,7 @@ public class TripSimulation {
 	
 	private LuceneBuilder builder;
 	
-	private Transport transport;
+	private Transport simulationTransport;
 	
 	private PathFinding pathFinding;
 	
@@ -31,8 +32,8 @@ public class TripSimulation {
 	}
 	
 	public void init() {
-		transport = persister.getTransport();
-		pathFinding = new PathFinding(transport);
+		simulationTransport = persister.getTransport();
+		pathFinding = new PathFinding(simulationTransport);
 	}
 	
 	public List<String> getHotelsNamesByRating(String rating){
@@ -84,13 +85,25 @@ public class TripSimulation {
 		}
 		return sites;
 	}
-
-	public LuceneBuilder getBuilder() {
-		return builder;
+	
+	public void generateFilesIndex() {
+				
+		lucene.deletIndexFile();
+		try {
+			builder.createFiles();
+			lucene.createIndex();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
-	public void setBuilder(LuceneBuilder builder) {
-		this.builder = builder;
+	public Persistance getPersister() {
+		return persister;
+	}
+
+	public void setPersister(Persistance persister) {
+		this.persister = persister;
 	}
 
 	public LucenePersistence getLucene() {
@@ -100,21 +113,21 @@ public class TripSimulation {
 	public void setLucene(LucenePersistence lucene) {
 		this.lucene = lucene;
 	}
-	
-	public Persistance getPersister() {
-		return persister;
+
+	public LuceneBuilder getBuilder() {
+		return builder;
 	}
 
-	public void setPersister(Persistance persister) {
-		this.persister = persister;
+	public void setBuilder(LuceneBuilder builder) {
+		this.builder = builder;
 	}
 
-	public Transport getTransport() {
-		return transport;
+	public Transport getSimulationTransport() {
+		return simulationTransport;
 	}
 
-	public void setTransport(Transport transport) {
-		this.transport = transport;
+	public void setSimulationTransport(Transport simulationTransport) {
+		this.simulationTransport = simulationTransport;
 	}
 
 	public PathFinding getPathFinding() {
@@ -124,4 +137,5 @@ public class TripSimulation {
 	public void setPathFinding(PathFinding pathFinding) {
 		this.pathFinding = pathFinding;
 	}
+	
 }

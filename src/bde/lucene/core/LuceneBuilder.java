@@ -1,6 +1,7 @@
 package bde.lucene.core;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -12,15 +13,13 @@ public class LuceneBuilder {
 	private String filePathLuceneData;
 	private String fileDescription; 
 	
+	public LuceneBuilder() {
+		
+	}
+	
 	public LuceneBuilder(String luceneDataPath,String descriptionPath) {
 		this.filePathLuceneData = luceneDataPath;
-		this.fileDescription = descriptionPath;	
-		try {
-			this.createFiles();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
+		this.fileDescription = descriptionPath;
 	}
 
 	// Prends le fichier description.csv, et retourne son contenu en un seul String
@@ -63,8 +62,17 @@ public class LuceneBuilder {
 	}
 	 
 	public void createFiles() throws IOException {
-		String FileStringContent = readFileDescription();
-		WriteFiles(FileStringContent);
+		try {
+			File file = new File(filePathLuceneData);
+			if(file.isDirectory()){
+				if(file.list().length>0){
+					String FileStringContent = readFileDescription();
+					WriteFiles(FileStringContent);
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public String getFilePathLuceneData() {
@@ -82,5 +90,4 @@ public class LuceneBuilder {
 	public void setFileDescription(String fileDescription) {
 		this.fileDescription = fileDescription;
 	}
-
 }

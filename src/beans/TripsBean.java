@@ -1,16 +1,11 @@
 package beans;
 
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import business.island.ActivitySite;
-import business.island.Hotel;
-import business.island.Site;
-import business.trip.Excursion;
 import business.trip.Trip;
 import business.trip.TripSimulation;
 import spring.SpringIoC;
