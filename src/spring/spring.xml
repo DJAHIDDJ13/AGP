@@ -15,13 +15,13 @@
 	</bean>
 
 	<bean id="lucenBuilder" class="bde.lucene.core.LuceneBuilder">
-		<property name="filePathLuceneData" value="C:\Users\ayadi\eclipse-workspace\AGP\src\luceneSRC\data\"/>
+		<property name="filePathLuceneData" value="C:\Users\Hakim\git\AGP\src\luceneSRC\data\"/>
 		<property name="fileDescription" value="C:\Users\Hakim\git\AGP\src\bde\persistence\jdbc\description.csv"/>
 	</bean>
 	
 	<bean id="lucenePersistence" class="bde.lucene.persistence.LucenePersistence">
-		<property name="indexDir" value="C:\Users\ayadi\eclipse-workspace\AGP\src\luceneSRC\index\"/>
-		<property name="dataDir" value="C:\Users\ayadi\eclipse-workspace\AGP\src\luceneSRC\data\"/>
+		<property name="indexDir" value="C:\Users\Hakim\git\AGP\src\luceneSRC\index\"/>
+		<property name="dataDir" value="C:\Users\Hakim\git\AGP\src\luceneSRC\data\"/>
 	</bean>
 	
 	<bean id="persistence" class="bde.persistence.jdbc.Persistance"/>
