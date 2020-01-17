@@ -3,66 +3,61 @@
 <html xmlns="http://www.w3.org/1999/xhtml" 
 	  xmlns:h="http://java.sun.com/jsf/html" 
 	  xmlns:f="http://java.sun.com/jsf/core"
-	  xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<h:head>
 		<title>Travel Agency</title>
-	     <h:outputStylesheet library="css" name="style.css"/>
-	     <style>
-	     	.welcome{
+		<h:outputStylesheet library="css" name="style.css"/>
+		<style>
+			.welcome {
 				color: white;
 				text-align: center; 
 				width: 100%
 			}
-			.welcome span{
-			font-weight: bold; 
-			color:#1abc9c; 
+			.welcome span {
+				font-weight: bold; 
+				color:#1abc9c; 
 			}
-	     </style>
-</h:head>
-<h:body>
+		</style>
+	</h:head>
+	<h:body>
+		<ui:insert name="header">
+			<ui:include src="/navbar.xhtml"/>
+		</ui:insert>
 
- 	<ui:insert name="header" >
-		  <ui:include src="/navbar.xhtml" />
-	</ui:insert>
-  
- 
- <!-- start header -->
- 	<div class="header">
- 		<div class="overlay">
- 		</div>
- 	</div>
- <!-- end header -->
- 
- <div class=" container">
- 			<div class="welcome">
- 				<p>Bienvenue Dans <span>Ile De Seychelle</span></p>
- 			</div>
+		<!-- start header -->
+		<div class="header">
+			<div class="overlay"></div>
 		</div>
-<!-- 
-	<h:graphicImage id="homeImage" value="resources/images/homeImage2.jpg" />
- -->
+		<!-- end header -->
 
-	
-<h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />	
-<h:outputScript name="js/script.js" />
+		<div class=" container">
+			<div class="welcome">
+				<p>Bienvenue à l'Archipel des <span>Seychelles</span></p>
+			</div>
+		</div>
+		<!-- 
+		<h:graphicImage id="homeImage" value="resources/images/homeImage2.jpg" />
+		-->
+		<h:outputScript library="primefaces" name="jquery/jquery.js" target="head"/>	
+		<h:outputScript name="js/script.js"/>
 
-<h:outputScript target="head">
-    $ = jQuery;
-    // Then you can use it
-    $(document).ready(function() {
-
-        'use strict'; 
-        $('.header').height($(window).height());
-        $('.header').width($(window).width()); 
-        
-        $('.welcome').css("margin-top",-  2* $('.header').height()/3); 
-  
-        $(window).resize(function(){
-        	$('.header').height($(window).height()); 
-        }); 
-     
-    });
-</h:outputScript>
-
-</h:body>
+		<h:outputScript target="head">
+			$ = jQuery;
+			// Then you can use it
+			$(document).ready(function() {
+		
+				'use strict'; 
+				$('.header').height($(window).height());
+				$('.header').width($(window).width()); 
+				
+				$('.welcome').css("margin-top",-  2* $('.header').height()/3); 
+		  
+				$(window).resize(function(){
+					$('.header').height($(window).height()); 
+				}); 
+			 
+			});
+		</h:outputScript>
+	</h:body>
 </html>

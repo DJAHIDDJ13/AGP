@@ -4,56 +4,55 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:p="http://primefaces.org/ui">
-<h:head>
-	<title>Search Result</title>
-    <h:outputStylesheet library="css" name="style.css"/>
-           <!-- <h:outputStylesheet library="fontawesome" name="css/fontawesome.css"/> -->
-                <h:outputStylesheet library="font-awesome" name="css/font-awesome.css"/>
-            
-    
-     <style>
-          	.navbar{
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<h:head>
+		<title>Search Result</title>
+		<h:outputStylesheet library="css" name="style.css"/>
+		<!-- <h:outputStylesheet library="fontawesome" name="css/fontawesome.css"/> -->
+		<h:outputStylesheet library="font-awesome" name="css/font-awesome.css"/>
+		<style>
+			.navbar{
 				height: 100px
 			}
 			.navbar .links li a {
-			    color: black;
+				color: black;
 			}
 			.container .brand{
 				color: black;
 			}	
-			    i {
-        margin-right: 10px;
-    }
- 
-    .ui-grid-col-3 {
-        padding: 4px 10px;
-    }
-          </style>
+			i {
+				margin-right: 10px;
+			}
+			.ui-grid-col-3 {
+				padding: 4px 10px;
+			}
+		</style>
+	</h:head>
 
-</h:head>
+	<h:body>
 
-<h:body>
+	<ui:insert name="header">
+		<ui:include src="/navbar.xhtml"/>
+	</ui:insert>
 
-  	 	<ui:insert name="header" >
-		  <ui:include src="/navbar.xhtml" />
-		</ui:insert>
-  
-  <div class="result-hotel">
-      <div class="container">
-          <fieldset>
-			<h:panelGroup  rendered="#{searchBean.hotelsName != null}">
-			<legend>Résultats de la recherche des hôtels</legend>
-        <div class="ui-grid-col-3"><i class="fa fa-fw fa-venus"></i>fa-venus</div>
-				<ol>
-					<ui:repeat var="hn" value="#{searchBean.hotelsName}" >
-					   #{hn} <br />
-					</ui:repeat>
-				</ol>
-			</h:panelGroup>
-	     </fieldset>
-      </div>
-  </div>
-	
-</h:body>
+	<div class="result-hotel">
+		<div class="container">
+			<fieldset>
+				<h:panelGroup class="result-container" rendered="#{empty searchBean.hotelsName}">
+					<legend>Aucun résultat ne correspond à votre recherche, veuillez réessayer</legend>
+				</h:panelGroup>
+				<h:panelGroup class="result-container" rendered="#{not empty searchBean.hotelsName}">
+					<legend>Résultat(s) de la recherche d'hôtel</legend>
+					<ol>
+						<ui:repeat var="hn" value="#{searchBean.hotelsName}" >
+							<li class="ui-grid-col-3">#{hn}</li>
+						</ui:repeat>
+					</ol>
+				</h:panelGroup>
+			</fieldset>
+		</div>
+	</div>
+
+	</h:body>
 </html>
