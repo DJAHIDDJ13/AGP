@@ -69,7 +69,7 @@
  		<h:panelGroup rendered="#{tripsBean.trips == null}" >
  		     	<h2> Malheureusement , Aucun offre trouvée ! merci de modifier vos critères </h2>
  		</h:panelGroup>
-     	 <div class="container">
+     	 <div class="container ">
 		          <h:panelGroup rendered="#{tripsBean.trips != null }" >
 		          			<h2>Les offres suggérées</h2>
 							<h:panelGroup> 
@@ -82,7 +82,8 @@
 											  <li> Nombre  de jours  : #{trip.daysCount}</li>   <br />
 											  <li> Sites inclus  :</li>   <br />
 											       		<ui:repeat var="excur" value="#{trip.excursion}" >  
-											       				<ui:repeat var="site" value="#{excur.site}" >#{site.name}, </ui:repeat>
+											       				<ui:repeat var="site" value="#{excur.site}" > <span class="label other">#{site.name}</span> 
+											       				 </ui:repeat>
 											       		</ui:repeat>
 											       		<br />
 										  <hr/>

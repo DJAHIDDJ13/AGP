@@ -14,7 +14,7 @@ public class Trip {
 	
 	private float daysCount;
 	
-		private List<Site> sites;
+	private List<Site> sites;
 
 	public Trip() {
 		

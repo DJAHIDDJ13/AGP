@@ -262,3 +262,13 @@ select{
 	margin-top:40px;
 	text-align: center;
 }
+.label {
+  color: white;
+  padding: 8px;
+}
+
+.other {
+	background-color: #e7e7e7; color: black;
+	margin : 6px;
+	display: inline-block;
+	} 
