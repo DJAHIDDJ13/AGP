@@ -382,7 +382,7 @@ public class Persistance{
 	
 	public List<Site> fetchSitesMixed(String siteType, String key){
 		List<Site> result = new ArrayList<Site>();
-		
+
 		String query = "select name_site from site where type_site = '" + siteType + "' with " + key;
 		
 		NestedLoopJoin mixedIterator = new NestedLoopJoin();
@@ -392,8 +392,9 @@ public class Persistance{
 		
 		while(mixedIterator.next()) {
 			try {
+				System.out.println();
 				Site site = getSiteById(Integer.parseInt(mixedIterator.getString(1)));
-				site.setPertinance(Float.parseFloat(mixedIterator.getString(2)));
+				site.setPertinance(Float.parseFloat(mixedIterator.getString(3)));
 				result.add(site);
 			} catch (Exception e) {
 				e.printStackTrace();

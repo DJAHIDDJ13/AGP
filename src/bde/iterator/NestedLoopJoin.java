@@ -23,7 +23,9 @@ public class NestedLoopJoin implements Iterator{
 	@Override
 	public void init() {
 		SQLIterator = new OperatorSQL();
+		
 		SQLIterator.setQuery(SQLQuery);
+		
 		LuceneIterator = new OperatorLucene(LuceneQuery);
 		
 		SQLIterator.init();

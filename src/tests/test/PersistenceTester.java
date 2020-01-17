@@ -4,19 +4,27 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import bde.lucene.persistence.LucenePersistence;
 import bde.persistence.jdbc.Persistance;
 import business.island.Hotel;
 import business.island.Site;
+import tests.mock.PersistenceMock;
 
-public class PersistencTester {
+public class PersistenceTester {
 
 	private static Persistance persister;
+	private static LucenePersistence lucene;
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
+		lucene = new PersistenceMock().getLucene();
+		
+		lucene.createIndex();
+		
 		persister = new Persistance();
 	}
 	
@@ -36,8 +44,18 @@ public class PersistencTester {
 	
 	@Test
 	public void testPersisteSitesByKey() {
-		List<Site> sites = persister.getSitesByKeyWord("", "");
+		List<Site> sites = persister.getSitesByKeyWord("Activity", "plage");
+		
+		for(Site site : sites) {
+			String type =  (site.isActivitySite()) ? "Activity" : "Historic";
+			System.out.println("ID : " + site.getId() + ", Type : " + type + ", Name : " + site.getName());
+		}
 		
 		assertTrue(sites.size() > 0);		
+	}
+	
+    @AfterClass
+	public static void afterTesting() {
+		lucene.deletIndexFile();
 	}
 }
