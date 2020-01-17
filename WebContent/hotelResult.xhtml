@@ -9,8 +9,6 @@
 	<h:head>
 		<title>Search Result</title>
 		<h:outputStylesheet library="css" name="style.css"/>
-		<!-- <h:outputStylesheet library="fontawesome" name="css/fontawesome.css"/> -->
-		<h:outputStylesheet library="font-awesome" name="css/font-awesome.css"/>
 		<style>
 			.navbar{
 				height: 100px
@@ -39,7 +37,7 @@
 	<div class="result-hotel">
 		<div class="container">
 			<fieldset>
-				<h:panelGroup class="result-container" rendered="#{empty searchBean.hotelsName}">
+				<h:panelGroup  rendered="#{empty searchBean.hotelsName}">
 					<legend>Aucun résultat ne correspond à votre recherche, veuillez réessayer</legend>
 				</h:panelGroup>
 				<h:panelGroup class="result-container" rendered="#{not empty searchBean.hotelsName}">

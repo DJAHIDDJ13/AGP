@@ -1,7 +1,7 @@
 
-body{
-	    font-family: 'Open Sans', sans-serif
-	
+body {
+	font-family: 'Open Sans', sans-serif;
+	margin: 0px
 }
 .container {
     width: 1200px;
@@ -262,3 +262,13 @@ select{
 	margin-top:40px;
 	text-align: center;
 }
+.label {
+  color: white;
+  padding: 8px;
+}
+
+.other {
+	background-color: #e7e7e7; color: black;
+	margin : 6px;
+	display: inline-block;
+	} 

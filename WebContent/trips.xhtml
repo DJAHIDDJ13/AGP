@@ -38,7 +38,7 @@
 				<h:panelGroup>
 					<legend>Veuillez saisir vos  critères de voyage:</legend>
 					<h:form>
-					 		<h:outputLabel class="text" for="searchKeyword">Mot cle :</h:outputLabel>
+					 		<h:outputLabel class="text" for="searchKeyword">Mots-clés:</h:outputLabel>
 					        <h:inputText  id="searchKeyword" class="champ" value="#{tripsBean.searchKeyword}" />  <br/>        
 					        
 					 		<h:outputLabel class="text" for="intensite">Intensité:</h:outputLabel>
@@ -49,7 +49,7 @@
 							<h:outputLabel class="text" for="daysCount">Nombre de jours:</h:outputLabel>
 					        <h:inputText  id="daysCount" class="champ" value="#{tripsBean.daysCount}" />  <br/>
 						
-							<h:outputLabel class="text" for="maximumPrice">Maximum Prix:</h:outputLabel>
+							<h:outputLabel class="text" for="maximumPrice">Prix Maximum:</h:outputLabel>
 					        <h:inputText  id="maximumPrice" class="champ" value="#{tripsBean.maximumPrice}" />  <br/>
 			
 					 		<h:outputLabel class="text" for="offersCount">Nombre d'offres : </h:outputLabel>
@@ -66,10 +66,7 @@
 
 
  
- 		<h:panelGroup rendered="#{tripsBean.trips == null}" >
- 		     	<h2> Malheureusement , Aucun offre trouvée ! merci de modifier vos critères </h2>
- 		</h:panelGroup>
-     	 <div class="container">
+     	 <div class="container ">
 		          <h:panelGroup rendered="#{tripsBean.trips != null }" >
 		          			<h2>Les offres suggérées</h2>
 							<h:panelGroup> 
@@ -80,10 +77,20 @@
 											  <li> Hotel  : #{trip.hotel.name}</li>   <br />
 											  <li> Prix  : #{trip.price}</li>   <br />
 											  <li> Nombre  de jours  : #{trip.daysCount}</li>   <br />
-											  <li> Sites inclus  :</li>   <br />
-											       		<ui:repeat var="excur" value="#{trip.excursion}" >  
-											       				<ui:repeat var="site" value="#{excur.site}" >#{site.name}, </ui:repeat>
-											       		</ui:repeat>
+											  <li> Excursion  :</li>   <br />
+											      <ui:repeat var="excur" value="#{trip.excursion}" >  
+												   
+												   
+												   
+												    <!--  >ui:repeat var="path" value="#{excur.paths}" >  
+												       				 <span >#{path}</span> <br/>  
+													</ui:repeat>		<br/-->
+												   
+												   
+												    <ui:repeat var="s" value="#{excur.site}" >  
+												       				 <span >#{s}</span> <br/>  
+													</ui:repeat>		<br/>				       				
+											      </ui:repeat>
 											       		<br />
 										  <hr/>
 								</ui:repeat>	  
@@ -92,5 +99,5 @@
 	       </div>
     	 	   	 
 <h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />	
-<h:outputScript name="js/script.js" />    </h:body>
+</h:body>
 </html>
