@@ -71,6 +71,7 @@ public class Persistance{
 			while(sqlIterator.next()) {
 				int siteID = sqlIterator.getInt("id_site"); 
 				Site site = getSiteById(siteID); 
+				site.setPertinance(0);
 				sites.add(site);
 			}
 			
@@ -370,6 +371,7 @@ public class Persistance{
 		try {
 			while(sqlIterator.next()) {
 				Site site = getSiteById(Integer.parseInt(sqlIterator.getString("id_site")));
+				site.setPertinance(1);
 				sites.add(site);
 			}
 		
@@ -405,14 +407,27 @@ public class Persistance{
 	}
 	
 	public List<Site> getSitesByKeyWord(String siteType, String key){
+		List<Site> sites = getAllSites();
+		List<Site> sitesFetch = null;
+		
 		if(!key.isEmpty()) {
-			return fetchSitesMixed(siteType, key);
+			sitesFetch = fetchSitesMixed(siteType, key);
 		} else {
 			if(!siteType.isEmpty())
-				return fetchSitesType(siteType);
-			else
-				return getAllSites();
+				sitesFetch = fetchSitesType(siteType);
 		}
+		
+		for(Site site : sites) {
+			if(sitesFetch != null) {
+				for(Site fetch : sitesFetch) {
+					if(site.getId() == fetch.getId()) {
+						site.setPertinance(fetch.getPertinance());
+					}
+				}
+			}
+		}
+		
+		return sites;
 	}
 	
 	public Station getStationById(int stationId){

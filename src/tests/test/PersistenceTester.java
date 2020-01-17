@@ -48,7 +48,8 @@ public class PersistenceTester {
 		
 		for(Site site : sites) {
 			String type =  (site.isActivitySite()) ? "Activity" : "Historic";
-			System.out.println("ID : " + site.getId() + ", Type : " + type + ", Name : " + site.getName());
+			System.out.println("ID : " + site.getId() + ", Type : " + type + ", Name : " + site.getName()
+							  + ", Pertinance : " + site.getPertinance());
 		}
 		
 		assertTrue(sites.size() > 0);		
