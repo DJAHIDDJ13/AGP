@@ -183,14 +183,13 @@ public class PathFinding {
 		return min;
 	}
 	
-	public Excursion getExcursion(Hotel hotel, LinkedList<Site> sites) {
+	public Excursion getExcursion(Hotel hotel, LinkedList<Site> sites, int intensity) {
 		List<Site> res = new ArrayList<Site>();
 		List<Path> paths = new ArrayList<Path>();
 
 		LocalTime start_time = LocalTime.of(8, 0);
 		Duration time = Duration.ZERO;
-		Duration threshold = Duration.ofSeconds(3 * 3600);
-
+		Duration threshold = Duration.ofSeconds((intensity+2) * 3600);
 		// start at hotel
 		Station hotelStation = hotel.getStation();
 
@@ -249,10 +248,10 @@ public class PathFinding {
 		return new Excursion(1, res, paths);
 	}
 	
-	public ArrayList<Excursion> getExcursions(Hotel hotel, LinkedList<Site> sites) {
+	public ArrayList<Excursion> getExcursions(Hotel hotel, LinkedList<Site> sites, int intensity) {
 		ArrayList<Excursion> res = new ArrayList<Excursion>();
 		while(sites.size() != 0) {
-			res.add(getExcursion(hotel, sites));
+			res.add(getExcursion(hotel, sites, intensity));
 		}
 		return res;
 	}

@@ -64,9 +64,7 @@
 		</div>
 	</div> 
 
-
- 
-     	 <div class="container ">
+     <div class="container ">
 		          <h:panelGroup rendered="#{tripsBean.trips != null }" >
 		          			<h2>Les offres suggérées</h2>
 							<h:panelGroup> 
@@ -78,26 +76,29 @@
 											  <li> Prix  : #{trip.price}</li>   <br />
 											  <li> Nombre  de jours  : #{trip.daysCount}</li>   <br />
 											  <li> Excursion  :</li>   <br />
-											      <ui:repeat var="excur" value="#{trip.excursion}" >  
+											      <ui:repeat varStatus="status"  var="excur" value="#{trip.excursion}" >  
 												   
 												   
-												   
-												    <!--  >ui:repeat var="path" value="#{excur.paths}" >  
-												       				 <span >#{path}</span> <br/>  
-													</ui:repeat>		<br/-->
-												   
-												   
-												    <ui:repeat var="s" value="#{excur.site}" >  
-												       				 <span >#{s}</span> <br/>  
-													</ui:repeat>		<br/>				       				
-											      </ui:repeat>
+														   Excursion  #{status.index} : <br/>
+														    
+														    <ui:repeat varStatus="statusSite" var="s" value="#{excur.site}" >  
+														       				 <span > - #{s} .</span> <br/>  
+															</ui:repeat>		<br/>				       				
+															      
+													   		        <ui:repeat var="path" value="#{excur.paths}" >  
+																			START TIME:  #{path.start_time} <br/>
+																   		        <ui:repeat var="station" value="#{path.path}">  
+																							#{station.station} #{station.route} <br/>
+																   		        </ui:repeat>
+																   		        <h6>Arrived at Site</h6><br/>
+																	</ui:repeat>		<br/>
+											        </ui:repeat>
 											       		<br />
 										  <hr/>
 								</ui:repeat>	  
 						     	</h:panelGroup>	
 				    </h:panelGroup>	   
 	       </div>
-    	 	   	 
 <h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />	
 </h:body>
 </html>

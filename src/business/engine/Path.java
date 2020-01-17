@@ -12,6 +12,7 @@ import business.transport.Station;
 public class Path {
 	private List<PathEntry> path;
 	private LocalTime start_time;
+	private LocalTime cur_time;
 	
 	public Path() {
 		path = new ArrayList<PathEntry>();
@@ -35,6 +36,22 @@ public class Path {
 	
 	public PathEntry getEntry(int index) {
 		return path.get(index);
+	}
+	
+	public LocalTime getStart_time() {
+		return start_time;
+	}
+	
+	public LocalTime getCur_time() {
+		return cur_time;
+	}
+
+	public void setCur_time(LocalTime cur_time) {
+		this.cur_time = cur_time;
+	}
+
+	public void setStart_time(LocalTime start_time) {
+		this.start_time = start_time;
 	}
 	
 	public float getPathLength() {
@@ -93,29 +110,29 @@ public class Path {
 		ListIterator<PathEntry> iter = path.listIterator();
 		PathEntry cur, next;
 
-		if(!iter.hasNext()) return "Empty path!\n";
+		if(!iter.hasNext()) return "Empty path!           ";
 		cur = iter.next();
 
-		if(!iter.hasNext()) return "Path only has one station\n";
+		if(!iter.hasNext()) return "Path only has one station             ";
 		next = iter.next();
 
-		LocalTime cur_time = start_time;
-		res += "START TIME: "+ start_time + "\n";
+		cur_time = start_time;
+		res += "START TIME: "+ start_time + "         ";
 		res += "[" + cur_time.format(DateTimeFormatter.ofPattern("HH:mm")) + "] ";
 		res += "Station " + cur.getStation();
 		res += ": line " + cur.getRoute();
-		res += "\n";
+		res += "               ";
 		while(iter.hasNext()) {
 			cur_time = cur_time.plusSeconds(cur.getDurationFrom(next));
 			res += "[" + cur_time.format(DateTimeFormatter.ofPattern("HH:mm")) + "] ";
 			res += "Station " + next.getStation();
 			res += ": line " + next.getRoute();
-			res += "\n";
+			res += "              ";
 
 			cur = next;
 			next = iter.next();
 		}
-		res += "[" + cur_time.plusSeconds(cur.getDurationFrom(next)) + "] " + "Station " + next.getStation() + ": You have arrived!\n";
+		res += "[" + cur_time.plusSeconds(cur.getDurationFrom(next)) + "] " + "Station " + next.getStation() + ": You have arrived!          ";
 		return res;
 	}
 
@@ -126,4 +143,5 @@ public class Path {
 	public void setStartTime(LocalTime start_time) {
 		this.start_time = start_time;
 	}
+
 }

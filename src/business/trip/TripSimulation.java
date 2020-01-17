@@ -63,11 +63,23 @@ public class TripSimulation {
 			Collections.sort(bdSites, new SiteComparator(hotel));
 			LinkedList<Site> sites = sitesToVisit(budgetLeft, bdSites);
 			
-			List<Excursion> excursions = pathFinding.getExcursions(hotel, sites);
+			List<Excursion> excursions = pathFinding.getExcursions(hotel, sites, intensity);
 			Trip trip = new Trip(hotel, excursions);
+			trip.setDaysCount(duration);
+			trip.setPrice(calcTripPrice(trip));
 			trips.add(trip);
 		}
 		return trips;
+	}
+	
+	public float calcTripPrice(Trip trip) {
+		float total = trip.getHotel().getPricePerDay() * trip.getDaysCount();
+			for(Excursion excursion: trip.getExcursion()) {
+				for(Site site : excursion.getSite()) {
+					total += site.getPrice();
+				}
+			}
+		return total;
 	}
 	
 	public List<Hotel> hotelsToVisit(float intensity, float budget, int duration, int k){
@@ -148,5 +160,4 @@ public class TripSimulation {
 	public void setPathFinding(PathFinding pathFinding) {
 		this.pathFinding = pathFinding;
 	}
-	
 }

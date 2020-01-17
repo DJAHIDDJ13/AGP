@@ -49,19 +49,19 @@ public class Excursion {
 	
 	@Override
 	public String toString() {
-		String res = "Hotel\n";
+		String res = "Start At Hotel        ";
 		ListIterator<Path> pathsIter = paths.listIterator();
 		ListIterator<Site> sitesIter = sites.listIterator();
 		
 		while(pathsIter.hasNext() && sitesIter.hasNext()) {
 			res += pathsIter.next();
-			res += sitesIter.next() + "\n";
+			res += sitesIter.next() + "           ";
 		}
 		
 		if(pathsIter.hasNext()) {
 			res += pathsIter.next();
 		}
-		res += "Hotel\n";
+		res += "Go Back To Hotel               ";
 
 		return res;
 	}

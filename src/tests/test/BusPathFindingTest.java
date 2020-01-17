@@ -103,7 +103,7 @@ public class BusPathFindingTest {
 
 		PathFinding pf = new PathFinding(transport);
 		
-		ArrayList<Excursion> e = pf.getExcursions(hotel, sites);
+		ArrayList<Excursion> e = pf.getExcursions(hotel, sites, 3);
 		System.out.print(e);
 		assertNotNull(e);
 	}
