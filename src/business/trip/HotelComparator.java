@@ -14,6 +14,6 @@ class HotelCmparator implements Comparator<Hotel> {
 		float value1 = Math.abs(a.getPricePerDay() - price);
 		float value2 = Math.abs(b.getPricePerDay() - price);
 		
-		return (value1 < value2) ? 1 : -1;
+		return (value1 > value2) ? 1 : -1;
     }
 }

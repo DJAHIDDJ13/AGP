@@ -54,20 +54,26 @@ public class TripSimulation {
 	
 	public List<Trip> generateTrips(int n, String keyWords, float budget, int duration, int intensity) {
 		List<Trip> trips = new ArrayList<Trip>();
-		Hotel hotel = persister.getHotelById(1);
-		LinkedList<Site> sites = new LinkedList<Site>(persister.getAllSites());
-		
-		List<Excursion> excursions = pathFinding.getExcursions(hotel, sites);
-		Trip trip = new Trip(hotel, excursions);
+		List<Hotel> hotels = hotelsToVisit(intensity, budget, duration, n);
 
-		trips.add(trip);
+		for(Hotel hotel: hotels) {
+			List<Site> bdSites = persister.getSitesByKeyWord(null, keyWords);
+
+			float budgetLeft = budget - hotel.getPricePerDay() * duration;
+			Collections.sort(bdSites, new SiteComparator(hotel));
+			LinkedList<Site> sites = sitesToVisit(budgetLeft, bdSites);
+			
+			List<Excursion> excursions = pathFinding.getExcursions(hotel, sites);
+			Trip trip = new Trip(hotel, excursions);
+			trips.add(trip);
+		}
 		return trips;
 	}
 	
 	public List<Hotel> hotelsToVisit(float intensity, float budget, int duration, int k){
 		List<Hotel> bdHotels = persister.getAllHotels();
 		
-		float hotelPercentage = TripConstants.HOTEL_RANGE_PERCENTAGE - intensity;
+		float hotelPercentage = TripConstants.HOTEL_RANGE_PERCENTAGE - 5 * intensity;
 		
 		float hotelPrice = (budget * hotelPercentage) / 100;
 		
@@ -82,7 +88,9 @@ public class TripSimulation {
 		ListIterator<Site> siteIter = sortedSiteList.listIterator();
 		while(curBudget < budgetLeft) {
 			if(siteIter.hasNext()) {
-				sites.add(siteIter.next());
+				Site site = siteIter.next();
+				sites.add(site);
+				curBudget += site.getPrice();
 			} else {
 				break;
 			}

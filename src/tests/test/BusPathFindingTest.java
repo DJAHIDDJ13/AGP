@@ -92,9 +92,9 @@ public class BusPathFindingTest {
 		Transport transport = pf.getTransport();
 		Hotel hotel = new Hotel(1, 1, "Hotel", 1, "Beach", new Position(0, 0), transport.getStationById(0));
 
-		Site site1 = new ActivitySite(1, "Site1", new Position(0, 2), transport.getStationById(2));
-		Site site2 = new ActivitySite(2, "Site2", new Position(1, 3), transport.getStationById(3));
-		Site site3 = new ActivitySite(3, "Site3", new Position(0, 1), transport.getStationById(1));
+		Site site1 = new ActivitySite(1, "Site1", new Position(0, 2), transport.getStationById(2), 20);
+		Site site2 = new ActivitySite(2, "Site2", new Position(1, 3), transport.getStationById(3), 3);
+		Site site3 = new ActivitySite(3, "Site3", new Position(0, 1), transport.getStationById(1), 5);
 		site1.setDuration(3600);
 		site2.setDuration(3600);
 		site3.setDuration(3600);

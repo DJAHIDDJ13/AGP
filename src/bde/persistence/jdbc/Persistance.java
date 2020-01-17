@@ -323,12 +323,13 @@ public class Persistance{
 			
 			Position position = getPositionById(sqlIterator.getInt("id_position")); 
 			Station station = getStationById(sqlIterator.getInt("id_station")); 
+			float price = sqlIterator.getFloat("price_site");
 			
 			if(sqlIterator.getString("type_site").equals("historic")) {
-				site = new HistoricSite(siteId, sqlIterator.getString("name_site"), position, station); 
+				site = new HistoricSite(siteId, sqlIterator.getString("name_site"), position, station, price); 
 			}
 			else{
-				site = new ActivitySite(siteId, sqlIterator.getString("name_site"), position, station); 
+				site = new ActivitySite(siteId, sqlIterator.getString("name_site"), position, station, price); 
 			}
 			
 		} catch (SQLException e) {
@@ -410,10 +411,11 @@ public class Persistance{
 		List<Site> sites = getAllSites();
 		List<Site> sitesFetch = null;
 		
-		if(!key.isEmpty()) {
-			sitesFetch = fetchSitesMixed(siteType, key);
+		if(key != null && !key.isEmpty()) {
+			if(siteType != null && !siteType.isEmpty())
+				sitesFetch = fetchSitesMixed(siteType, key);
 		} else {
-			if(!siteType.isEmpty())
+			if(siteType != null && !siteType.isEmpty())
 				sitesFetch = fetchSitesType(siteType);
 		}
 		

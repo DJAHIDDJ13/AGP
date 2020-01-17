@@ -8,8 +8,8 @@ public class ActivitySite extends Site{
 		
 	}
 	
-	public ActivitySite(int id, String name, Position place, Station station) {
-		super(id, name, place, station);
+	public ActivitySite(int id, String name, Position place, Station station, float price) {
+		super(id, name, place, station, 10 * price);
 	}
 	
 	@Override

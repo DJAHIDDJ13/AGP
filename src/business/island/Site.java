@@ -12,7 +12,9 @@ public abstract class Site {
 	
 	private Station station;
 	
-	private int duration; // in seconds
+	private int duration = 3600; // in seconds
+	
+	private float price;
 	
 	private float pertinance;
 	
@@ -20,11 +22,12 @@ public abstract class Site {
 		
 	}
 	
-	public Site(int id, String name, Position position, Station station) {
+	public Site(int id, String name, Position position, Station station, float price) {
 		this.id = id;
 		this.name = name;
 		this.position = position;
 		this.station = station;
+		this.price = price;
 	}
 	
 	public int getId() {
@@ -69,6 +72,14 @@ public abstract class Site {
 	
 	public void setPertinance(float pertinance) {
 		this.pertinance = pertinance;
+	}
+
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
 	}
 
 	public void setPosition(Position position) {
